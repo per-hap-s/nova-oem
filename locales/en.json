@@ -1,0 +1,156 @@
+{
+  "common": {
+    "title": "NOVA Apparel OEM Factory - Small Batch Apparel Customization",
+    "description": "NOVA Apparel OEM Factory, specializing in small batch apparel OEM, minimum 100 pieces, serving Taiwan, Thailand, Malaysia customers, providing professional pattern making and OEM services, reliable quality, on-time delivery",
+    "keywords": "Apparel OEM, Small Batch Customization, Taiwan Apparel OEM, Thailand Apparel OEM, Malaysia Apparel OEM, NOVA Apparel Factory",
+    "ogTitle": "NOVA Apparel OEM Factory - Small Batch Apparel Customization",
+    "ogDescription": "NOVA Apparel OEM Factory, specializing in small batch apparel OEM, minimum 100 pieces, serving Taiwan, Thailand, Malaysia customers, providing professional pattern making and OEM services, reliable quality, on-time delivery"
+  },
+  "nav": {
+    "home": "Home",
+    "cases": "Case Showcase",
+    "about": "About Us",
+    "contact": "Contact Us"
+  },
+  "lang": {
+    "zh": "简体中文",
+    "zh-tw": "繁體中文",
+    "th": "ภาษาไทย",
+    "ja": "日本語",
+    "ko": "한국어",
+    "en": "English"
+  },
+  "hero": {
+    "title": "NOVA Apparel OEM, minimum 100 pieces",
+    "subtitle": "Focus on clothing customization in Taiwan, Thailand, Malaysia and other regions, provide professional pattern making and OEM services, reliable quality, on-time delivery",
+    "viewCases": "View Cases"
+  },
+  "advantages": {
+    "title": "Core Advantages",
+    "advantage1": {
+      "title": "Small MOQ",
+      "desc": "Support minimum 100 pieces, meet small batch customization needs"
+    },
+    "advantage2": {
+      "title": "Professional Pattern Making",
+      "desc": "More than 5 years of pattern making experience, accurately meet customer needs"
+    },
+    "advantage3": {
+      "title": "On-time Delivery",
+      "desc": "Cooperate with formal factories to ensure on-time delivery"
+    }
+  },
+  "trust": {
+    "title": "Trust Endorsement",
+    "sampleTitle": "Pattern Making Samples",
+    "sampleDesc": "Show our pattern making quality, detailed processing, precise pattern"
+  },
+  "reviews": {
+    "title": "Customer Reviews",
+    "review1": {
+      "name": "Ahmad - Indonesia Customer",
+      "text": "The casual wear customization meets our needs perfectly. Comfortable fabric, great fit, customers love it. We've already reordered."
+    },
+    "review2": {
+      "name": "Mr. Chen - Taiwan Customer",
+      "text": "The pattern making for 480 professional suits was very accurate, on-time delivery, perfect fit. We will continue to cooperate."
+    },
+    "review3": {
+      "name": "Sara - Thailand Customer",
+      "text": "The retro clothing pattern exceeded expectations, excellent color reproduction, perfect for our market. We've reordered."
+    },
+    "review4": {
+      "name": "Mohamed - Malaysia Customer",
+      "text": "The Muslim clothing design perfectly meets our requirements, excellent attention to detail, smooth cooperation, on-time delivery."
+    },
+    "review5": {
+      "name": "Mr. Li - Hong Kong Customer",
+      "text": "The 420 business suits we ordered fit perfectly, employees are very satisfied, on-time delivery, pleasant cooperation."
+    },
+    "review6": {
+      "name": "Nguyen - Vietnam Customer",
+      "text": "The traditional clothing customization meets our cultural needs, excellent details, great quality, will cooperate again."
+    },
+    "review7": {
+      "name": "William - Singapore Customer",
+      "text": "Excellent uniform quality, breathable fabric, employees are satisfied. Already recommended to partners."
+    },
+    "review8": {
+      "name": "Maria - Philippines Customer",
+      "text": "Summer dress pattern is excellent, stylish design, lightweight fabric, perfect for tropical climate."
+    }
+  },
+  "cases": {
+    "title": "Case Showcase",
+    "case1": {
+      "title": "Indonesia Casual Wear Customization",
+      "desc": "350 pieces of casual wear customization, comfortable and breathable, suitable for local climate, suitable for daily wear",
+      "feedback": "Lead time: 12 days | Customer feedback: The casual wear is highly comfortable and suitable for the local climate, so we have placed a repeat order"
+    },
+    "case2": {
+      "title": "Taiwan Professional Clothing Customization",
+      "desc": "480 pieces of custom professional apparel manufacturing, precise pattern, on-time delivery",
+      "feedback": "Delivery time: 14 days | Customer feedback: The pattern fits our needs well, and the employees are all satisfied"
+    },
+    "case3": {
+      "title": "Thailand Retro Dress Customization",
+      "desc": "520 pieces of retro dress customization, high color restoration, suitable for local market",
+      "feedback": "Delivery time: 10 days | Customer feedback: The retro style is very popular with our customers, we have reordered"
+    },
+    "case4": {
+      "title": "Malaysia Muslim Clothing Customization",
+      "desc": "280 pieces of Muslim clothing customization, detailed processing, meet local needs",
+      "feedback": "Delivery time: 15 days | Customer feedback: The details are handled very well, meeting our religious requirements"
+    },
+    "case5": {
+      "title": "Singapore Business Attire Customization",
+      "desc": "420 pieces of business attire customization, precise pattern, suitable for business occasions, on-time delivery",
+      "feedback": "Delivery time: 11 days | Customer feedback: The business pattern is very professional, meeting our business needs"
+    },
+    "case6": {
+      "title": "Vietnam Traditional Ao Dai Customization",
+      "desc": "380 pieces of traditional Vietnamese Ao Dai manufacturing, restore traditional style, detailed processing, meet local culture",
+      "feedback": "Delivery time: 12 days | Customer feedback: The traditional style restoration is very high, very popular with local customers"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "teamTitle": "Our Team",
+    "teamDesc": "NOVA Apparel Factory has over 5 years of specialized experience in clothing pattern making and sample development, focusing on clothing OEM production, familiar with apparel style requirements in different regions, and can accurately restore customer design requirements.",
+    "coopTitle": "Cooperation Model",
+    "coopDesc": "We cooperate deeply with formal clothing factories, which can ensure that orders with a minimum of 100 pieces are delivered on time, the quality meets customer requirements, and there is no need to worry about production and delivery issues.",
+    "processTitle": "Service Process",
+    "process": {
+      "step1": {
+        "title": "Demand Communication",
+        "desc": "Communicate customization needs with customers, determine style, quantity, requirements"
+      },
+      "step2": {
+        "title": "Pattern Making Confirmation",
+        "desc": "Make pattern samples, confirm version and quality with customers"
+      },
+      "step3": {
+        "title": "Production Follow-up",
+        "desc": "Follow up production progress to ensure orders are produced on time"
+      },
+      "step4": {
+        "title": "Logistics Delivery",
+        "desc": "After production is completed, arrange logistics delivery to customers"
+      }
+    }
+  },
+  "contact": {
+    "title": "Contact Us",
+    "contactTitle": "Contact Us",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "locationTitle": "Our Location"
+  },
+  "footer": {
+    "copyright": "© 2026 NOVA Apparel Factory All Rights Reserved"
+  },
+  "aria": {
+    "scanWechat": "Scan to Add WeChat",
+    "scanQR": "Scan QR Code to Add Friend"
+  }
+}
