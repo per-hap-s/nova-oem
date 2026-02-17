@@ -1,6 +1,11 @@
 /**
- * 国际化(i18n)核心模块 - 增强版
+ * 国际化(i18n)核心模块 - 预加载增强版
  * 提供多语言翻译功能
+ * 
+ * 特性：
+ * - 预加载模式：页面初始化时一次性加载所有语言包
+ * - 即时切换：用户切换语言时无延迟，实现"秒切"效果
+ * - 容错处理：单个语言包加载失败不影响整体功能
  */
 (function() {
     'use strict';
@@ -135,6 +140,11 @@
         }
     }
 
+    /**
+     * 设置当前语言
+     * 由于采用预加载模式，所有语言包已在初始化时加载
+     * 切换语言时直接应用翻译，实现无延迟的即时切换效果
+     */
     function setLanguage(lang) {
         log('Setting language to: ' + lang);
         
@@ -143,48 +153,29 @@
             return Promise.reject(new Error('Unsupported language'));
         }
 
-        // 显示加载状态
-        showLoadingState();
-
+        // 检查语言包是否已预加载
         if (!translations[lang]) {
-            return loadTranslations(lang).then(function() {
-                currentLang = lang;
-                localStorage.setItem(CONFIG.storageKey, lang);
-                updatePageTranslations();
-                hideLoadingState();
-                log('Language switched to: ' + lang);
-            }).catch(function(error) {
-                hideLoadingState();
-                logError('Failed to switch language:', error);
-            });
-        } else {
-            currentLang = lang;
-            localStorage.setItem(CONFIG.storageKey, lang);
-            updatePageTranslations();
-            hideLoadingState();
-            log('Language switched to: ' + lang);
-            return Promise.resolve();
+            logError('Language pack not preloaded: ' + lang);
+            return Promise.reject(new Error('Language pack not preloaded'));
         }
-    }
 
-    function showLoadingState() {
-        var currentLangEl = document.getElementById('currentLang');
-        if (currentLangEl) {
-            currentLangEl.style.opacity = '0.5';
-        }
-    }
-
-    function hideLoadingState() {
-        var currentLangEl = document.getElementById('currentLang');
-        if (currentLangEl) {
-            currentLangEl.style.opacity = '1';
-        }
+        // 所有语言包已预加载，直接切换，实现即时切换效果
+        currentLang = lang;
+        localStorage.setItem(CONFIG.storageKey, lang);
+        updatePageTranslations();
+        log('Language switched to: ' + lang + ' (instant switch)');
+        return Promise.resolve();
     }
 
     function getLanguage() {
         return currentLang;
     }
 
+    /**
+     * 初始化i18n模块
+     * 采用预加载模式：页面初始化时一次性加载所有语言包
+     * 确保用户切换语言时能够实现无延迟的即时切换效果
+     */
     function init() {
         if (isInitialized) {
             log('i18n already initialized');
@@ -197,13 +188,21 @@
         var initialLang = savedLang && CONFIG.supportedLangs.indexOf(savedLang) !== -1 ? savedLang : CONFIG.defaultLang;
         
         log('Initial language: ' + initialLang);
+        log('Preloading all language packs: ' + CONFIG.supportedLangs.join(', '));
 
-        var promises = [loadTranslations(CONFIG.defaultLang)];
-        if (initialLang !== CONFIG.defaultLang) {
-            promises.push(loadTranslations(initialLang));
-        }
+        // 预加载所有支持的语言包，单个失败不影响整体功能
+        var promises = CONFIG.supportedLangs.map(function(lang) {
+            return loadTranslations(lang).catch(function(error) {
+                logError('Failed to preload language: ' + lang, error);
+                return null; // 单个失败不中断整体加载
+            });
+        });
 
-        return Promise.all(promises).then(function() {
+        return Promise.all(promises).then(function(results) {
+            // 统计成功加载的语言包数量
+            var loadedCount = results.filter(function(r) { return r !== null; }).length;
+            log('Successfully preloaded ' + loadedCount + '/' + CONFIG.supportedLangs.length + ' language packs');
+            
             currentLang = initialLang;
             isInitialized = true;
             updatePageTranslations();
