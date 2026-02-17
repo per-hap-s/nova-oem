@@ -6,20 +6,49 @@
  * - 预加载模式：页面初始化时一次性加载所有语言包
  * - 即时切换：用户切换语言时无延迟，实现"秒切"效果
  * - 容错处理：单个语言包加载失败不影响整体功能
+ * - IP地理位置检测：根据用户IP自动选择默认语言
  */
 (function() {
     'use strict';
 
     var CONFIG = {
-        defaultLang: 'zh',
+        defaultLang: 'en', // 默认语言改为英语
         supportedLangs: ['zh', 'zh-tw', 'th', 'en', 'ja', 'ko'],
         storageKey: 'nova_lang',
-        debug: true
+        debug: false, // 生产环境关闭调试模式
+        enableGeoDetection: true // 是否启用IP地理位置检测
     };
 
     var currentLang = CONFIG.defaultLang;
     var translations = {};
     var isInitialized = false;
+
+    /**
+     * 安全地从localStorage获取数据
+     * @param {string} key - 存储键名
+     * @returns {string|null} 存储的值或null
+     */
+    function safeGetItem(key) {
+        try {
+            return localStorage.getItem(key);
+        } catch (error) {
+            // 隐私模式或localStorage不可用
+            return null;
+        }
+    }
+
+    /**
+     * 安全地设置localStorage数据
+     * @param {string} key - 存储键名
+     * @param {string} value - 存储值
+     */
+    function safeSetItem(key, value) {
+        try {
+            localStorage.setItem(key, value);
+        } catch (error) {
+            // 隐私模式或localStorage不可用，静默失败
+        }
+    }
 
     function log(message) {
         if (CONFIG.debug && console && console.log) {
@@ -161,7 +190,7 @@
 
         // 所有语言包已预加载，直接切换，实现即时切换效果
         currentLang = lang;
-        localStorage.setItem(CONFIG.storageKey, lang);
+        safeSetItem(CONFIG.storageKey, lang);
         updatePageTranslations();
         log('Language switched to: ' + lang + ' (instant switch)');
         return Promise.resolve();
@@ -175,6 +204,12 @@
      * 初始化i18n模块
      * 采用预加载模式：页面初始化时一次性加载所有语言包
      * 确保用户切换语言时能够实现无延迟的即时切换效果
+     * 
+     * 语言选择优先级：
+     * 1. 用户已保存的语言偏好
+     * 2. 浏览器语言偏好
+     * 3. IP地理位置检测结果
+     * 4. 默认语言（英语）
      */
     function init() {
         if (isInitialized) {
@@ -184,10 +219,8 @@
         
         log('Initializing i18n module');
         
-        var savedLang = localStorage.getItem(CONFIG.storageKey);
-        var initialLang = savedLang && CONFIG.supportedLangs.indexOf(savedLang) !== -1 ? savedLang : CONFIG.defaultLang;
+        var savedLang = safeGetItem(CONFIG.storageKey);
         
-        log('Initial language: ' + initialLang);
         log('Preloading all language packs: ' + CONFIG.supportedLangs.join(', '));
 
         // 预加载所有支持的语言包，单个失败不影响整体功能
@@ -198,20 +231,120 @@
             });
         });
 
-        return Promise.all(promises).then(function(results) {
-            // 统计成功加载的语言包数量
-            var loadedCount = results.filter(function(r) { return r !== null; }).length;
-            log('Successfully preloaded ' + loadedCount + '/' + CONFIG.supportedLangs.length + ' language packs');
-            
-            currentLang = initialLang;
-            isInitialized = true;
-            updatePageTranslations();
-            bindLanguageSwitchEvents();
-            bindDropdownEvents();
-            log('i18n initialization complete');
-        }).catch(function(error) {
-            logError('Error initializing i18n:', error);
-        });
+        return Promise.all(promises)
+            .then(function(results) {
+                // 统计成功加载的语言包数量
+                var loadedCount = results.filter(function(r) { return r !== null; }).length;
+                log('Successfully preloaded ' + loadedCount + '/' + CONFIG.supportedLangs.length + ' language packs');
+                
+                // 确定初始语言
+                return determineInitialLanguage(savedLang);
+            })
+            .then(function(initialLang) {
+                currentLang = initialLang;
+                isInitialized = true;
+                updatePageTranslations();
+                bindLanguageSwitchEvents();
+                bindDropdownEvents();
+                log('i18n initialization complete, initial language: ' + initialLang);
+            })
+            .catch(function(error) {
+                logError('Error initializing i18n:', error);
+                // 出错时使用默认语言
+                currentLang = CONFIG.defaultLang;
+                isInitialized = true;
+                updatePageTranslations();
+                bindLanguageSwitchEvents();
+                bindDropdownEvents();
+            });
+    }
+
+    /**
+     * 确定初始语言
+     * 优先级：已保存偏好 > 浏览器偏好 > IP地理位置 > 默认语言
+     * @param {string} savedLang - 用户已保存的语言偏好
+     * @returns {Promise<string>} 初始语言代码
+     */
+    function determineInitialLanguage(savedLang) {
+        // 辅助函数：检查语言是否支持
+        function isSupported(lang) {
+            return CONFIG.supportedLangs.indexOf(lang) !== -1;
+        }
+
+        // 如果用户已有语言偏好，直接使用
+        if (savedLang && isSupported(savedLang)) {
+            log('Using saved language preference: ' + savedLang);
+            return Promise.resolve(savedLang);
+        }
+
+        // 优先级2：浏览器语言偏好
+        var browserLang = getBrowserLanguageFallback();
+        if (browserLang && isSupported(browserLang)) {
+            log('Using browser language preference: ' + browserLang);
+            return Promise.resolve(browserLang);
+        }
+
+        // 浏览器语言不支持时，继续尝试IP地理位置检测
+        log('Browser language not supported, trying IP geo detection...');
+
+        // 优先级3：IP地理位置检测
+        if (CONFIG.enableGeoDetection && window.GeoLanguage) {
+            log('Detecting language by IP geo location...');
+            return window.GeoLanguage.detectLanguage(null, CONFIG.supportedLangs)
+                .then(function(lang) {
+                    log('Detected language by IP: ' + lang);
+                    return lang;
+                })
+                .catch(function(error) {
+                    logError('Language detection failed:', error);
+                    // IP检测失败时，使用默认语言
+                    return CONFIG.defaultLang;
+                });
+        }
+
+        // 优先级4：降级到默认语言
+        log('Using default language: ' + CONFIG.defaultLang);
+        return Promise.resolve(CONFIG.defaultLang);
+    }
+
+    /**
+     * 获取浏览器语言偏好（降级方案）
+     * @returns {string|null} 语言代码，如果不支持则返回null
+     */
+    function getBrowserLanguageFallback() {
+        var browserLang = navigator.language || navigator.userLanguage || '';
+        var langLower = browserLang.toLowerCase();
+        
+        log('Browser language fallback: ' + browserLang);
+
+        var langMap = {
+            'zh-cn': 'zh',
+            'zh-tw': 'zh-tw',
+            'zh-hk': 'zh-tw',
+            'zh-mo': 'zh-tw',
+            'zh': 'zh',
+            'en-us': 'en',
+            'en-gb': 'en',
+            'en': 'en',
+            'ja': 'ja',
+            'ko': 'ko',
+            'th': 'th'
+        };
+
+        // 先尝试完整匹配
+        if (langMap[langLower] && CONFIG.supportedLangs.indexOf(langMap[langLower]) !== -1) {
+            return langMap[langLower];
+        }
+
+        // 再尝试前缀匹配
+        var prefix = langLower.split('-')[0];
+        if (langMap[prefix] && CONFIG.supportedLangs.indexOf(langMap[prefix]) !== -1) {
+            return langMap[prefix];
+        }
+
+        // 浏览器语言不支持，返回null，由调用方决定后续处理
+        log('Browser language not supported: ' + browserLang);
+        return null;
     }
 
     function bindLanguageSwitchEvents() {
