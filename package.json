@@ -1,0 +1,22 @@
+{
+  "name": "nova-oem",
+  "version": "1.0.0",
+  "description": "NOVA Clothing OEM Factory Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve",
+    "build": "echo 'Building static site...'",
+    "deploy": "vercel deploy --prod"
+  },
+  "keywords": [
+    "clothing",
+    "oem",
+    "factory",
+    "apparel"
+  ],
+  "author": "NOVA Factory",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

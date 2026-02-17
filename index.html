@@ -1,0 +1,1825 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVA服装OEM代工厂 - 小批量服装定制代工</title>
+    <!-- SEO优化 -->
+    <meta name="description" content="NOVA服装OEM代工厂，专注于小批量服装代工，100件起订，服务台湾、泰国、马来西亚客户，提供专业打板与代工服务，质量可靠，交期准时">
+    <meta name="keywords" content="服装OEM代工,小批量服装定制,台湾服装代工,泰国服装代工,马来西亚服装代工,NOVA服装工厂">
+    <!-- 社交媒体meta标签 -->
+    <meta property="og:title" content="NOVA服装OEM代工厂 - 小批量服装定制代工">
+    <meta property="og:description" content="NOVA服装OEM代工厂，专注于小批量服装代工，100件起订，服务台湾、泰国、马来西亚客户，提供专业打板与代工服务，质量可靠，交期准时">
+    <meta property="og:url" content="https://agent.doubaocdn.com/obj/eden-cn/upnbsw-tss/ljhwZthlaukjlkulzlp/supertask_webview/38229592360704002/clothing_oem_website/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/banner.jpg">
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "NOVA服装OEM代工厂",
+      "description": "NOVA服装OEM代工厂，专注于小批量服装代工，100件起订，服务台湾、泰国、马来西亚客户，提供专业打板与代工服务，质量可靠，交期准时",
+      "image": "images/banner.jpg",
+      "telephone": "+8619571788150",
+      "email": "19571788150@163.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "广州市",
+        "addressRegion": "番禺区",
+        "addressCountry": "中国"
+      },
+      "openingHours": "Mo-Su 09:00-18:00",
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "name": "服务区域",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 23.0338,
+          "longitude": 113.3910
+        },
+        "radius": 500000
+      },
+      "serviceType": "服装OEM代工服务",
+      "priceRange": "100件起订"
+    }
+    </script>
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/v4-shims.min.css" rel="stylesheet">
+    <!-- Leaflet地图 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#D4A574',
+                        neutral: '#F5F5F5',
+                        dark: '#121212'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .card-hover {
+                @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:bg-white/90;
+            }
+            .btn-hover {
+                @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+            }
+            .step-item {
+                @apply relative flex flex-col items-center;
+            }
+            .step-line {
+                @apply absolute top-8 left-1/2 w-full h-0.5 bg-primary/20 -translate-x-1/2 z-0;
+            }
+            .step-number {
+                @apply w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl z-10 relative transition-all duration-300 hover:bg-primary/90;
+            }
+        }
+
+        .custom-popup .leaflet-popup-content-wrapper {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-popup .leaflet-popup-content {
+            margin: 8px 12px;
+            font-size: 13px;
+            color: #121212;
+            min-width: 180px;
+            text-align: center;
+        }
+
+        .custom-popup .leaflet-popup-tip {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .custom-div-icon {
+            background: transparent;
+            border: none;
+        }
+        .visible {
+  visibility: visible !important;
+}
+.opacity-100 {
+  opacity: 1 !important;
+}
+.translate-y-0 {
+  transform: translateY(0) !important;
+}
+
+        /* 语言选择按钮响应式优化 */
+        @media (max-width: 639px) {
+            #currentLang {
+                display: inline !important;
+                font-size: 0.875rem;
+            }
+            
+            #langDropdownBtn {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                gap: 0.5rem;
+            }
+            
+            #langDropdownBtn .fa-globe {
+                font-size: 1rem;
+            }
+            
+            #langDropdownBtn .fa-chevron-down {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-neutral text-dark">
+    <!-- 整合式头部 -->
+    <header class="fixed top-0 left-0 right-0 z-50" aria-label="网站头部">
+        <!-- 滚动进度指示条 -->
+        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-white/20 z-10">
+            <div id="scrollProgress" class="h-full bg-secondary transition-all duration-150" style="width: 0%"></div>
+        </div>
+        
+        <!-- 顶部联系方式栏 - 移动端隐藏 -->
+        <div class="bg-primary/95 backdrop-blur-md text-white py-1 sm:py-2 px-4 sm:px-6 border-b border-white/10 hidden sm:block" aria-label="顶部联系方式栏">
+            <div class="container mx-auto flex items-center justify-between gap-2">
+                <div class="flex items-center gap-3 sm:gap-6">
+                    <a href="tel:+8619571788150" class="flex items-center hover:text-secondary transition-colors btn-hover" aria-label="拨打电话：+86 19571788150">
+                        <i class="fas fa-phone mr-1 sm:mr-2 text-base sm:text-lg"></i>
+                        <span class="text-xs sm:text-sm hidden sm:inline">+86 19571788150</span>
+                    </a>
+                    <a href="mailto:19571788150@163.com" class="flex items-center hover:text-secondary transition-colors btn-hover" aria-label="发送邮件到：19571788150@163.com">
+                        <i class="fas fa-envelope mr-1 sm:mr-2 text-base sm:text-lg"></i>
+                        <span class="text-xs sm:text-sm hidden sm:inline">19571788150@163.com</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-5">
+                    <button id="wechatBtn" class="hover:text-secondary transition-colors btn-hover" aria-label="打开微信二维码">
+                        <i class="fab fa-weixin text-xl sm:text-2xl"></i>
+                    </button>
+                    <a href="https://wa.me/8619571788150" target="_blank" class="hover:text-secondary transition-colors btn-hover" aria-label="打开WhatsApp发起对话">
+                        <i class="fab fa-whatsapp text-xl sm:text-2xl"></i>
+                    </a>
+                    <a href="https://line.me/ti/p/3fRtAf8fuy" target="_blank" class="hover:text-secondary transition-colors btn-hover" aria-label="打开LINE添加好友">
+                        <i class="fab fa-line text-xl sm:text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 导航栏 -->
+        <nav class="w-full transition-all duration-300 bg-white/90 backdrop-blur-lg shadow-md border-b border-white/20" aria-label="主导航栏" id="navbar">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="flex items-center btn-hover" aria-label="回到首页">
+                <img src="images/nova-logo.png" alt="NOVA Logo" class="h-9 object-contain" />
+            </a>
+            <!-- 桌面端菜单 -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="首页" data-text="首页" data-lang-text-zh-tw="首頁" data-lang-text-th="หน้าแรก" data-lang-text-en="Home" data-lang-text-ja="ホーム" data-lang-text-ko="홈">首页</a>
+                <a href="#cases" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="案例展示" data-text="案例展示" data-lang-text-zh-tw="案例展示" data-lang-text-th="ตัวอย่าง" data-lang-text-en="Case Showcase" data-lang-text-ja="ケース紹介" data-lang-text-ko="케이스 소개">案例展示</a>
+                <a href="#about" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="关于我们" data-text="关于我们" data-lang-text-zh-tw="關於我們" data-lang-text-th="เกี่ยวกับเรา" data-lang-text-en="About Us" data-lang-text-ja="私たちについて" data-lang-text-ko="회사 소개">关于我们</a>
+                <a href="#contact" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="联系方式" data-text="联系方式" data-lang-text-zh-tw="聯繫方式" data-lang-text-th="ติดต่อ" data-lang-text-en="Contact Us" data-lang-text-ja="お問い合わせ" data-lang-text-ko="연락처">联系方式</a>
+            </div>
+            <!-- 语言切换 -->
+            <div class="relative" aria-label="语言切换">
+                <button id="langDropdownBtn" class="flex items-center gap-2 text-dark hover:text-primary transition-colors btn-hover px-3 py-2 rounded-lg min-w-[150px] focus:outline-none focus:ring-2 focus:ring-primary" aria-label="选择语言" aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-globe text-lg"></i>
+                    <span id="currentLang" class="hidden sm:inline">简体中文</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" id="langDropdownIcon"></i>
+                </button>
+                <div id="langDropdown" class="absolute left-0 top-full mt-2 w-auto min-w-[150px] bg-white/90 backdrop-blur-lg rounded-lg shadow-lg border border-white/30 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50" aria-label="语言选项">
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3 first:rounded-t-lg" data-lang="zh" aria-label="切换到简体中文">
+                        <span>简体中文</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="zh-tw" aria-label="切换到繁体中文">
+                        <span>繁體中文</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="th" aria-label="切换到泰语">
+                        <span>ภาษาไทย</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="ja" aria-label="切换到日语">
+                        <span>日本語</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="ko" aria-label="切换到韩语">
+                        <span>한국어</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3 last:rounded-b-lg" data-lang="en" aria-label="切换到英文">
+                        <span>English</span>
+                    </button>
+                </div>
+            </div>
+            <!-- 移动端汉堡按钮 -->
+            <button id="menuBtn" class="md:hidden text-dark text-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="打开移动端菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white/90 backdrop-blur-lg w-full shadow-lg transition-all duration-300 transform translate-y-[-10px] opacity-0 border-t border-white/20" aria-label="移动端导航菜单">
+            <div class="container mx-auto px-6 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="首页" data-text="首页" data-lang-text-zh-tw="首頁" data-lang-text-th="หน้าแรก" data-lang-text-en="Home" data-lang-text-ja="ホーム" data-lang-text-ko="홈">首页</a>
+                <a href="#cases" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="案例展示" data-text="案例展示" data-lang-text-zh-tw="案例展示" data-lang-text-th="ตัวอย่าง" data-lang-text-en="Case Showcase" data-lang-text-ja="ケース紹介" data-lang-text-ko="케이스 소개">案例展示</a>
+                <a href="#about" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="关于我们" data-text="关于我们" data-lang-text-zh-tw="關於我們" data-lang-text-th="เกี่ยวกับเรา" data-lang-text-en="About Us" data-lang-text-ja="私たちについて" data-lang-text-ko="회사 소개">关于我们</a>
+                <a href="#contact" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="联系方式" data-text="联系方式" data-lang-text-zh-tw="聯繫方式" data-lang-text-th="ติดต่อ" data-lang-text-en="Contact Us" data-lang-text-ja="お問い合わせ" data-lang-text-ko="연락처">联系方式</a>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary/70 hover:bg-primary/90 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-500 opacity-0 invisible z-50 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 btn-hover" aria-label="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
+        <!-- 背景图片 -->
+        <img src="images/banner.jpg" alt="台湾风格职业装打板样品" class="absolute inset-0 w-full h-full object-cover z-0 opacity-0 transition-opacity duration-700" loading="lazy">
+        <!-- 渐变叠加层 -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80 z-10"></div>
+        <div class="container mx-auto px-4 py-10 relative z-20">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 text-white">
+                    <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6 text-shadow" data-lang-text="zh" data-text="NOVA服装OEM代工，100件起订">NOVA服装OEM代工，100件起订</h1>
+                    <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6 text-shadow hidden" data-lang-text="zh-tw" data-text="NOVA服裝OEM代工，100件起訂">NOVA服裝OEM代工，100件起訂</h1>
+                    <h1 class="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold mb-6 text-shadow hidden" data-lang-text="th" data-text="NOVA ผลิตภัณฑ์ OEM จำนวนต่ำ 100 ชิ้น">NOVA ผลิตภัณฑ์ OEM จำนวนต่ำ 100 ชิ้น</h1>
+                    <h1 class="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold mb-6 text-shadow hidden" data-lang-text="en" data-text="NOVA Apparel OEM, minimum 100 pieces">NOVA Apparel OEM, minimum 100 pieces</h1>
+                    <h1 class="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold mb-6 text-shadow hidden" data-lang-text="ja" data-text="NOVA アパレルOEM、最小100枚から">NOVA アパレルOEM、最小100枚から</h1>
+                    <h1 class="text-[clamp(1.8rem,3.5vw,2.8rem)] font-bold mb-6 text-shadow hidden" data-lang-text="ko" data-text="NOVA 의류 OEM, 최소 100개부터">NOVA 의류 OEM, 최소 100개부터</h1>
+                    <p class="text-lg mb-8" data-lang-text="zh" data-text="专注于台湾、泰国、马来西亚等地区服装定制，提供专业打板与代工服务，质量可靠，交期准时">专注于台湾、泰国、马来西亚等地区服装定制，提供专业打板与代工服务，质量可靠，交期准时</p>
+                    <p class="text-lg mb-8 hidden" data-lang-text="zh-tw" data-text="專注於台灣、泰國、馬來西亞等地區服裝定制，提供專業服裝打板與代工服務，品質穩定可靠，交期準時">專注於台灣、泰國、馬來西亞等地區服裝定制，提供專業服裝打板與代工服務，品質穩定可靠，交期準時</p>
+                    <p class="text-lg mb-8 hidden" data-lang-text="th" data-text="เน้นการปรับแต่งเสื้อผ้าในไต้หวัน ไทย มาเลเซีย และอื่นๆ ให้บริการการสร้างแพทเทิร์นและ OEM มืออาชีพ คุณภาพดี ส่งมอบตรงเวลา">เน้นการปรับแต่งเสื้อผ้าในไต้หวัน ไทย มาเลเซีย และอื่นๆ ให้บริการการสร้างแพทเทิร์นและ OEM มืออาชีพ คุณภาพดี ส่งมอบตรงเวลา</p>
+                    <p class="text-lg mb-8 hidden" data-lang-text="en" data-text="Focus on clothing customization in Taiwan, Thailand, Malaysia and other regions, provide professional pattern making and OEM services, reliable quality, on-time delivery">Focus on clothing customization in Taiwan, Thailand, Malaysia and other regions, provide professional pattern making and OEM services, reliable quality, on-time delivery</p>
+                    <p class="text-lg mb-8 hidden" data-lang-text="ja" data-text="台湾・タイ・マレーシアなどの地域に特化したアパレルカスタマイズ、プロのパターンメイキングとOEMサービスを提供、高品質で納期厳守">台湾・タイ・マレーシアなどの地域に特化したアパレルカスタマイズ、プロのパターンメイキングとOEMサービスを提供、高品質で納期厳守</p>
+                    <p class="text-lg mb-8 hidden" data-lang-text="ko" data-text="대만, 태국, 말레이시아 등 지역에 특화된 의류 맞춤 제작, 전문적인 패턴 제작과 OEM 서비스 제공, 품질 신뢰성 높고 납기 준수">대만, 태국, 말레이시아 등 지역에 특화된 의류 맞춤 제작, 전문적인 패턴 제작과 OEM 서비스 제공, 품질 신뢰성 높고 납기 준수</p>
+                    <a href="#cases" class="bg-white text-primary hover:bg-white/90 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-block btn-hover" aria-label="查看案例">
+                        <span data-lang-text="zh" data-text="查看案例">查看案例</span>
+                        <span data-lang-text="zh-tw" data-text="查看案例" class="hidden">查看案例</span>
+                        <span data-lang-text="th" data-text="ดูตัวอย่าง" class="hidden">ดูตัวอย่าง</span>
+                        <span data-lang-text="en" data-text="View Cases" class="hidden">View Cases</span>
+                        <span data-lang-text="ja" data-text="ケースを見る" class="hidden">ケースを見る</span>
+                        <span data-lang-text="ko" data-text="케이스 보기" class="hidden">케이스 보기</span>
+                    </a>
+                </div>
+                <div class="md:w-1/2 relative z-20">
+                    <img src="images/banner.jpg" alt="台湾风格职业装打板样品" class="w-full h-auto rounded-xl shadow-2xl opacity-0 transition-opacity duration-700" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section class="py-20 bg-white" aria-label="核心优势">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-lang-text="zh" data-text="核心优势">核心优势</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="zh-tw" data-text="核心優勢">核心優勢</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="th" data-text="ข้อดีหลัก">ข้อดีหลัก</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="en" data-text="Core Advantages">Core Advantages</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ja" data-text="コアアドバンテージ">コアアドバンテージ</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ko" data-text="핵심 장점">핵심 장점</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 优势1 -->
+                <div class="bg-neutral rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 hover:bg-primary/20">
+                        <i class="fas fa-shopping-cart text-2xl text-primary" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="小批量起订">小批量起订</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="小批量生產起訂">小批量生產起訂</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="ขั้นต่ำ 100 ชิ้น">ขั้นต่ำ 100 ชิ้น</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Small MOQ">Small MOQ</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="最小100枚から">最小100枚から</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="최소 100개부터">최소 100개부터</h3>
+                    <p class="text-gray-700" data-lang-text="zh" data-text="支持100件起订，满足小批量定制需求">支持100件起订，满足小批量定制需求</p>
+                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="支持100件起訂，滿足小批量定制需求">支持100件起訂，滿足小批量定制需求</p>
+                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="รองรับขั้นต่ำ 100 ชิ้น ตอบสนองความต้องการการปรับแต่งจำนวนน้อย">รองรับขั้นต่ำ 100 ชิ้น ตอบสนองความต้องการการปรับแต่งจำนวนน้อย</p>
+                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="Support minimum 100 pieces, meet small batch customization needs">Support minimum 100 pieces, meet small batch customization needs</p>
+                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="100枚からの発注をサポート、小ロットカスタマイズのニーズに対応">100枚からの発注をサポート、小ロットカスタマイズのニーズに対応</p>
+                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="100개부터 주문 지원, 소량 맞춤 제작 요구 충족">100개부터 주문 지원, 소량 맞춤 제작 요구 충족</p>
+                </div>
+                <!-- 优势2 -->
+                <div class="bg-neutral rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 hover:bg-primary/20">
+                        <i class="fas fa-pencil-ruler text-2xl text-primary" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="专业打板">专业打板</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="專業服裝打板">專業服裝打板</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การสร้างแพทเทิร์นมืออาชีพ">การสร้างแพทเทิร์นมืออาชีพ</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Professional Pattern Making">Professional Pattern Making</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="プロのパターンメイキング">プロのパターンメイキング</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="전문 패턴 제작">전문 패턴 제작</h3>
+                    <p class="text-gray-700" data-lang-text="zh" data-text="5年以上打板经验，精准还原客户需求">5年以上打板经验，精准还原客户需求</p>
+                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="5年以上打板經驗，精準還原客戶需求">5年以上打板經驗，精準還原客戶需求</p>
+                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="ประสบการณ์สร้างแพทเทิร์นเสื้อผ้ามากกว่า 5 ปีในอุตสาหกรรมเสื้อผ้า ตอบสนองความต้องการของลูกค้าอย่างแม่นยำ">ประสบการณ์สร้างแพทเทิร์นเสื้อผ้ามากกว่า 5 ปีในอุตสาหกรรมเสื้อผ้า ตอบสนองความต้องการของลูกค้าอย่างแม่นยำ</p>
+                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="More than 5 years of pattern making experience, accurately meet customer needs">More than 5 years of pattern making experience, accurately meet customer needs</p>
+                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="5年以上のパターンメイキング経験、お客様のニーズを正確に再現">5年以上のパターンメイキング経験、お客様のニーズを正確に再現</p>
+                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="5년 이상의 패턴 제작 경험으로 고객 요구사항을 정확히 구현">5년 이상의 패턴 제작 경험으로 고객 요구사항을 정확히 구현</p>
+                </div>
+                <!-- 优势3 -->
+                <div class="bg-neutral rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 hover:bg-primary/20">
+                        <i class="fas fa-clock text-2xl text-primary" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="交期准时">交期准时</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="交期準時">交期準時</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="ส่งมอบตรงเวลา">ส่งมอบตรงเวลา</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="On-time Delivery">On-time Delivery</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="納期厳守">納期厳守</h3>
+                    <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="납기 준수">납기 준수</h3>
+                    <p class="text-gray-700" data-lang-text="zh" data-text="与正规工厂合作，保障订单按时交付">与正规工厂合作，保障订单按时交付</p>
+                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="與正規工廠合作，保障訂單按時交付">與正規工廠合作，保障訂單按時交付</p>
+                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="ร่วมมือกับโรงงานที่เป็นทางการเพื่อรับประกันการส่งมอบตรงเวลา">ร่วมมือกับโรงงานที่เป็นทางการเพื่อรับประกันการส่งมอบตรงเวลา</p>
+                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="Cooperate with formal factories to ensure on-time delivery">Cooperate with formal factories to ensure on-time delivery</p>
+                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="正規工場と提携し、注文の納期を厳格に遵守">正規工場と提携し、注文の納期を厳格に遵守</p>
+                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="정규 공장과 협력, 주문 납기 확실하게 준수">정규 공장과 협력, 주문 납기 확실하게 준수</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 信任背书 -->
+    <section class="py-20 bg-neutral" aria-label="信任背书">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-lang-text="zh" data-text="信任背书">信任背书</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="zh-tw" data-text="信任背書">信任背書</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="th" data-text="การรับรอง">การรับรอง</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="en" data-text="Trust Endorsement">Trust Endorsement</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ja" data-text="信頼の証">信頼の証</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ko" data-text="신뢰 인증">신뢰 인증</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 样品展示 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <img src="images/sample.jpg" alt="服装打板细节实拍" class="w-full h-64 object-cover opacity-0 transition-opacity duration-700" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="打板样品实拍">打板样品实拍</h3>
+                        <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="打板樣品實拍">打板樣品實拍</h3>
+                        <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="ตัวอย่างการสร้างแพทเทิร์น">ตัวอย่างการสร้างแพทเทิร์น</h3>
+                        <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Pattern Making Samples">Pattern Making Samples</h3>
+                        <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="パターンメイキングサンプル">パターンメイキングサンプル</h3>
+                        <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="패턴 메이킹 샘플">패턴 메이킹 샘플</h3>
+                        <p class="text-gray-700" data-lang-text="zh" data-text="展示我们的打板质量，细节处理到位，版型精准">展示我们的打板质量，细节处理到位，版型精准</p>
+                        <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="展示我們的打板品質，細節處理到位，版型精準">展示我們的打板品質，細節處理到位，版型精準</p>
+                        <p class="text-gray-700 hidden" data-lang-text="th" data-text="แสดงคุณภาพการสร้างแพทเทิร์นของเรา รายละเอียดดีมาก ตอบสนองความต้องการสั่งซื้อแม่นยำ">แสดงคุณภาพการสร้างแพทเทิร์นของเรา รายละเอียดดีมาก ตอบสนองความต้องการสั่งซื้อแม่นยำ</p>
+                        <p class="text-gray-700 hidden" data-lang-text="en" data-text="Show our pattern making quality, detailed processing, precise pattern">Show our pattern making quality, detailed processing, precise pattern</p>
+                        <p class="text-gray-700 hidden" data-lang-text="ja" data-text="当社のパターンメイキング品質を紹介、細部まで丁寧に処理、正確な版型">当社のパターンメイキング品質を紹介、細部まで丁寧に処理、正確な版型</p>
+                        <p class="text-gray-700 hidden" data-lang-text="ko" data-text="우리의 패턴 메이킹 품질을 소개합니다. 디테일 처리를 철저히 하고, 정확한 패턴을 구현합니다.">우리의 패턴 메이킹 품질을 소개합니다. 디테일 처리를 철저히 하고, 정확한 패턴을 구현합니다.</p>
+                    </div>
+                </div>
+                <!-- 客户评价轮播 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <h3 class="text-xl font-bold mb-4 text-primary" data-lang-text="zh" data-text="客户评价">客户评价</h3>
+                    <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="zh-tw" data-text="客戶評價">客戶評價</h3>
+                    <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="th" data-text="รีวิวของลูกค้า">รีวิวของลูกค้า</h3>
+                    <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="en" data-text="Customer Reviews">Customer Reviews</h3>
+                    <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="ja" data-text="お客様のレビュー">お客様のレビュー</h3>
+                    <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="ko" data-text="고객 리뷰">고객 리뷰</h3>
+                    
+                    <!-- 轮播容器 -->
+                    <div class="relative" id="reviewsCarousel" tabindex="0" role="region" aria-label="客户评价轮播">
+                        <!-- 轮播视口 -->
+                        <div class="overflow-hidden h-80" id="reviewsViewport">
+                            <div class="transition-transform duration-500 ease-in-out" id="reviewsTrack">
+                                <!-- 评价卡片1 - 印尼客户 -->
+                                <div class="review-card py-4 px-2" data-index="0">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">A</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="Ahmad - 印尼客户">Ahmad - 印尼客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="Ahmad - 印尼客戶">Ahmad - 印尼客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="Ahmad - ลูกค้าอินโดนีเซีย">Ahmad - ลูกค้าอินโดนีเซีย</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="Ahmad - Indonesia Customer">Ahmad - Indonesia Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="Ahmad - インドネシアのお客様">Ahmad - インドネシアのお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="Ahmad - 인도네시아 고객">Ahmad - 인도네시아 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="休闲装的定制很符合我们的需求，面料舒适，版型好看，客户都很喜欢，已经返单了。">休闲装的定制很符合我们的需求，面料舒适，版型好看，客户都很喜欢，已经返单了。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="休閒裝的定制很符合我們的需求，面料舒適，版型好看，客戶都很喜歡，已經返單了。">休閒裝的定制很符合我們的需求，面料舒適，版型好看，客戶都很喜歡，已經返單了。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="การปรับแต่งเสื้อผ้าแบบสบายตอบสนองความต้องการ ลูกค้าชอบใจและได้สั่งซ้ำแล้ว">การปรับแต่งเสื้อผ้าแบบสบายตอบสนองความต้องการ ลูกค้าชอบใจและได้สั่งซ้ำแล้ว</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="The casual wear customization meets our needs perfectly. Comfortable fabric, great fit, customers love it. We've already reordered.">The casual wear customization meets our needs perfectly. Comfortable fabric, great fit, customers love it. We've already reordered.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="カジュアルウェアのカスタマイズは当社のニーズに完全に適合しています。快適な生地、優れたフィット感、お客様に大好評です。既に再注文しました。">カジュアルウェアのカスタマイズは当社のニーズに完全に適合しています。快適な生地、優れたフィット感、お客様に大好評です。既に再注文しました。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="캐주얼 웨어 맞춤 제작이 우리의 요구사항에 완벽하게 부합합니다. 편안한 소재, 훌륭한 핏, 고객들이 모두 좋아합니다. 이미 재주문했습니다.">캐주얼 웨어 맞춤 제작이 우리의 요구사항에 완벽하게 부합합니다. 편안한 소재, 훌륭한 핏, 고객들이 모두 좋아합니다. 이미 재주문했습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 评价卡片2 - 台湾客户 -->
+                                <div class="review-card py-4 px-2" data-index="1">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">陈</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="陈先生 - 台湾客户">陈先生 - 台湾客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="陳先生 - 台灣客戶">陳先生 - 台灣客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="คุณเฉิน - ลูกค้าไต้หวัน">คุณเฉิน - ลูกค้าไต้หวัน</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="Mr. Chen - Taiwan Customer">Mr. Chen - Taiwan Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="陳氏 - 台湾のお客様">陳氏 - 台湾のお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="진 선생 - 대만 고객">진 선생 - 대만 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="480件职业装的打板很精准，交期准时，版型很符合我们的需求，后续会继续合作。">480件职业装的打板很精准，交期准时，版型很符合我们的需求，后续会继续合作。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="480件職業裝的打板很精準，交期準時，版型很符合我們的需求，後續會繼續合作。">480件職業裝的打板很精準，交期準時，版型很符合我們的需求，後續會繼續合作。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="การสร้างแพทเทิร์นชุดทำงาน 480 ชิ้น แม่นยำมาก ส่งมอบตรงเวลา รูปแบบตอบสนองความต้องการ และจะร่วมมือต่อไป">การสร้างแพทเทิร์นชุดทำงาน 480 ชิ้น แม่นยำมาก ส่งมอบตรงเวลา รูปแบบตอบสนองความต้องการ และจะร่วมมือต่อไป</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="The pattern making for 480 professional suits was very accurate, on-time delivery, perfect fit. We will continue to cooperate.">The pattern making for 480 professional suits was very accurate, on-time delivery, perfect fit. We will continue to cooperate.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="480枚のビジネスウェアのパターンメイキングは非常に正確で、納期も厳守し、版型は当社のニーズに完全に適合しています。今後も引き続き協力します。">480枚のビジネスウェアのパターンメイキングは非常に正確で、納期も厳守し、版型は当社のニーズに完全に適合しています。今後も引き続き協力します。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="480벌의 프로페셔널 웨어 패턴 메이킹이 매우 정확했고, 납기가 준수되었으며, 패턴이 우리의 요구사항에 완벽히 부합했습니다.今後も계속 협력할 예정입니다.">480벌의 프로페셔널 웨어 패턴 메이킹이 매우 정확했고, 납기가 준수되었으며, 패턴이 우리의 요구사항에 완벽히 부합했습니다.今後も계속 협력할 예정입니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 评价卡片3 - 泰国客户 -->
+                                <div class="review-card py-4 px-2" data-index="2">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">S</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="Sara - 泰国客户">Sara - 泰国客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="Sara - 泰國客戶">Sara - 泰國客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="Sara - ลูกค้าไทย">Sara - ลูกค้าไทย</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="Sara - Thailand Customer">Sara - Thailand Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="サラ - タイのお客様">サラ - タイのお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="사라 - 태국 고객">사라 - 태국 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="复古服装的打板效果超出预期，色彩还原度很高，很适合我们的市场，已经返单了。">复古服装的打板效果超出预期，色彩还原度很高，很适合我们的市场，已经返单了。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="復古服裝的打板效果超出預期，色彩還原度很高，很適合我們的市場，已經返單了。">復古服裝的打板效果超出預期，色彩還原度很高，很適合我們的市場，已經返單了。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="การสร้างแพทเทิร์นเสื้อผ้าแบบดั้งเดิมเกินความคาดหมาย สีสันสวยงาม เหมาะกับตลาดของเรา สั่งซ้ำแล้ว">การสร้างแพทเทิร์นเสื้อผ้าแบบดั้งเดิมเกินความคาดหมาย สีสันสวยงาม เหมาะกับตลาดของเรา สั่งซ้ำแล้ว</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="The retro clothing pattern exceeded expectations, excellent color reproduction, perfect for our market. We've reordered.">The retro clothing pattern exceeded expectations, excellent color reproduction, perfect for our market. We've reordered.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="レトロ衣料のパターンメイキングは期待を超えています。色彩の再現性が非常に高く、当社の市場に最適です。既に再注文しました。">レトロ衣料のパターンメイキングは期待を超えています。色彩の再現性が非常に高く、当社の市場に最適です。既に再注文しました。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="레트로 의류 패턴이 기대를 초과했으며, 색상 재현성이 우수하고, 우리 시장에 완벽히 적합했습니다. 이미 재주문했습니다.">레트로 의류 패턴이 기대를 초과했으며, 색상 재현성이 우수하고, 우리 시장에 완벽히 적합했습니다. 이미 재주문했습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 评价卡片4 - 马来西亚客户 -->
+                                <div class="review-card py-4 px-2" data-index="3">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">M</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="Mohamed - 马来西亚客户">Mohamed - 马来西亚客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="Mohamed - 馬來西亞客戶">Mohamed - 馬來西亞客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="Mohamed - ลูกค้ามาเลเซีย">Mohamed - ลูกค้ามาเลเซีย</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="Mohamed - Malaysia Customer">Mohamed - Malaysia Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="モハメッド - マレーシアのお客様">モハメッド - マレーシアのお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="모하메드 - 말레이시아 고객">모하메드 - 말레이시아 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="穆斯林服装的设计很符合我们的要求，细节处理很到位，合作很顺畅，交付也很准时。">穆斯林服装的设计很符合我们的要求，细节处理很到位，合作很顺畅，交付也很准时。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="穆斯林服裝的設計很符合我們的要求，細節處理很到位，合作很順暢，交付也很準時。">穆斯林服裝的設計很符合我們的要求，細節處理很到位，合作很順暢，交付也很準時。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="การออกแบบเสื้อผ้ามุสลิมตรงตามความต้องการ รายละเอียดดีมาก การร่วมมือราบรื่น ส่งมอบตรงเวลา">การออกแบบเสื้อผ้ามุสลิมตรงตามความต้องการ รายละเอียดดีมาก การร่วมมือราบรื่น ส่งมอบตรงเวลา</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="The Muslim clothing design perfectly meets our requirements, excellent attention to detail, smooth cooperation, on-time delivery.">The Muslim clothing design perfectly meets our requirements, excellent attention to detail, smooth cooperation, on-time delivery.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="イスラム服のデザインは当社の要件を完全に満たしています。細部への注意が抜群で、協力は円滑、納期も厳守されています。">イスラム服のデザインは当社の要件を完全に満たしています。細部への注意が抜群で、協力は円滑、納期も厳守されています。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="이슬람 의류 디자인이 우리의 요구사항을 완벽히 충족했고, 디테일 처리가 탁월했으며, 협력이 원활했고, 납기도 준수되었습니다.">이슬람 의류 디자인이 우리의 요구사항을 완벽히 충족했고, 디테일 처리가 탁월했으며, 협력이 원활했고, 납기도 준수되었습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 评价卡片5 - 香港客户 -->
+                                <div class="review-card py-4 px-2" data-index="4">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">李</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="李先生 - 香港客户">李先生 - 香港客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="李先生 - 香港客戶">李先生 - 香港客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="คุณหลี่ - ลูกค้าฮ่องกง">คุณหลี่ - ลูกค้าฮ่องกง</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="Mr. Li - Hong Kong Customer">Mr. Li - Hong Kong Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="李先生 - 香港のお客様">李先生 - 香港のお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="이 선생 - 홍콩 고객">이 선생 - 홍콩 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="我们定制的420件商务装版型很合身，员工都很满意，交期也很准时，合作很愉快。">我们定制的420件商务装版型很合身，员工都很满意，交期也很准时，合作很愉快。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="我們定制的420件商務裝版型很合身，員工都很滿意，交期也很準時，合作很愉快。">我們定制的420件商務裝版型很合身，員工都很滿意，交期也很準時，合作很愉快。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="ชุดธุรกิจ 420 ชิ้นที่เราสั่งทำนั้นพอดีตัว พนักงานพึงพอใจมาก ส่งมอบตรงเวลา การร่วมมือเป็นไปอย่างสนุกสนาน">ชุดธุรกิจ 420 ชิ้นที่เราสั่งทำนั้นพอดีตัว พนักงานพึงพอใจมาก ส่งมอบตรงเวลา การร่วมมือเป็นไปอย่างสนุกสนาน</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="The 420 business suits we ordered fit perfectly, employees are very satisfied, on-time delivery, pleasant cooperation.">The 420 business suits we ordered fit perfectly, employees are very satisfied, on-time delivery, pleasant cooperation.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="当社が注文した420着のビジネススーツは非常にフィットしています。従業員は皆非常に満足していますし、納期も厳守され、協力関係も非常に円滑でした。">当社が注文した420着のビジネススーツは非常にフィットしています。従業員は皆非常に満足していますし、納期も厳守され、協力関係も非常に円滑でした。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="우리가 주문한 420벌의 비즈니스 웨어가 매우 잘 맞았고, 직원들이 모두 만족했으며, 납기도 준수되었고, 협력이 매우愉快했습니다.">우리가 주문한 420벌의 비즈니스 웨어가 매우 잘 맞았고, 직원들이 모두 만족했으며, 납기도 준수되었고, 협력이 매우愉快했습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 评价卡片6 - 越南客户 -->
+                                <div class="review-card py-4 px-2" data-index="5">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">N</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="Nguyen - 越南客户">Nguyen - 越南客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="Nguyen - 越南客戶">Nguyen - 越南客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="Nguyen - ลูกค้าเวียดนาม">Nguyen - ลูกค้าเวียดนาม</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="Nguyen - Vietnam Customer">Nguyen - Vietnam Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="グエン - ベトナムのお客様">グエン - ベトナムのお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="Nguyen - 베트남 고객">Nguyen - 베트남 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="定制的传统服装很符合我们的文化需求，细节处理很到位，质量也很好，下次还会合作。">定制的传统服装很符合我们的文化需求，细节处理很到位，质量也很好，下次还会合作。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="定制的傳統服裝很符合我們的文化需求，細節處理很到位，品質也很好，下次還會合作。">定制的傳統服裝很符合我們的文化需求，細節處理很到位，品質也很好，下次還會合作。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="เสื้อผ้าแบบดั้งเดิมที่ปรับแต่งตรงตามความต้องการทางวัฒนธรรม รายละเอียดดีมาก คุณภาพดี จะร่วมมืออีกครั้ง">เสื้อผ้าแบบดั้งเดิมที่ปรับแต่งตรงตามความต้องการทางวัฒนธรรม รายละเอียดดีมาก คุณภาพดี จะร่วมมืออีกครั้ง</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="The traditional clothing customization meets our cultural needs, excellent details, great quality, will cooperate again.">The traditional clothing customization meets our cultural needs, excellent details, great quality, will cooperate again.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="伝統衣装のカスタマイズは当社の文化的要件を完全に満たしています。細部の処理が優れていて、品質も非常に良く、今後も協力したいと考えています。">伝統衣装のカスタマイズは当社の文化的要件を完全に満たしています。細部の処理が優れていて、品質も非常に良く、今後も協力したいと考えています。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="전통 의류 맞춤 제작이 우리의 문화적 요구사항을 충족했고, 디테일 처리가 탁월했으며, 품질도 매우 좋았습니다. 다음에도 다시 협력할 예정입니다.">전통 의류 맞춤 제작이 우리의 문화적 요구사항을 충족했고, 디테일 처리가 탁월했으며, 품질도 매우 좋았습니다. 다음에도 다시 협력할 예정입니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 评价卡片7 - 新加坡客户 -->
+                                <div class="review-card py-4 px-2" data-index="6">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">W</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="William - 新加坡客户">William - 新加坡客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="William - 新加坡客戶">William - 新加坡客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="William - ลูกค้าสิงคโปร์">William - ลูกค้าสิงคโปร์</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="William - Singapore Customer">William - Singapore Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="ウィリアム - シンガポールのお客様">ウィリアム - シンガポールのお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="윌리엄 - 싱가포르 고객">윌리엄 - 싱가포르 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="制服定制质量非常好，面料透气舒适，员工反馈都很满意，已经推荐给合作伙伴。">制服定制质量非常好，面料透气舒适，员工反馈都很满意，已经推荐给合作伙伴。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="制服定制品質非常好，面料透氣舒適，員工反饋都很滿意，已經推薦給合作夥伴。">制服定制品質非常好，面料透氣舒適，員工反饋都很滿意，已經推薦給合作夥伴。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="ชุดยูนิฟอร์มคุณภาพดีมาก ผ้าระบายอากาศดี พนักงานพึงพอใจ แนะนำให้พันธมิตรแล้ว">ชุดยูนิฟอร์มคุณภาพดีมาก ผ้าระบายอากาศดี พนักงานพึงพอใจ แนะนำให้พันธมิตรแล้ว</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="Excellent uniform quality, breathable fabric, employees are satisfied. Already recommended to partners.">Excellent uniform quality, breathable fabric, employees are satisfied. Already recommended to partners.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="ユニフォームのカスタマイズの品質は非常に優れています。生地は通気性が良く快適で、従業員からのフィードバックは全て満足しています。既にパートナーに紹介しています。">ユニフォームのカスタマイズの品質は非常に優れています。生地は通気性が良く快適で、従業員からのフィードバックは全て満足しています。既にパートナーに紹介しています。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="유니폼 맞춤 제작 품질이 매우 우수했고, 소재가 통기성이 좋고 편안했으며, 직원들의 피드백이 모두 만족스러웠습니다. 이미 파트너들에게 추천했습니다.">유니폼 맞춤 제작 품질이 매우 우수했고, 소재가 통기성이 좋고 편안했으며, 직원들의 피드백이 모두 만족스러웠습니다. 이미 파트너들에게 추천했습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 评价卡片8 - 菲律宾客户 -->
+                                <div class="review-card py-4 px-2" data-index="7">
+                                    <div class="flex items-start gap-4">
+                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <span class="text-primary font-bold text-lg">M</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <div class="flex items-center justify-between mb-2">
+                                                <h4 class="font-bold text-base text-dark" data-lang-text="zh" data-text="Maria - 菲律宾客户">Maria - 菲律宾客户</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="zh-tw" data-text="Maria - 菲律賓客戶">Maria - 菲律賓客戶</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="th" data-text="Maria - ลูกค้าฟิลิปปินส์">Maria - ลูกค้าฟิลิปปินส์</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="en" data-text="Maria - Philippines Customer">Maria - Philippines Customer</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ja" data-text="マリア - フィリピンのお客様">マリア - フィリピンのお客様</h4>
+                                                <h4 class="font-bold text-base text-dark hidden" data-lang-text="ko" data-text="마리아 - 필리핀 고객">마리아 - 필리핀 고객</h4>
+                                                <div class="flex text-yellow-400 text-sm">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half-alt"></i>
+                                                </div>
+                                            </div>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-lang-text="zh" data-text="夏季连衣裙的打板效果很棒，版型时尚，面料轻盈，非常适合热带气候。">夏季连衣裙的打板效果很棒，版型时尚，面料轻盈，非常适合热带气候。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="zh-tw" data-text="夏季連衣裙的打板效果很棒，版型時尚，面料輕盈，非常適合熱帶氣候。">夏季連衣裙的打板效果很棒，版型時尚，面料輕盈，非常適合熱帶氣候。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="th" data-text="ชุดฤดูร้อนสวยมาก รูปแบบทันสมัย ผ้าเบาสบาย เหมาะกับอากาศร้อน">ชุดฤดูร้อนสวยมาก รูปแบบทันสมัย ผ้าเบาสบาย เหมาะกับอากาศร้อน</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="en" data-text="Summer dress pattern is excellent, stylish design, lightweight fabric, perfect for tropical climate.">Summer dress pattern is excellent, stylish design, lightweight fabric, perfect for tropical climate.</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ja" data-text="サマードレスのパターンメイキングは優れています。スタイリッシュなデザイン、軽量な生地で、熱帯気候に非常に適しています。">サマードレスのパターンメイキングは優れています。スタイリッシュなデザイン、軽量な生地で、熱帯気候に非常に適しています。</p>
+                                            <p class="text-gray-600 text-sm line-clamp-3 italic hidden" data-lang-text="ko" data-text="여름 드레스 패턴이 탁월했으며, 스타일리시한 디자인, 가벼운 소재로 열대 기후에 매우 적합했습니다.">여름 드레스 패턴이 탁월했으며, 스타일리시한 디자인, 가벼운 소재로 열대 기후에 매우 적합했습니다.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 控制按钮 -->
+                        <button id="prevReview" class="absolute top-1/2 -left-2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-primary rounded-full shadow-md flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary z-10" aria-label="上一个评价">
+                            <i class="fas fa-chevron-up text-sm"></i>
+                        </button>
+                        <button id="nextReview" class="absolute top-1/2 -right-2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-primary rounded-full shadow-md flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary z-10" aria-label="下一个评价">
+                            <i class="fas fa-chevron-down text-sm"></i>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示 -->
+    <section id="cases" class="py-20 bg-white relative" aria-label="案例展示">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-lang-text="zh" data-text="案例展示">案例展示</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="zh-tw" data-text="案例展示">案例展示</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="th" data-text="ตัวอย่าง">ตัวอย่าง</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="en" data-text="Case Showcase">Case Showcase</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ja" data-text="ケース紹介">ケース紹介</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ko" data-text="케이스 소개">케이스 소개</h2>
+            <div class="relative w-full overflow-x-hidden pb-8">
+                <div id="casesCarousel" class="flex gap-6 transition-transform duration-500 ease-in-out w-max">
+                    <!-- 复制最后一个案例到开头，用于无缝循环 -->
+                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                        <img src="images/case-indonesia.jpg" alt="印尼休闲装定制案例" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="印尼休闲装定制">印尼休闲装定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="印尼休閒裝定制">印尼休閒裝定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การปรับแต่งเสื้อผ้าสบายอินโดนีเซีย">การปรับแต่งเสื้อผ้าสบายอินโดนีเซีย</h3>
+                            <h3 class="text-[clamp(1.2rem,2vw,1.5rem)] font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Indonesia Casual Wear Customization">Indonesia Casual Wear Customization</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="インドネシアカジュアルウェアカスタマイズ">インドネシアカジュアルウェアカスタマイズ</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="인도네시아 캐주얼 웨어 맞춤 제작">인도네시아 캐주얼 웨어 맞춤 제작</h3>
+                            <p class="text-gray-700 mb-2" data-lang-text="zh" data-text="350件休闲装定制，舒适透气，符合当地气候，适合日常穿着">350件休闲装定制，舒适透气，符合当地气候，适合日常穿着</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="zh-tw" data-text="350件休閒裝定制，舒適透氣，符合當地氣候，適合日常穿著">350件休閒裝定制，舒適透氣，符合當地氣候，適合日常穿著</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="th" data-text="350 ชิ้นของเสื้อผ้าแบบสบาย สบายและถ่ายอากาศได้ดี เหมาะสำหรับสภาพอากาศท้องถิ่น เหมาะสำหรับการใส่ในชีวิตประจำวัน">350 ชิ้นของเสื้อผ้าแบบสบาย สบายและถ่ายอากาศได้ดี เหมาะสำหรับสภาพอากาศท้องถิ่น เหมาะสำหรับการใส่ในชีวิตประจำวัน</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="en" data-text="350 pieces of casual wear customization, comfortable and breathable, suitable for local climate, suitable for daily wear">350 pieces of casual wear customization, comfortable and breathable, suitable for local climate, suitable for daily wear</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ja" data-text="350着のカジュアルウェアカスタマイズ、快適で通気性が良く、現地の気候に適し、日常着用に最適">350着のカジュアルウェアカスタマイズ、快適で通気性が良く、現地の気候に適し、日常着用に最適</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ko" data-text="350벌의 캐주얼 웨어 맞춤 제작，편안하고 통기성이 좋으며，현지 기후에 적합하고，일상 착용에 적합합니다">350벌의 캐주얼 웨어 맞춤 제작，편안하고 통기성이 좋으며，현지 기후에 적합하고，일상 착용에 적합합니다</p>
+                            <p class="text-gray-500 text-sm" data-lang-text="zh" data-text="交付周期：12天 | 客户反馈：休闲装很舒适，很适合当地的气候，已经返单了">交付周期：12天 | 客户反馈：休闲装很舒适，很适合当地的气候，已经返单了</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="zh-tw" data-text="交期：12天 | 客戶回饋：休閒服舒適度佳，非常適合當地氣候，已續單">交期：12天 | 客戶回饋：休閒服舒適度佳，非常適合當地氣候，已續單</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="th" data-text="ระยะเวลาส่งมอบ: 12 วัน | ความคิดเห็นลูกค้า: เสื้อผ้าสบายมาก เหมาะกับสภาพอากาศในท้องถิ่น เราสั่งซ้ำออเดอร์แล้ว">ระยะเวลาส่งมอบ: 12 วัน | ความคิดเห็นลูกค้า: เสื้อผ้าสบายมาก เหมาะกับสภาพอากาศในท้องถิ่น เราสั่งซ้ำออเดอร์แล้ว</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="en" data-text="Lead time: 12 days | Customer feedback: The casual wear is highly comfortable and suitable for the local climate, so we have placed a repeat order">Lead time: 12 days | Customer feedback: The casual wear is highly comfortable and suitable for the local climate, so we have placed a repeat order</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ja" data-text="納期: 12日 | お客様のフィードバック: カジュアルウェアは非常に快適で、現地の気候に適しています。既に再注文しました">納期: 12日 | お客様のフィードバック: カジュアルウェアは非常に快適で、現地の気候に適しています。既に再注文しました</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ko" data-text="납기: 12일 | 고객 피드백: 캐주얼 웨어가 매우 편안하고 현지 기후에 적합했습니다. 이미 재주문했습니다">납기: 12일 | 고객 피드백: 캐주얼 웨어가 매우 편안하고 현지 기후에 적합했습니다. 이미 재주문했습니다</p>
+                        </div>
+                    </div>
+                    <!-- 台湾案例 -->
+                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                        <img src="images/banner.jpg" alt="台湾职业装定制案例" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="台湾职业装定制">台湾职业装定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="台灣職業服客製化">台灣職業服客製化</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การปรับแต่งเสื้อผ้าชุดอาชีพไต้หวัน">การปรับแต่งเสื้อผ้าชุดอาชีพไต้หวัน</h3>
+                            <h3 class="text-[clamp(1.2rem,2vw,1.5rem)] font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Taiwan Professional Clothing Customization">Taiwan Professional Clothing Customization</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="台湾プロフェッショナルウェアカスタマイズ">台湾プロフェッショナルウェアカスタマイズ</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="대만 프로페셔널 웨어 맞춤 제작">대만 프로페셔널 웨어 맞춤 제작</h3>
+                            <p class="text-gray-700 mb-2" data-lang-text="zh" data-text="480件质感职业装定制，版型精准，交期准时">480件质感职业装定制，版型精准，交期准时</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="zh-tw" data-text="480件質感職業服客製化，版型精準，交期準時">480件質感職業服客製化，版型精準，交期準時</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="th" data-text="480 ชิ้นของเสื้อผ้าชุดอาชีพ รูปแบบแม่นยำ ส่งมอบตรงเวลา">480 ชิ้นของเสื้อผ้าชุดอาชีพ รูปแบบแม่นยำ ส่งมอบตรงเวลา</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="en" data-text="480 pieces of custom professional apparel manufacturing, precise pattern, on-time delivery">480 pieces of custom professional apparel manufacturing, precise pattern, on-time delivery</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ja" data-text="480着の高品質プロフェッショナルウェアカスタマイズ、版型が正確、納期厳守">480着の高品質プロフェッショナルウェアカスタマイズ、版型が正確、納期厳守</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ko" data-text="480벌의 고품질 프로페셔널 웨어 맞춤 제작，패턴이 정확하고，납기가 준수되었습니다">480벌의 고품질 프로페셔널 웨어 맞춤 제작，패턴이 정확하고，납기가 준수되었습니다</p>
+                            <p class="text-gray-500 text-sm" data-lang-text="zh" data-text="交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意">交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="zh-tw" data-text="交付周期：14天 | 客戶反饋：版型很貼合我們的需求，員工都很滿意">交付周期：14天 | 客戶反饋：版型很貼合我們的需求，員工都很滿意</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="th" data-text="ระยะการส่งมอบ: 14 วัน | ความติดตาม: รูปแบบตรงตามความต้องการ พนักงานพึงพอใจ">ระยะการส่งมอบ: 14 วัน | ความติดตาม: รูปแบบตรงตามความต้องการ พนักงานพึงพอใจ</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="en" data-text="Delivery time: 14 days | Customer feedback: The pattern fits our needs well, and the employees are all satisfied">Delivery time: 14 days | Customer feedback: The pattern fits our needs well, and the employees are all satisfied</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ja" data-text="納期: 14日 | お客様のフィードバック: 版型が当社のニーズに完全に適合し、従業員は皆満足しています">納期: 14日 | お客様のフィードバック: 版型が当社のニーズに完全に適合し、従業員は皆満足しています</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ko" data-text="납기: 14일 | 고객 피드백: 패턴이 우리의 요구사항에 완벽히 부합했으며, 직원들이 모두 만족했습니다">납기: 14일 | 고객 피드백: 패턴이 우리의 요구사항에 완벽히 부합했으며, 직원들이 모두 만족했습니다</p>
+                        </div>
+                    </div>
+                    <!-- 泰国案例 -->
+                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                        <img src="images/case-thailand.jpg" alt="泰国复古连衣裙定制案例" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="泰国复古连衣裙定制">泰国复古连衣裙定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="泰國復古連衣裙定制">泰國復古連衣裙定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การปรับแต่งเดรสรีโทรแบบไทย">การปรับแต่งเดรสรีโทรแบบไทย</h3>
+                            <h3 class="text-[clamp(1.2rem,2vw,1.5rem)] font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Thailand Retro Dress Customization">Thailand Retro Dress Customization</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="タイレトロドレスカスタマイズ">タイレトロドレスカスタマイズ</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="태국 레트로 드레스 맞춤 제작">태국 레트로 드레스 맞춤 제작</h3>
+                            <p class="text-gray-700 mb-2" data-lang-text="zh" data-text="520件复古连衣裙定制，色彩还原度高，符合当地市场">520件复古连衣裙定制，色彩还原度高，符合当地市场</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="zh-tw" data-text="520件復古連衣裙定制，色彩還原度高，符合當地市場">520件復古連衣裙定制，色彩還原度高，符合當地市場</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="th" data-text="520 ชิ้นของเดรสแบบดั้งเดิม สีสันดีมาก เหมาะกับตลาดท้องถิ่น">520 ชิ้นของเดรสแบบดั้งเดิม สีสันดีมาก เหมาะกับตลาดท้องถิ่น</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="en" data-text="520 pieces of retro dress customization, high color restoration, suitable for local market">520 pieces of retro dress customization, high color restoration, suitable for local market</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ja" data-text="520着のレトロドレスカスタマイズ、色彩再現度が高く、現地市場に適しています">520着のレトロドレスカスタマイズ、色彩再現度が高く、現地市場に適しています</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ko" data-text="520벌의 레트로 드레스 맞춤 제작，색상 재현도가 높고，현지 시장에 적합합니다">520벌의 레트로 드레스 맞춤 제작，색상 재현도가 높고，현지 시장에 적합합니다</p>
+                            <p class="text-gray-500 text-sm" data-lang-text="zh" data-text="交付周期：10天 | 客户反馈：复古风格很受我们客户欢迎，已经返单了">交付周期：10天 | 客户反馈：复古风格很受我们客户欢迎，已经返单了</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="zh-tw" data-text="交付周期：10天 | 客戶反饋：復古風格很受我們客戶歡迎，已經返單了">交付周期：10天 | 客戶反饋：復古風格很受我們客戶歡迎，已經返單了</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="th" data-text="ระยะการส่งมอบ: 10 วัน | ความติดตาม: สไตล์ดั้งเดิมได้รับความชอบจากลูกค้า และได้สั่งคำสั่งแล้ว">ระยะการส่งมอบ: 10 วัน | ความติดตาม: สไตล์ดั้งเดิมได้รับความชอบจากลูกค้า และได้สั่งคำสั่งแล้ว</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="en" data-text="Delivery time: 10 days | Customer feedback: The retro style is very popular with our customers, we have re-ordered">Delivery time: 10 days | Customer feedback: The retro style is very popular with our customers, we have re-ordered</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ja" data-text="納期: 10日 | お客様のフィードバック: レトロスタイルは当社のお客様に非常に人気があります。既に再注文しました">納期: 10日 | お客様のフィードバック: レトロスタイルは当社のお客様に非常に人気があります。既に再注文しました</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ko" data-text="납기: 10일 | 고객 피드백: 레트로 스타일이 우리 고객들에게 매우 인기가 있었습니다. 이미 재주문했습니다">납기: 10일 | 고객 피드백: 레트로 스타일이 우리 고객들에게 매우 인기가 있었습니다. 이미 재주문했습니다</p>
+                        </div>
+                    </div>
+                    <!-- 马来西亚案例 -->
+                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                        <img src="images/case-malaysia.jpg" alt="马来西亚穆斯林服装定制案例" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="马来西亚穆斯林服装定制">马来西亚穆斯林服装定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="馬來西亞穆斯林服飾客製化">馬來西亞穆斯林服飾客製化</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การปรับแต่งเสื้อผ้ามุสลิมมาเลเซีย">การปรับแต่งเสื้อผ้ามุสลิมมาเลเซีย</h3>
+                            <h3 class="text-[clamp(1.2rem,2vw,1.5rem)] font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Malaysia Muslim Clothing Customization">Malaysia Muslim Clothing Customization</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="マレーシアイスラム服カスタマイズ">マレーシアイスラム服カスタマイズ</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="말레이시아 이슬람 의류 맞춤 제작">말레이시아 이슬람 의류 맞춤 제작</h3>
+                            <p class="text-gray-700 mb-2" data-lang-text="zh" data-text="280件穆斯林服装定制，细节处理到位，符合当地需求">280件穆斯林服装定制，细节处理到位，符合当地需求</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="zh-tw" data-text="280件穆斯林服飾客製化，細節處理到位，符合當地需求">280件穆斯林服飾客製化，細節處理到位，符合當地需求</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="th" data-text="280 ชิ้นของเสื้อผ้ามุสลิม รายละเอียดดีมาก เหมาะกับความต้องการ">280 ชิ้นของเสื้อผ้ามุสลิม รายละเอียดดีมาก เหมาะกับความต้องการ</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="en" data-text="280 pieces of Muslim clothing customization, detailed processing, meet local needs">280 pieces of Muslim clothing customization, detailed processing, meet local needs</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ja" data-text="280着のイスラム服カスタマイズ、細部の処理が適切、現地のニーズに合っています">280着のイスラム服カスタマイズ、細部の処理が適切、現地のニーズに合っています</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ko" data-text="280벌의 이슬람 의류 맞춤 제작，디테일 처리가 적절했으며，현지 요구사항에 부합했습니다">280벌의 이슬람 의류 맞춤 제작，디테일 처리가 적절했으며，현지 요구사항에 부합했습니다</p>
+                            <p class="text-gray-500 text-sm" data-lang-text="zh" data-text="交付周期：15天 | 客户反馈：细节处理很到位，符合我们的宗教要求">交付周期：15天 | 客户反馈：细节处理很到位，符合我们的宗教要求</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="zh-tw" data-text="交付周期：15天 | 客戶反饋：細節處理很到位，符合我們的宗教要求">交付周期：15天 | 客戶反饋：細節處理很到位，符合我們的宗教要求</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="th" data-text="ระยะการส่งมอบ: 15 วัน | ความติดตาม: รายละเอียดดีมาก ตรงตามความต้องการทางศาสนา">ระยะการส่งมอบ: 15 วัน | ความติดตาม: รายละเอียดดีมาก ตรงตามความต้องการทางศาสนา</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="en" data-text="Delivery time: 15 days | Customer feedback: The details are handled very well, meeting our religious requirements">Delivery time: 15 days | Customer feedback: The details are handled very well, meeting our religious requirements</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ja" data-text="納期: 15日 | お客様のフィードバック: 細部の処理が非常に適切で、当社の宗教的要件を満たしています">納期: 15日 | お客様のフィードバック: 細部の処理が非常に適切で、当社の宗教的要件を満たしています</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ko" data-text="납기: 15일 | 고객 피드백: 디테일 처리가 매우 적절했으며, 우리의 종교적 요구사항을 충족했습니다">납기: 15일 | 고객 피드백: 디테일 처리가 매우 적절했으며, 우리의 종교적 요구사항을 충족했습니다</p>
+                        </div>
+                    </div>
+                    <!-- 新加坡案例 -->
+                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                        <img src="images/case-singapore.jpg" alt="新加坡商务装定制案例" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="新加坡商务装定制">新加坡商务装定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="新加坡商務裝定制">新加坡商務裝定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การปรับแต่งเสื้อผ้าธุรกิจสิงคโปร์">การปรับแต่งเสื้อผ้าธุรกิจสิงคโปร์</h3>
+                            <h3 class="text-[clamp(1.2rem,2vw,1.5rem)] font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Singapore Business Attire Customization">Singapore Business Attire Customization</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="シンガポールビジネスアタイアカスタマイズ">シンガポールビジネスアタイアカスタマイズ</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="싱가포르 비즈니스 의상 맞춤 제작">싱가포르 비즈니스 의상 맞춤 제작</h3>
+                            <p class="text-gray-700 mb-2" data-lang-text="zh" data-text="420件质感商务装定制，版型精准，适合商务场合，交期准时">420件质感商务装定制，版型精准，适合商务场合，交期准时</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="zh-tw" data-text="420件質感商務裝定制，版型精準，適合商務場合，交期準時">420件質感商務裝定制，版型精準，適合商務場合，交期準時</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="th" data-text="420 ชิ้นของเสื้อผ้าธุรกิจ รูปแบบแม่นยำ เหมาะกับโอกาสธุรกิจ ส่งมอบตรงเวลา">420 ชิ้นของเสื้อผ้าธุรกิจ รูปแบบแม่นยำ เหมาะกับโอกาสธุรกิจ ส่งมอบตรงเวลา</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="en" data-text="420 pieces of business attire customization, precise pattern, suitable for business occasions, on-time delivery">420 pieces of business attire customization, precise pattern, suitable for business occasions, on-time delivery</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ja" data-text="420着の高品質ビジネスアタイアカスタマイズ、版型が正確、ビジネス場面に適し、納期厳守">420着の高品質ビジネスアタイアカスタマイズ、版型が正確、ビジネス場面に適し、納期厳守</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ko" data-text="420벌의 고품질 비즈니스 의상 맞춤 제작，패턴이 정확하고，비즈니스 장소에 적합하며，납기가 준수되었습니다">420벌의 고품질 비즈니스 의상 맞춤 제작，패턴이 정확하고，비즈니스 장소에 적합하며，납기가 준수되었습니다</p>
+                            <p class="text-gray-500 text-sm" data-lang-text="zh" data-text="交付周期：11天 | 客户反馈：商务版型很专业，符合我们的商务需求">交付周期：11天 | 客户反馈：商务版型很专业，符合我们的商务需求</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="zh-tw" data-text="交付周期：11天 | 客戶反饋：商務版型很專業，符合我們的商務需求">交付周期：11天 | 客戶反饋：商務版型很專業，符合我們的商務需求</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="th" data-text="ระยะการส่งมอบ: 11 วัน | ความติดตาม: รูปแบบธุรกิจมืออาชีพ ตรงตามความต้องการ">ระยะการส่งมอบ: 11 วัน | ความติดตาม: รูปแบบธุรกิจมืออาชีพ ตรงตามความต้องการ</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="en" data-text="Delivery time: 11 days | Customer feedback: The business pattern is very professional, meeting our business needs">Delivery time: 11 days | Customer feedback: The business pattern is very professional, meeting our business needs</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ja" data-text="納期: 11日 | お客様のフィードバック: ビジネス版型は非常にプロフェッショナルで、当社のビジネスニーズを満たしています">納期: 11日 | お客様のフィードバック: ビジネス版型は非常にプロフェッショナルで、当社のビジネスニーズを満たしています</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ko" data-text="납기: 11일 | 고객 피드백: 비즈니스 패턴이 매우 전문적이고 우리의 비즈니스 요구사항을 충족했습니다">납기: 11일 | 고객 피드백: 비즈니스 패턴이 매우 전문적이고 우리의 비즈니스 요구사항을 충족했습니다</p>
+                        </div>
+                    </div>
+                    <!-- 越南案例 -->
+                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                        <img src="images/case-vietnam.jpg" alt="越南传统奥黛定制案例" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="越南传统奥黛定制">越南传统奥黛定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="越南傳統奧黛定制">越南傳統奧黛定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การปรับแต่งเสื้อผ้าแบบดั้งเดิมเวียดนาม">การปรับแต่งเสื้อผ้าแบบดั้งเดิมเวียดนาม</h3>
+                            <h3 class="text-[clamp(1.2rem,2vw,1.5rem)] font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Vietnam Traditional Ao Dai Customization">Vietnam Traditional Ao Dai Customization</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="ベトナム伝統アオダイカスタマイズ">ベトナム伝統アオダイカスタマイズ</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="베트남 전통 아오다이 맞춤 제작">베트남 전통 아오다이 맞춤 제작</h3>
+                            <p class="text-gray-700 mb-2" data-lang-text="zh" data-text="380件传统奥黛定制，还原传统风格，细节处理到位，符合当地文化">380件传统奥黛定制，还原传统风格，细节处理到位，符合当地文化</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="zh-tw" data-text="380件傳統奧黛定制，還原傳統風格，細節處理到位，符合當地文化">380件傳統奧黛定制，還原傳統風格，細節處理到位，符合當地文化</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="th" data-text="380 ชิ้นของเสื้อผ้าแบบดั้งเดิม สไตล์ดั้งเดิม รายละเอียดดีมาก เหมาะกับวัฒนธรรม">380 ชิ้นของเสื้อผ้าแบบดั้งเดิม สไตล์ดั้งเดิม รายละเอียดดีมาก เหมาะกับวัฒนธรรม</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="en" data-text="380 pieces of traditional Vietnamese Ao Dai manufacturing, restore traditional style, detailed processing, meet local culture">380 pieces of traditional Vietnamese Ao Dai manufacturing, restore traditional style, detailed processing, meet local culture</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ja" data-text="380着の伝統的アオダイカスタマイズ、伝統スタイルを再現、細部の処理が適切、現地の文化に合っています">380着の伝統的アオダイカスタマイズ、伝統スタイルを再現、細部の処理が適切、現地の文化に合っています</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ko" data-text="380벌의 전통 아오다이 맞춤 제작，전통 스타일을 재현하고，디테일 처리가 적절하며，현지 문화에 부합합니다">380벌의 전통 아오다이 맞춤 제작，전통 스타일을 재현하고，디테일 처리가 적절하며，현지 문화에 부합합니다</p>
+                            <p class="text-gray-500 text-sm" data-lang-text="zh" data-text="交付周期：12天 | 客户反馈：传统风格还原度很高，很受当地客户欢迎">交付周期：12天 | 客户反馈：传统风格还原度很高，很受当地客户欢迎</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="zh-tw" data-text="交付周期：12天 | 客戶反饋：傳統風格還原度很高，很受當地客戶歡迎">交付周期：12天 | 客戶反饋：傳統風格還原度很高，很受當地客戶歡迎</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="th" data-text="ระยะการส่งมอบ: 12 วัน | ความติดตาม: สไตล์ดั้งเดิมนั้น มาก ได้รับความชอบจากลูกค้าในท้องถิ่น">ระยะการส่งมอบ: 12 วัน | ความติดตาม: สไตล์ดั้งเดิมนั้น มาก ได้รับความชอบจากลูกค้าในท้องถิ่น</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="en" data-text="Delivery time: 12 days | Customer feedback: The traditional style restoration is very high, very popular with local customers">Delivery time: 12 days | Customer feedback: The traditional style restoration is very high, very popular with local customers</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ja" data-text="納期: 12日 | お客様のフィードバック: 伝統スタイルの再現度が非常に高く、現地のお客様に大変人気があります">納期: 12日 | お客様のフィードバック: 伝統スタイルの再現度が非常に高く、現地のお客様に大変人気があります</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ko" data-text="납기: 12일 | 고객 피드백: 전통 스타일 재현도가 매우 높았으며, 현지 고객들에게 매우 인기가 있었습니다">납기: 12일 | 고객 피드백: 전통 스타일 재현도가 매우 높았으며, 현지 고객들에게 매우 인기가 있었습니다</p>
+                        </div>
+                    </div>
+                    <!-- 复制最后一个案例（台湾）到开头，用于无缝循环 -->
+                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                        <img src="images/banner.jpg" alt="台湾职业装定制案例" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-3 text-primary" data-lang-text="zh" data-text="台湾职业装定制">台湾职业装定制</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="zh-tw" data-text="台灣職業服客製化">台灣職業服客製化</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="th" data-text="การปรับแต่งเสื้อผ้าชุดอาชีพไต้หวัน">การปรับแต่งเสื้อผ้าชุดอาชีพไต้หวัน</h3>
+                            <h3 class="text-[clamp(1.2rem,2vw,1.5rem)] font-bold mb-3 text-primary hidden" data-lang-text="en" data-text="Taiwan Professional Clothing Customization">Taiwan Professional Clothing Customization</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ja" data-text="台湾プロフェッショナルウェアカスタマイズ">台湾プロフェッショナルウェアカスタマイズ</h3>
+                            <h3 class="text-xl font-bold mb-3 text-primary hidden" data-lang-text="ko" data-text="대만 프로페셔널 웨어 맞춤 제작">대만 프로페셔널 웨어 맞춤 제작</h3>
+                            <p class="text-gray-700 mb-2" data-lang-text="zh" data-text="480件质感职业装定制，版型精准，交期准时">480件质感职业装定制，版型精准，交期准时</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="zh-tw" data-text="480件質感職業服客製化，版型精準，交期準時">480件質感職業服客製化，版型精準，交期準時</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="th" data-text="480 ชิ้นของเสื้อผ้าชุดอาชีพ รูปแบบแม่นยำ ส่งมอบตรงเวลา">480 ชิ้นของเสื้อผ้าชุดอาชีพ รูปแบบแม่นยำ ส่งมอบตรงเวลา</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="en" data-text="480 pieces of custom professional apparel manufacturing, precise pattern, on-time delivery">480 pieces of custom professional apparel manufacturing, precise pattern, on-time delivery</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ja" data-text="480着の高品質プロフェッショナルウェアカスタマイズ、版型が正確、納期厳守">480着の高品質プロフェッショナルウェアカスタマイズ、版型が正確、納期厳守</p>
+                            <p class="text-gray-700 mb-2 hidden" data-lang-text="ko" data-text="480벌의 고품질 프로페셔널 웨어 맞춤 제작，패턴이 정확하고，납기가 준수되었습니다">480벌의 고품질 프로페셔널 웨어 맞춤 제작，패턴이 정확하고，납기가 준수되었습니다</p>
+                            <p class="text-gray-500 text-sm" data-lang-text="zh" data-text="交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意">交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="zh-tw" data-text="交付周期：14天 | 客戶反饋：版型很貼合我們的需求，員工都很滿意">交付周期：14天 | 客戶反饋：版型很貼合我們的需求，員工都很滿意</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="th" data-text="ระยะการส่งมอบ: 14 วัน | ความติดตาม: รูปแบบตรงตามความต้องการ พนักงานพึงพอใจ">ระยะการส่งมอบ: 14 วัน | ความติดตาม: รูปแบบตรงตามความต้องการ พนักงานพึงพอใจ</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="en" data-text="Delivery time: 14 days | Customer feedback: The pattern fits our needs well, and the employees are all satisfied">Delivery time: 14 days | Customer feedback: The pattern fits our needs well, and the employees are all satisfied</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ja" data-text="納期: 14日 | お客様のフィードバック: 版型が当社のニーズに完全に適合し、従業員は皆満足しています">納期: 14日 | お客様のフィードバック: 版型が当社のニーズに完全に適合し、従業員は皆満足しています</p>
+                            <p class="text-gray-500 text-sm hidden" data-lang-text="ko" data-text="납기: 14일 | 고객 피드백: 패턴이 우리의 요구사항에 완벽히 부합했으며, 직원들이 모두 만족했습니다">납기: 14일 | 고객 피드백: 패턴이 우리의 요구사항에 완벽히 부합했으며, 직원들이 모두 만족했습니다</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 轮播控制按钮 -->
+                <button id="prevCase" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="上一个案例">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button id="nextCase" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="下一个案例">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-neutral" aria-label="关于我们">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-lang-text="zh" data-text="关于我们">关于我们</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="zh-tw" data-text="關於我們">關於我們</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="th" data-text="เกี่ยวกับเรา">เกี่ยวกับเรา</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="en" data-text="About Us">About Us</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ja" data-text="会社について">会社について</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ko" data-text="회사 소개">회사 소개</h2>
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <img src="images/team.jpg" alt="服装打板团队" class="w-full h-auto rounded-lg opacity-0 transition-opacity duration-700" loading="lazy">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-xl font-bold mb-4 text-primary" data-lang-text="zh" data-text="我们的团队">我们的团队</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="zh-tw" data-text="我們的團隊">我們的團隊</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="th" data-text="ทีมงานของเรา">ทีมงานของเรา</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="en" data-text="Our Team">Our Team</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="ja" data-text="当社のチーム">当社のチーム</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="ko" data-text="우리 팀">우리 팀</h3>
+                        <p class="text-gray-700 mb-4" data-lang-text="zh" data-text="NOVA服装工厂拥有5年以上服装打板经验，专注于批量服装OEM代工，熟悉不同地区的服装风格需求，能够精准还原客户的设计要求。">NOVA服装工厂拥有5年以上服装打板经验，专注于批量服装OEM代工，熟悉不同地区的服装风格需求，能够精准还原客户的设计要求。</p>
+                        <p class="text-gray-700 mb-4 hidden" data-lang-text="zh-tw" data-text="NOVA服裝工廠擁有5年以上服裝打板經驗，專注於批量服裝OEM代工，熟悉不同地區的服裝風格需求，能夠精準還原客戶的設計要求。">NOVA服裝工廠擁有5年以上服裝打板經驗，專注於批量服裝OEM代工，熟悉不同地區的服裝風格需求，能夠精準還原客戶的設計要求。</p>
+                        <p class="text-gray-700 mb-4 hidden" data-lang-text="th" data-text="โรงงานผลิตเสื้อผ้า NOVA มีประสบการณ์สร้างแพทเทิร์นเสื้อผ้ามากกว่า 5 ปี เน้นการผลิตภัณฑ์ OEM คุ้นเคยกับความต้องการของสไตลเสื้อผ้าในภูมิภาคที่แตกต่าง สามารถสร้างแพทเทิร์นตามความต้องการของลูกค้าอย่างแม่นยำ">โรงงานผลิตเสื้อผ้า NOVA มีประสบการณ์สร้างแพทเทิร์นเสื้อผ้ามากกว่า 5 ปี เน้นการผลิตภัณฑ์ OEM คุ้นเคยกับความต้องการของสไตลเสื้อผ้าในภูมิภาคที่แตกต่าง สามารถสร้างแพทเทิร์นตามความต้องการของลูกค้าอย่างแม่นยำ</p>
+                        <p class="text-gray-700 mb-4 hidden" data-lang-text="en" data-text="NOVA Apparel Factory has over 5 years of specialized experience in clothing pattern making and sample development, focusing on clothing OEM production, familiar with apparel style requirements in different regions, and can accurately restore customer design requirements.">NOVA Apparel Factory has over 5 years of specialized experience in clothing pattern making and sample development, focusing on clothing OEM production, familiar with apparel style requirements in different regions, and can accurately restore customer design requirements.</p>
+                        <p class="text-gray-700 mb-4 hidden" data-lang-text="ja" data-text="NOVAアパレル工場は5年以上の服裝パターンメイキング経験を持ち、服装OEMに特化しています。異なる地域の服装スタイルニーズに精通し、お客様のデザイン要件を正確に再現することができます。">NOVAアパレル工場は5年以上の服裝パターンメイキング経験を持ち、服装OEMに特化しています。異なる地域の服装スタイルニーズに精通し、お客様のデザイン要件を正確に再現することができます。</p>
+                        <p class="text-gray-700 mb-4 hidden" data-lang-text="ko" data-text="NOVA 의류 공장은 5년 이상의 의류 패턴 제작 경험을 가지고 있으며, 의류 OEM에 특화되어 있습니다. 다양한 지역의 의류 스타일 요구사항에 익숙하며, 고객의 디자인 요구사항을 정확하게 재현할 수 있습니다.">NOVA 의류 공장은 5년 이상의 의류 패턴 제작 경험을 가지고 있으며, 의류 OEM에 특화되어 있습니다. 다양한 지역의 의류 스타일 요구사항에 익숙하며, 고객의 디자인 요구사항을 정확하게 재현할 수 있습니다.</p>
+                        <h3 class="text-xl font-bold mb-4 text-primary" data-lang-text="zh" data-text="合作模式">合作模式</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="zh-tw" data-text="合作模式">合作模式</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="th" data-text="รูปแบบการร่วมมือ">รูปแบบการร่วมมือ</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="en" data-text="Cooperation Model">Cooperation Model</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="ja" data-text="協力モデル">協力モデル</h3>
+                        <h3 class="text-xl font-bold mb-4 text-primary hidden" data-lang-text="ko" data-text="협력 모델">협력 모델</h3>
+                        <p class="text-gray-700 mb-6" data-lang-text="zh" data-text="我们与正规服装工厂深度合作，可保障100件起订的订单按时交付，质量符合客户要求，无需担心生产与交付问题。">我们与正规服装工厂深度合作，可保障100件起订的订单按时交付，质量符合客户要求，无需担心生产与交付问题。</p>
+                        <p class="text-gray-700 mb-6 hidden" data-lang-text="zh-tw" data-text="我們與正規服裝工廠深度合作，可保障100件起訂的訂單按時交付，品質符合客戶要求，無需擔心生產與交付問題。">我們與正規服裝工廠深度合作，可保障100件起訂的訂單按時交付，品質符合客戶要求，無需擔心生產與交付問題。</p>
+                        <p class="text-gray-700 mb-6 hidden" data-lang-text="th" data-text="เราร่วมมือกับโรงงานผลิตเสื้อผ้าที่เป็นทางการอย่างลึกซึ้ง สามารถรับประกันการส่งมอบตรงเวลาสำหรับคำสั่งขั้นต่ำ 100 ชิ้น คุณภาพตรงตามความต้องการของลูกค้า ไม่ต้องกังวลเรื่องการผลิตและการส่งมอบ">เราร่วมมือกับโรงงานผลิตเสื้อผ้าที่เป็นทางการอย่างลึกซึ้ง สามารถรับประกันการส่งมอบตรงเวลาสำหรับคำสั่งขั้นต่ำ 100 ชิ้น คุณภาพตรงตามความต้องการของลูกค้า ไม่ต้องกังวลเรื่องการผลิตและการส่งมอบ</p>
+                        <p class="text-gray-700 mb-6 hidden" data-lang-text="en" data-text="We cooperate deeply with formal clothing factories, which can ensure that orders with a minimum of 100 pieces are delivered on time, the quality meets customer requirements, and there is no need to worry about production and delivery issues.">We cooperate deeply with formal clothing factories, which can ensure that orders with a minimum of 100 pieces are delivered on time, the quality meets customer requirements, and there is no need to worry about production and delivery issues.</p>
+                        <p class="text-gray-700 mb-6 hidden" data-lang-text="ja" data-text="当社は正規の服装工廠と深く協力しています。100着からの注文について、納期厳守と品質保証を提供し、生産と納品の問題を心配する必要はありません。">当社は正規の服装工廠と深く協力しています。100着からの注文について、納期厳守と品質保証を提供し、生産と納品の問題を心配する必要はありません。</p>
+                        <p class="text-gray-700 mb-6 hidden" data-lang-text="ko" data-text="우리는 정규 의류 공장과 깊이 협력하고 있으며, 최소 100개부터의 주문에 대해 납기 준수와 품질 보증을 제공합니다. 생산 및 배송 문제를 걱정할 필요가 없습니다.">우리는 정규 의류 공장과 깊이 협력하고 있으며, 최소 100개부터의 주문에 대해 납기 준수와 품질 보증을 제공합니다. 생산 및 배송 문제를 걱정할 필요가 없습니다.</p>
+                        
+                        <h3 class="text-xl font-bold mb-6 text-primary" data-lang-text="zh" data-text="服务流程">服务流程</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="zh-tw" data-text="服務流程">服務流程</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="th" data-text="ขั้นตอนการบริการ">ขั้นตอนการบริการ</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="en" data-text="Service Process">Service Process</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="ja" data-text="サービスプロセス">サービスプロセス</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="ko" data-text="서비스 프로세스">서비스 프로세스</h3>
+                        
+                        <div class="relative">
+                            <!-- 步骤线 -->
+                            <div class="step-line"></div>
+                            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                                <!-- 步骤1 -->
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-lang-text="zh" data-text="需求沟通">需求沟通</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden" data-lang-text="zh-tw" data-text="需求溝通">需求溝通</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="th" data-text="การสื่อสารความต้องการ">การสื่อสารความต้องการ</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="en" data-text="Demand Communication">Demand Communication</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ja" data-text="要件の確認">要件の確認</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ko" data-text="요구사항 소통">요구사항 소통</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-lang-text="zh" data-text="与客户沟通定制需求，确定款式、数量、要求">与客户沟通定制需求，确定款式、数量、要求</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="zh-tw" data-text="與客戶溝通定制需求，確定款式、數量、要求">與客戶溝通定制需求，確定款式、數量、要求</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="th" data-text="สื่อสารความต้องการปรับแต่งเสื้อผ้า กำหนดรูปแบบ จำนวน และข้อกำหนด">สื่อสารความต้องการปรับแต่งเสื้อผ้า กำหนดรูปแบบ จำนวน และข้อกำหนด</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="en" data-text="Communicate customization needs with customers, determine style, quantity, requirements">Communicate customization needs with customers, determine style, quantity, requirements</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ja" data-text="お客様とカスタマイズ要件を確認、スタイル・数量・要求事項を決定">お客様とカスタマイズ要件を確認、スタイル・数量・要求事項を決定</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ko" data-text="고객과 맞춤 제작 요구사항을 소통하고, 스타일·수량·요구사항을 결정합니다">고객과 맞춤 제작 요구사항을 소통하고, 스타일·수량·요구사항을 결정합니다</p>
+                                </div>
+                                <!-- 步骤2 -->
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-lang-text="zh" data-text="打板确认">打板确认</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden" data-lang-text="zh-tw" data-text="打板確認">打板確認</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="th" data-text="ยืนยันการสร้างแพทเทิร์น">ยืนยันการสร้างแพทเทิร์น</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="en" data-text="Pattern Making Confirmation">Pattern Making Confirmation</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ja" data-text="パターン確認">パターン確認</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ko" data-text="패턴 확인">패턴 확인</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-lang-text="zh" data-text="制作打板样品，与客户确认版型与质量">制作打板样品，与客户确认版型与质量</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="zh-tw" data-text="製作打板樣品，與客戶確認版型與品質">製作打板樣品，與客戶確認版型與品質</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="th" data-text="สร้างตัวอย่างแพทเทิร์น ยืนยันรูปแบบและคุณภาพกับลูกค้า">สร้างตัวอย่างแพทเทิร์น ยืนยันรูปแบบและคุณภาพกับลูกค้า</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="en" data-text="Make pattern samples, confirm version and quality with customers">Make pattern samples, confirm version and quality with customers</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ja" data-text="パターンサンプルを作成、お客様と版型と品質を確認">パターンサンプルを作成、お客様と版型と品質を確認</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ko" data-text="패턴 샘플을制作하고, 고객과 패턴 및 품질을 확인합니다">패턴 샘플을制作하고, 고객과 패턴 및 품질을 확인합니다</p>
+                                </div>
+                                <!-- 步骤3 -->
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-lang-text="zh" data-text="生产跟进">生产跟进</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden" data-lang-text="zh-tw" data-text="生產跟進">生產跟進</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="th" data-text="การติดตามการผลิต">การติดตามการผลิต</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="en" data-text="Production Follow-up">Production Follow-up</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ja" data-text="生産フォローアップ">生産フォローアップ</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ko" data-text="생산 추적">생산 추적</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-lang-text="zh" data-text="跟进生产进度，保障订单按时生产">跟进生产进度，保障订单按时生产</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="zh-tw" data-text="跟進生產進度，保障訂單按時生產">跟進生產進度，保障訂單按時生產</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="th" data-text="ติดตามความต้องการผลิตเพื่อให้แน่ใจส่งมอบตรงเวลา">ติดตามความต้องการผลิตเพื่อให้แน่ใจส่งมอบตรงเวลา</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="en" data-text="Follow up production progress to ensure orders are produced on time">Follow up production progress to ensure orders are produced on time</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ja" data-text="生産進捗をフォロー、注文の納期を確保">生産進捗をフォロー、注文の納期を確保</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ko" data-text="생산 진행 상황을 추적하여 주문이 시간에 맞게 생산되도록 보장합니다">생산 진행 상황을 추적하여 주문이 시간에 맞게 생산되도록 보장합니다</p>
+                                </div>
+                                <!-- 步骤4 -->
+                                <div class="step-item">
+                                    <div class="step-number">4</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-lang-text="zh" data-text="物流交付">物流交付</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden" data-lang-text="zh-tw" data-text="物流交付">物流交付</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="th" data-text="การส่งมอบ">การส่งมอบ</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="en" data-text="Logistics Delivery">Logistics Delivery</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ja" data-text="物流配送">物流配送</h4>
+                                    <h4 class="mt-4 font-bold text-center text-primary hidden text-xs" data-lang-text="ko" data-text="물류 배송">물류 배송</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-lang-text="zh" data-text="完成生产后，安排物流交付给客户">完成生产后，安排物流交付给客户</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="zh-tw" data-text="完成生產後，安排物流交付給客戶">完成生產後，安排物流交付給客戶</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="th" data-text="หลังจากผลิตเสร็จสิ้น จัดการส่งมอบให้ลูกค้า">หลังจากผลิตเสร็จสิ้น จัดการส่งมอบให้ลูกค้า</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="en" data-text="After production is completed, arrange logistics delivery to customers">After production is completed, arrange logistics delivery to customers</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ja" data-text="生産完了後、お客様への物流配送を手配">生産完了後、お客様への物流配送を手配</p>
+                                    <p class="text-sm text-center text-gray-700 mt-2 hidden" data-lang-text="ko" data-text="생산이 완료된 후 고객에게 물류 배송을 준비합니다">생산이 완료된 후 고객에게 물류 배송을 준비합니다</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 bg-white" aria-label="联系方式">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-lang-text="zh" data-text="联系方式">联系方式</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="zh-tw" data-text="聯繫方式">聯繫方式</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="th" data-text="ติดต่อ">ติดต่อ</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="en" data-text="Contact Us">Contact Us</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ja" data-text="お問い合わせ">お問い合わせ</h2>
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary hidden" data-lang-text="ko" data-text="연락처">연락처</h2>
+            <div class="max-w-3xl mx-auto bg-neutral rounded-xl shadow-md p-8 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-primary" data-lang-text="zh" data-text="联系我们">联系我们</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="zh-tw" data-text="聯繫我們">聯繫我們</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="th" data-text="ติดต่อ">ติดต่อ</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="en" data-text="Contact Us">Contact Us</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="ja" data-text="お問い合わせ">お問い合わせ</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="ko" data-text="연락처">연락처</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fas fa-phone text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700" data-lang-text="zh" data-text="电话">电话</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="電話">電話</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="โทรศัพท์">โทรศัพท์</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="Phone">Phone</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="電話">電話</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="전화">전화</p>
+                                    <a href="tel:+8619571788150" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="拨打电话：+86 195 7178 8150">+86 195 7178 8150</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fas fa-envelope text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700" data-lang-text="zh" data-text="邮箱">邮箱</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="郵箱">郵箱</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="อีเมล์">อีเมล์</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="Email">Email</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="メール">メール</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="이메일">이메일</p>
+                                    <a href="mailto:19571788150@163.com" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="发送邮件到：19571788150@163.com">19571788150@163.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fab fa-weixin text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700" data-lang-text="zh" data-text="WeChat">WeChat</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="WeChat">WeChat</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="WeChat">WeChat</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="WeChat">WeChat</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="WeChat">WeChat</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="WeChat">WeChat</p>
+                                    <button id="wechatContactBtn" class="text-dark hover:text-primary transition-colors btn-hover text-left" aria-label="显示微信二维码">L19571788150</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fab fa-whatsapp text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700" data-lang-text="zh" data-text="WhatsApp">WhatsApp</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="WhatsApp">WhatsApp</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="WhatsApp">WhatsApp</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="WhatsApp">WhatsApp</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="WhatsApp">WhatsApp</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="WhatsApp">WhatsApp</p>
+                                    <a href="https://wa.me/8619571788150" target="_blank" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="打开WhatsApp发起对话">+86 195 7178 8150</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fab fa-line text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700" data-lang-text="zh" data-text="LINE">LINE</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="zh-tw" data-text="LINE">LINE</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="th" data-text="LINE">LINE</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="en" data-text="LINE">LINE</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ja" data-text="LINE">LINE</p>
+                                    <p class="text-gray-700 hidden" data-lang-text="ko" data-text="LINE">LINE</p>
+                                    <a href="https://line.me/ti/p/3fRtAf8fuy" target="_blank" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="打开LINE添加好友">@nova1630</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-primary" data-lang-text="zh" data-text="我们的位置">我们的位置</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="zh-tw" data-text="我們的位置">我們的位置</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="th" data-text="ตำแหน่งของเรา">ตำแหน่งของเรา</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="en" data-text="Our Location">Our Location</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="ja" data-text="当社の所在地">当社の所在地</h3>
+                        <h3 class="text-xl font-bold mb-6 text-primary hidden" data-lang-text="ko" data-text="우리 위치">우리 위치</h3>
+                        <div id="factoryMap" class="bg-gray-200 rounded-lg h-64 shadow-md relative overflow-hidden" aria-label="工厂位置地图"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-8" aria-label="页脚">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#home" class="flex items-center btn-hover" aria-label="回到首页">
+                        <span class="text-white font-bold text-2xl mr-2">NOVA</span>
+                        <span class="text-white font-bold text-xl">Apparel Factory</span>
+                    </a>
+                    <p class="text-white/70 mt-2" data-lang-text="zh" data-text="© 2026 NOVA服装工厂 版权所有">© 2026 NOVA服装工厂 版权所有</p>
+                    <p class="text-white/70 mt-2 hidden" data-lang-text="zh-tw" data-text="© 2026 NOVA服裝工廠 版權所有">© 2026 NOVA服裝工廠 版權所有</p>
+                    <p class="text-white/70 mt-2 hidden" data-lang-text="th" data-text="© 2026 โรงงานผลิตเสื้อผ้า NOVA มีลิขสิทธิ์">© 2026 โรงงานผลิตเสื้อผ้า NOVA มีลิขสิทธิ์</p>
+                    <p class="text-white/70 mt-2 hidden" data-lang-text="en" data-text="© 2026 NOVA Apparel Factory All Rights Reserved">© 2026 NOVA Apparel Factory All Rights Reserved</p>
+                    <p class="text-white/70 mt-2 hidden" data-lang-text="ja" data-text="© 2026 NOVAアパレル工場 全権所有">© 2026 NOVAアパレル工場 全権所有</p>
+                    <p class="text-white/70 mt-2 hidden" data-lang-text="ko" data-text="© 2026 NOVA 의류 공장 저작권 소유">© 2026 NOVA 의류 공장 저작권 소유</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="首页" data-text="首页" data-lang-text-zh-tw="首頁" data-lang-text-th="หน้าแรก" data-lang-text-en="Home" data-lang-text-ja="ホーム" data-lang-text-ko="홈">首页</a>
+                    <a href="#cases" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="案例展示" data-text="案例展示" data-lang-text-zh-tw="案例展示" data-lang-text-th="ตัวอย่าง" data-lang-text-en="Case Showcase" data-lang-text-ja="ケース紹介" data-lang-text-ko="케이스 소개">案例展示</a>
+                    <a href="#about" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="关于我们" data-text="关于我们" data-lang-text-zh-tw="關於我們" data-lang-text-th="เกี่ยวกับเรา" data-lang-text-en="About Us" data-lang-text-ja="会社について" data-lang-text-ko="회사 소개">关于我们</a>
+                    <a href="#contact" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="联系方式" data-text="联系方式" data-lang-text-zh-tw="聯繫方式" data-lang-text-th="ติดต่อ" data-lang-text-en="Contact Us" data-lang-text-ja="お問い合わせ" data-lang-text-ko="연락처">联系方式</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const backToTopBtn = document.getElementById('backToTop');
+        const navbar = document.querySelector('nav');
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const langElements = document.querySelectorAll('[data-lang-text]');
+        const langDropdownBtn = document.getElementById('langDropdownBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const langDropdownIcon = document.getElementById('langDropdownIcon');
+        const currentLangSpan = document.getElementById('currentLang');
+        const langOptions = document.querySelectorAll('.lang-option');
+
+        // 事件委托，处理所有导航链接的点击
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a[href^="#"]');
+            if (target) {
+                e.preventDefault();
+                const targetSection = document.querySelector(target.getAttribute('href'));
+                if (targetSection) {
+                    // 获取固定头部的高度
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    // 计算目标位置，考虑头部高度
+                    const targetPosition = targetSection.offsetTop - headerHeight;
+                    // 平滑滚动到目标位置
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    // 关闭移动端菜单
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+                        mobileMenu.classList.add('translate-y-[-10px]', 'opacity-0');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            }
+
+            // 语言切换
+            const langBtn = e.target.closest('.lang-btn');
+            if (langBtn) {
+                switchLanguage(langBtn.dataset.lang);
+            }
+
+            // 语言下拉菜单切换
+            if (e.target.closest('#langDropdownBtn')) {
+                e.stopPropagation();
+                const isOpen = !langDropdown.classList.contains('invisible');
+                toggleLangDropdown(!isOpen);
+            }
+
+            // 语言选项点击
+            const langOption = e.target.closest('.lang-option');
+            if (langOption) {
+                switchLanguage(langOption.dataset.lang);
+                toggleLangDropdown(false);
+            }
+
+            // 点击其他地方关闭下拉菜单
+            if (!e.target.closest('#langDropdownBtn') && !e.target.closest('#langDropdown')) {
+                toggleLangDropdown(false);
+            }
+
+            // 回到顶部
+            if (e.target.closest('#backToTop')) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // 移动端菜单按钮
+            if (e.target.closest('#menuBtn')) {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+                    mobileMenu.classList.add('translate-y-[-10px]', 'opacity-0');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    mobileMenu.classList.remove('translate-y-[-10px]', 'opacity-0');
+                    mobileMenu.classList.add('translate-y-0', 'opacity-100');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            }
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'bg-white/70', 'backdrop-blur-xl', 'border-white/30');
+                navbar.classList.remove('shadow-md', 'bg-white/80', 'backdrop-blur-lg', 'border-white/20');
+            } else {
+                navbar.classList.add('shadow-md', 'bg-white/80', 'backdrop-blur-lg', 'border-white/20');
+                navbar.classList.remove('shadow-lg', 'bg-white/70', 'backdrop-blur-xl', 'border-white/30');
+            }
+
+            // 更新滚动进度条
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (scrollProgress) {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (scrollTop / docHeight) * 100;
+                scrollProgress.style.width = Math.min(Math.max(progress, 0), 100) + '%';
+            }
+
+            // 回到顶部按钮显示/隐藏
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        // 语言切换功能
+        function switchLanguage(lang) {
+            // 隐藏所有语言元素（排除导航栏链接）
+            langElements.forEach(el => {
+                // 如果是导航栏链接，不隐藏
+                if (!el.closest('nav')) {
+                    el.classList.add('hidden');
+                }
+            });
+            // 显示对应语言的元素
+            document.querySelectorAll(`[data-lang-text="${lang}"]`).forEach(el => {
+                el.classList.remove('hidden');
+            });
+            // 更新导航栏和底部的链接文字
+            const navLinks = document.querySelectorAll('a[data-text]');
+            navLinks.forEach(link => {
+                // 获取对应语言的文字
+                const langText = link.getAttribute(`data-lang-text-${lang}`) || link.getAttribute('data-text');
+                link.textContent = langText;
+            });
+            // 切换按钮样式
+            langBtns.forEach(btn => {
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('text-primary', 'font-bold');
+                    btn.classList.remove('text-dark');
+                } else {
+                    btn.classList.add('text-dark');
+                    btn.classList.remove('text-primary', 'font-bold');
+                }
+            });
+            // 更新下拉菜单当前语言显示
+            const langNames = {
+                'zh': '简体中文',
+                'zh-tw': '繁體中文',
+                'th': 'ภาษาไทย',
+                'en': 'English',
+                'ja': '日本語',
+                'ko': '한국어'
+            };
+            if (currentLangSpan) {
+                currentLangSpan.textContent = langNames[lang] || '简体中文';
+            }
+            // 保存语言选择到本地存储
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // 切换语言下拉菜单
+        function toggleLangDropdown(show) {
+            if (show) {
+                langDropdown.classList.remove('invisible', 'opacity-0', '-translate-y-2');
+                langDropdown.classList.add('visible', 'opacity-100', 'translate-y-0');
+                langDropdownBtn.setAttribute('aria-expanded', 'true');
+                langDropdownIcon.classList.add('rotate-180');
+            } else {
+                langDropdown.classList.add('invisible', 'opacity-0', '-translate-y-2');
+                langDropdown.classList.remove('visible', 'opacity-100', 'translate-y-0');
+                langDropdownBtn.setAttribute('aria-expanded', 'false');
+                langDropdownIcon.classList.remove('rotate-180');
+            }
+        }
+
+        // 初始化语言：优先读取本地存储，否则默认简体中文
+        const savedLang = localStorage.getItem('preferredLanguage') || 'zh';
+        switchLanguage(savedLang);
+
+        // 图片懒加载完成后添加淡入效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.classList.add('opacity-100');
+                    this.classList.remove('opacity-0');
+                });
+                // 如果图片已经加载完成
+                if (img.complete) {
+                    img.classList.add('opacity-100');
+                    img.classList.remove('opacity-0');
+                }
+            });
+
+            // 为背景图片添加淡入效果
+            const bgImages = document.querySelectorAll('#home img');
+            setTimeout(() => {
+                bgImages.forEach(img => {
+                    img.classList.add('opacity-100');
+                    img.classList.remove('opacity-0');
+                });
+            }, 500);
+        });
+
+        /**
+ * 案例展示轮播模块
+ * 提供水平无缝循环轮播功能，支持自动轮播、手动控制、触摸滑动和响应式适配
+ */
+const CasesCarouselModule = (function() {
+    'use strict';
+
+    /**
+     * 轮播配置参数
+     * @const {Object}
+     */
+    const CONFIG = {
+        ANIMATION_DURATION: 400,      // 动画时长(ms)
+        AUTO_PLAY_INTERVAL: 4000,     // 自动轮播间隔(ms)
+        PAUSE_DELAY: 5000,           // 交互后暂停延迟(ms)
+        SWIPE_THRESHOLD: 50,         // 滑动阈值(px)
+        SLIDE_GAP: 24,               // 卡片间距(px)
+        DEFAULT_SLIDE_WIDTH: 320     // 默认卡片宽度(px)
+    };
+
+    /**
+     * DOM元素缓存
+     */
+    let elements = {};
+    
+    /**
+     * 轮播状态
+     */
+    let state = {
+        currentSlide: 1,             // 当前幻灯片索引
+        autoPlayInterval: null,      // 自动轮播定时器
+        lastInteractionTime: Date.now(), // 最后交互时间
+        isPaused: false,             // 是否暂停
+        touchStartX: 0,             // 触摸起始X坐标
+        touchEndX: 0                // 触摸结束X坐标
+    };
+
+    /**
+     * 获取单个幻灯片的实际宽度
+     * @returns {number} 幻灯片宽度(含间距)
+     */
+    function getSlideWidth() {
+        if (elements.carousel && elements.carousel.children.length > 0) {
+            const firstSlide = elements.carousel.children[0];
+            return firstSlide.offsetWidth + CONFIG.SLIDE_GAP;
+        }
+        return CONFIG.DEFAULT_SLIDE_WIDTH + CONFIG.SLIDE_GAP;
+    }
+
+    /**
+     * 更新轮播容器位置
+     * @param {boolean} animate - 是否使用动画
+     */
+    function updatePosition(animate = true) {
+        const slideWidth = getSlideWidth();
+        const offset = state.currentSlide * slideWidth;
+        
+        if (animate) {
+            elements.carousel.style.transition = `transform ${CONFIG.ANIMATION_DURATION}ms ease-in-out`;
+        } else {
+            elements.carousel.style.transition = 'none';
+        }
+        
+        elements.carousel.style.transform = `translateX(-${offset}px)`;
+    }
+
+    /**
+     * 切换到下一个幻灯片
+     */
+    function nextSlide() {
+        state.currentSlide++;
+        updatePosition(true);
+
+        // 无缝循环：到达末尾时跳回起点
+        if (state.currentSlide >= elements.carousel.children.length - 1) {
+            setTimeout(() => {
+                state.currentSlide = 1;
+                updatePosition(false);
+            }, CONFIG.ANIMATION_DURATION);
+        }
+    }
+
+    /**
+     * 切换到上一个幻灯片
+     */
+    function prevSlide() {
+        state.currentSlide--;
+        updatePosition(true);
+
+        // 无缝循环：到达起点时跳回末尾
+        if (state.currentSlide <= 0) {
+            setTimeout(() => {
+                state.currentSlide = elements.carousel.children.length - 2;
+                updatePosition(false);
+            }, CONFIG.ANIMATION_DURATION);
+        }
+    }
+
+    /**
+     * 开始自动轮播
+     */
+    function startAutoPlay() {
+        clearInterval(state.autoPlayInterval);
+        state.autoPlayInterval = setInterval(() => {
+            const shouldPlay = !state.isPaused && 
+                              (Date.now() - state.lastInteractionTime > CONFIG.PAUSE_DELAY);
+            if (shouldPlay) {
+                nextSlide();
+            }
+        }, CONFIG.AUTO_PLAY_INTERVAL);
+    }
+
+    /**
+     * 停止自动轮播
+     */
+    function stopAutoPlay() {
+        if (state.autoPlayInterval) {
+            clearInterval(state.autoPlayInterval);
+        }
+    }
+
+    /**
+     * 处理触摸滑动开始
+     * @param {TouchEvent} e - 触摸事件
+     */
+    function handleTouchStart(e) {
+        state.touchStartX = e.touches[0].clientX;
+        state.lastInteractionTime = Date.now();
+    }
+
+    /**
+     * 处理触摸滑动结束
+     * @param {TouchEvent} e - 触摸事件
+     */
+    function handleTouchEnd(e) {
+        state.touchEndX = e.changedTouches[0].clientX;
+        state.lastInteractionTime = Date.now();
+        handleSwipe();
+    }
+
+    /**
+     * 处理滑动逻辑
+     */
+    function handleSwipe() {
+        const diff = state.touchStartX - state.touchEndX;
+        if (diff > CONFIG.SWIPE_THRESHOLD) {
+            nextSlide();
+        } else if (diff < -CONFIG.SWIPE_THRESHOLD) {
+            prevSlide();
+        }
+    }
+
+    /**
+     * 绑定事件监听器
+     */
+    function bindEvents() {
+        // 上一张/下一张按钮
+        if (elements.prevBtn) {
+            elements.prevBtn.addEventListener('click', () => {
+                state.lastInteractionTime = Date.now();
+                prevSlide();
+            });
+        }
+        if (elements.nextBtn) {
+            elements.nextBtn.addEventListener('click', () => {
+                state.lastInteractionTime = Date.now();
+                nextSlide();
+            });
+        }
+
+        // 鼠标悬停暂停
+        const container = elements.carousel.parentElement;
+        if (container) {
+            container.addEventListener('mouseenter', () => {
+                state.isPaused = true;
+            });
+            container.addEventListener('mouseleave', () => {
+                state.isPaused = false;
+            });
+        }
+
+        // 触摸滑动支持
+        elements.carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+        elements.carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+        // 窗口大小改变适配
+        window.addEventListener('resize', () => {
+            updatePosition(false);
+        });
+    }
+
+    /**
+     * 初始化轮播模块
+     * @param {Object} domElements - DOM元素映射
+     */
+    function init(domElements) {
+        elements = domElements;
+        state.currentSlide = 1;
+        state.lastInteractionTime = Date.now();
+        
+        bindEvents();
+        
+        const carouselImages = elements.carousel.querySelectorAll('img');
+        const totalImages = carouselImages.length;
+        let loadedImages = 0;
+        
+        function onAllImagesLoaded() {
+            updatePosition(false);
+            startAutoPlay();
+        }
+        
+        if (totalImages === 0) {
+            onAllImagesLoaded();
+            return;
+        }
+        
+        carouselImages.forEach((img) => {
+            if (img.complete) {
+                loadedImages++;
+                if (loadedImages === totalImages) {
+                    onAllImagesLoaded();
+                }
+            } else {
+                img.addEventListener('load', () => {
+                    loadedImages++;
+                    if (loadedImages === totalImages) {
+                        onAllImagesLoaded();
+                    }
+                });
+                img.addEventListener('error', () => {
+                    loadedImages++;
+                    if (loadedImages === totalImages) {
+                        onAllImagesLoaded();
+                    }
+                });
+            }
+        });
+    }
+
+    /**
+     * 公共API
+     */
+    return {
+        init: init,
+        nextSlide: nextSlide,
+        prevSlide: prevSlide,
+        updatePosition: updatePosition,
+        startAutoPlay: startAutoPlay,
+        stopAutoPlay: stopAutoPlay
+    };
+})();
+
+        // 初始化案例轮播模块
+        CasesCarouselModule.init({
+            carousel: document.getElementById('casesCarousel'),
+            prevBtn: document.getElementById('prevCase'),
+            nextBtn: document.getElementById('nextCase')
+        });
+
+        /**
+         * 客户评价垂直轮播模块
+         * 提供垂直无缝循环轮播功能，支持自动轮播、手动控制、键盘导航和悬停暂停
+         */
+        const ReviewsCarouselModule = (function() {
+            'use strict';
+
+            const CONFIG = {
+                ANIMATION_DURATION: 400,
+                AUTO_PLAY_INTERVAL: 4000,
+                PAUSE_DURATION: 7000,
+                DEFAULT_CARD_HEIGHT: 80,
+                MAX_FLIP_COUNT: 5
+            };
+
+            let elements = {};
+            let state = {
+                currentIndex: 0,
+                autoPlayInterval: null,
+                pauseTimeout: null,
+                isPaused: false,
+                flipCount: 0
+            };
+
+            function getCardHeight() {
+                if (elements.cards && elements.cards.length > 0) {
+                    return elements.cards[0].offsetHeight || CONFIG.DEFAULT_CARD_HEIGHT;
+                }
+                return CONFIG.DEFAULT_CARD_HEIGHT;
+            }
+
+            function updatePosition() {
+                const cardHeight = getCardHeight();
+                const offset = state.currentIndex * cardHeight;
+                elements.track.style.transform = `translateY(-${offset}px)`;
+            }
+
+            function resetToStart() {
+                state.currentIndex = 0;
+                state.flipCount = 0;
+                updatePosition();
+            }
+
+            function checkAndReset() {
+                if (state.flipCount >= CONFIG.MAX_FLIP_COUNT) {
+                    resetToStart();
+                }
+            }
+
+            function nextSlide() {
+                state.flipCount++;
+                checkAndReset();
+                
+                if (state.flipCount < CONFIG.MAX_FLIP_COUNT) {
+                    state.currentIndex = (state.currentIndex + 1) % elements.cards.length;
+                    updatePosition();
+                }
+            }
+
+            function prevSlide() {
+                state.currentIndex = (state.currentIndex - 1 + elements.cards.length) % elements.cards.length;
+                updatePosition();
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                state.autoPlayInterval = setInterval(() => {
+                    if (!state.isPaused) {
+                        nextSlide();
+                    }
+                }, CONFIG.AUTO_PLAY_INTERVAL);
+            }
+
+            function stopAutoPlay() {
+                if (state.autoPlayInterval) {
+                    clearInterval(state.autoPlayInterval);
+                }
+            }
+
+            function pauseForDuration() {
+                state.isPaused = true;
+                clearTimeout(state.pauseTimeout);
+                state.pauseTimeout = setTimeout(() => {
+                    state.isPaused = false;
+                }, CONFIG.PAUSE_DURATION);
+            }
+
+            function bindEvents() {
+                if (elements.prevBtn) {
+                    elements.prevBtn.addEventListener('click', () => {
+                        prevSlide();
+                        pauseForDuration();
+                    });
+                }
+                if (elements.nextBtn) {
+                    elements.nextBtn.addEventListener('click', () => {
+                        nextSlide();
+                        pauseForDuration();
+                    });
+                }
+                if (elements.carousel) {
+                    elements.carousel.addEventListener('mouseenter', () => {
+                        state.isPaused = true;
+                    });
+                    elements.carousel.addEventListener('mouseleave', () => {
+                        state.isPaused = false;
+                    });
+                }
+                document.addEventListener('keydown', (e) => {
+                    if (elements.carousel && 
+                        (document.activeElement === elements.carousel || 
+                         elements.carousel.contains(document.activeElement))) {
+                        if (e.key === 'ArrowUp') {
+                            e.preventDefault();
+                            prevSlide();
+                            pauseForDuration();
+                        } else if (e.key === 'ArrowDown') {
+                            e.preventDefault();
+                            nextSlide();
+                            pauseForDuration();
+                        }
+                    }
+                });
+            }
+
+            function init(domElements) {
+                elements = domElements;
+                bindEvents();
+                updatePosition();
+                startAutoPlay();
+            }
+
+            return {
+                init: init,
+                nextSlide: nextSlide,
+                prevSlide: prevSlide
+            };
+        })();
+
+        // 初始化客户评价轮播模块
+        ReviewsCarouselModule.init({
+            carousel: document.getElementById('reviewsCarousel'),
+            track: document.getElementById('reviewsTrack'),
+            cards: document.querySelectorAll('.review-card'),
+            prevBtn: document.getElementById('prevReview'),
+            nextBtn: document.getElementById('nextReview')
+        });
+
+        // 初始化地图
+        function initMap() {
+            // 工厂坐标：广州番禺区 23.0338, 113.3910
+            const factoryCoords = [23.0338, 113.3910];
+            const map = L.map('factoryMap').setView(factoryCoords, 4);
+
+            // 添加OpenStreetMap图层
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // 创建红色双同心圆标记
+            const redCircleIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: '<div style="position: relative; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;"><div style="position: absolute; width: 24px; height: 24px; border: 3px solid #165DFF; border-radius: 50%; background: rgba(22, 93, 255, 0.2);"></div><div style="position: absolute; width: 12px; height: 12px; border: 2px solid #165DFF; border-radius: 50%; background: rgba(22, 93, 255, 0.4);"></div></div>',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+            // 添加工厂标记
+            const factoryMarker = L.marker(factoryCoords, { icon: redCircleIcon }).addTo(map)
+                .bindPopup('<div style="background: rgba(255, 255, 255, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #121212; min-width: 180px; text-align: center;"><b>NOVA 服装代工厂</b><br>地址：广州市番禺区</div>', {
+                    className: 'custom-popup',
+                    closeButton: false,
+                    autoClose: false,
+                    closeOnClick: false,
+                    autoPan: false
+                }).openPopup();
+
+            // 允许用户移动地图和缩放
+            map.dragging.enable();
+            map.scrollWheelZoom.enable();
+        }
+
+        // 页面加载完成后初始化地图
+        window.addEventListener('load', initMap);
+
+        // ========== 微信二维码弹窗控制 ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            const wechatPopupModal = document.getElementById('wechatPopupModal');
+            const closeWechatModal = document.getElementById('closeWechatModal');
+            const wechatBtn = document.getElementById('wechatBtn');
+            const wechatContactBtn = document.getElementById('wechatContactBtn');
+            
+            // 打开弹窗函数
+            function openWechatModal() {
+                if (wechatPopupModal) {
+                    wechatPopupModal.classList.remove('hidden');
+                    wechatPopupModal.classList.add('flex');
+                }
+            }
+            
+            // 关闭弹窗函数
+            function closeWechatModalFn() {
+                if (wechatPopupModal) {
+                    wechatPopupModal.classList.add('hidden');
+                    wechatPopupModal.classList.remove('flex');
+                }
+            }
+            
+            // 顶部导航栏微信按钮
+            if (wechatBtn) {
+                wechatBtn.addEventListener('click', openWechatModal);
+            }
+            
+            // 联系我们板块微信按钮
+            if (wechatContactBtn) {
+                wechatContactBtn.addEventListener('click', openWechatModal);
+            }
+            
+            // 关闭按钮
+            if (closeWechatModal) {
+                closeWechatModal.addEventListener('click', closeWechatModalFn);
+            }
+            
+            // 点击背景关闭弹窗
+            if (wechatPopupModal) {
+                wechatPopupModal.addEventListener('click', function(e) {
+                    if (e.target === wechatPopupModal) {
+                        closeWechatModalFn();
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- 微信二维码弹窗 - 放在body末尾确保最顶层 -->
+    <div id="wechatPopupModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[9999]">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 relative shadow-2xl">
+            <button id="closeWechatModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <div class="text-center">
+                <p class="text-xl font-bold text-gray-800 mb-6">扫码添加WeChat</p>
+                <div class="bg-gray-50 p-4 rounded-lg inline-block">
+                    <img id="wechatQRCode" src="images/weixin_qrcode.jpg" alt="微信二维码" class="w-72 h-72 object-contain">
+                </div>
+                <p class="text-base text-gray-600 mt-6 font-medium">WeChat ID: L19571788150</p>
+                <p class="text-sm text-gray-400 mt-2">扫描二维码添加好友</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
