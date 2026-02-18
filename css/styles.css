@@ -74,10 +74,22 @@
     box-shadow: none !important;
 }
 
+/* 触摸滑动时禁用焦点样式，防止跳动 */
+.carousel-touching * {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* 防止案例卡片获取焦点时页面滚动 */
+#casesCarousel > div:focus {
+    outline: none;
+}
+
 /* 触摸目标优化 - 防止误触 */
 #casesCarousel {
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 /* 移动端按钮尺寸优化 - 符合48px最小触摸标准 */

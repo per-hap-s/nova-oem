@@ -986,6 +986,10 @@ const CasesCarouselModule = (function() {
             state.inertiaAnimation = null;
         }
         
+        // 移除所有卡片的焦点，防止跳动
+        const cards = elements.carousel.querySelectorAll(':focus');
+        cards.forEach(card => card.blur());
+        
         // 添加触摸视觉反馈
         elements.carousel.classList.add('carousel-touching');
         
@@ -1077,6 +1081,10 @@ const CasesCarouselModule = (function() {
                 state.currentSlide = clampedSlide;
                 updatePosition(true);
                 state.inertiaAnimation = null;
+                // 确保没有元素获取焦点
+                if (document.activeElement && elements.carousel.contains(document.activeElement)) {
+                    document.activeElement.blur();
+                }
                 return;
             }
             
@@ -1085,6 +1093,10 @@ const CasesCarouselModule = (function() {
                 state.currentSlide = clampedSlide;
                 updatePosition(true);
                 state.inertiaAnimation = null;
+                // 确保没有元素获取焦点
+                if (document.activeElement && elements.carousel.contains(document.activeElement)) {
+                    document.activeElement.blur();
+                }
                 return;
             }
             
