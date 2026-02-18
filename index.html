@@ -518,7 +518,7 @@
         <div class="container mx-auto px-4">
             <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-i18n="cases.title">案例展示</h2>
             <div class="relative w-full overflow-x-hidden pb-8">
-                <div id="casesCarousel" class="flex gap-6 transition-transform duration-500 ease-in-out w-max">
+                <div id="casesCarousel" class="flex gap-6 transition-transform duration-500 ease-in-out" style="width: max-content;">
                     <!-- 复制最后一个案例到开头，用于无缝循环 -->
                     <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
                         <img src="images/case-indonesia.webp" alt="印尼休闲装定制案例" class="w-full h-48 object-cover">
@@ -918,8 +918,14 @@ const CasesCarouselModule = (function() {
      */
     function getSlideWidth() {
         if (elements.carousel && elements.carousel.children.length > 0) {
-            const firstSlide = elements.carousel.children[0];
-            return firstSlide.offsetWidth + CONFIG.SLIDE_GAP;
+            let maxWidth = 0;
+            for (let i = 0; i < elements.carousel.children.length; i++) {
+                const slide = elements.carousel.children[i];
+                if (slide.offsetWidth > maxWidth) {
+                    maxWidth = slide.offsetWidth;
+                }
+            }
+            return maxWidth + CONFIG.SLIDE_GAP;
         }
         return CONFIG.DEFAULT_SLIDE_WIDTH + CONFIG.SLIDE_GAP;
     }
