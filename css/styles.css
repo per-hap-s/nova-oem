@@ -64,6 +64,29 @@
 
 /* ========== 移动端触摸体验优化样式 ========== */
 
+/* ========== 客户评价滚动交互优化 ========== */
+
+/* PC端：悬停时显示可滚动提示 */
+#reviewsCarousel {
+    cursor: default;
+}
+
+#reviewsCarousel.is-hovering {
+    cursor: ns-resize;
+}
+
+/* 滚动容器样式 - 隐藏滚动条 */
+.reviews-scroll-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+}
+
+.reviews-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
 /* 轮播触摸反馈 */
 .carousel-touching {
     cursor: grabbing !important;

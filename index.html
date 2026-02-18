@@ -273,187 +273,11 @@
                     
                     <!-- 轮播容器 -->
                     <div class="relative" id="reviewsCarousel" tabindex="0" role="region" aria-label="客户评价轮播">
-                        <!-- 轮播视口 -->
-                        <div class="overflow-hidden h-80" id="reviewsViewport">
-                            <div class="transition-transform duration-500 ease-in-out" id="reviewsTrack">
-                                <!-- 评价卡片1 - 印尼客户 -->
-                                <div class="review-card py-4 px-2" data-index="0">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">A</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review1.name">Ahmad - 印尼客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review1.text">休闲装的定制很符合我们的需求，面料舒适，版型好看，客户都很喜欢，已经返单了。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 评价卡片2 - 台湾客户 -->
-                                <div class="review-card py-4 px-2" data-index="1">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">陈</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review2.name">陈先生 - 台湾客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review2.text">480件职业装的打板很精准，交期准时，版型很符合我们的需求，后续会继续合作。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 评价卡片3 - 泰国客户 -->
-                                <div class="review-card py-4 px-2" data-index="2">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">S</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review3.name">Sara - 泰国客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review3.text">复古服装的打板效果超出预期，色彩还原度很高，很适合我们的市场，已经返单了。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 评价卡片4 - 马来西亚客户 -->
-                                <div class="review-card py-4 px-2" data-index="3">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">M</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review4.name">Mohamed - 马来西亚客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review4.text">穆斯林服装的设计很符合我们的要求，细节处理很到位，合作很顺畅，交付也很准时。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 评价卡片5 - 香港客户 -->
-                                <div class="review-card py-4 px-2" data-index="4">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">李</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review5.name">李先生 - 香港客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review5.text">我们定制的420件商务装版型很合身，员工都很满意，交期也很准时，合作很愉快。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 评价卡片6 - 越南客户 -->
-                                <div class="review-card py-4 px-2" data-index="5">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">N</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review6.name">Nguyen - 越南客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review6.text">定制的传统服装很符合我们的文化需求，细节处理很到位，质量也很好，下次还会合作。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 评价卡片7 - 新加坡客户 -->
-                                <div class="review-card py-4 px-2" data-index="6">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">W</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review7.name">William - 新加坡客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review7.text">制服定制质量非常好，面料透气舒适，员工反馈都很满意，已经推荐给合作伙伴。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- 评价卡片8 - 菲律宾客户 -->
-                                <div class="review-card py-4 px-2" data-index="7">
-                                    <div class="flex items-start gap-4">
-                                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                            <span class="text-primary font-bold text-lg">M</span>
-                                        </div>
-                                        <div class="flex-1">
-                                            <div class="flex items-center justify-between mb-2">
-                                                <h4 class="font-bold text-base text-dark" data-i18n="reviews.review8.name">Maria - 菲律宾客户</h4>
-                                                <div class="flex text-yellow-400 text-sm">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star-half-alt"></i>
-                                                </div>
-                                            </div>
-                                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="reviews.review8.text">夏季连衣裙的打板效果很棒，版型时尚，面料轻盈，非常适合热带气候。</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <!-- 轮播视口 - 无限滚动容器 -->
+                        <div class="overflow-y-auto h-80 reviews-scroll-container" id="reviewsViewport">
+                            <!-- 内容容器 - 由JavaScript动态填充 -->
+                            <div id="reviewsContent"></div>
                         </div>
-                        
-                        <!-- 控制按钮 -->
-                        <button id="prevReview" class="absolute top-1/2 -left-2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-primary rounded-full shadow-md flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary z-10" aria-label="上一个评价">
-                            <i class="fas fa-chevron-up text-sm"></i>
-                        </button>
-                        <button id="nextReview" class="absolute top-1/2 -right-2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white text-primary rounded-full shadow-md flex items-center justify-center transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary z-10" aria-label="下一个评价">
-                            <i class="fas fa-chevron-down text-sm"></i>
-                        </button>
                         
                     </div>
                 </div>
@@ -1233,151 +1057,488 @@ const CasesCarouselModule = (function() {
         });
 
         /**
-         * 客户评价垂直轮播模块
-         * 提供垂直无缝循环轮播功能，支持自动轮播、手动控制、键盘导航和悬停暂停
+         * 客户评价无限滚动模块
+         * 
+         * 功能特性：
+         * - 无限循环滚动：动态加载内容，无跳跃感
+         * - 自动滚动：默认自动向下滚动
+         * - 用户交互：悬停/触摸时暂停自动滚动
+         * - 性能优化：DOM节点回收机制
+         * 
+         * @module ReviewsInfiniteScrollModule
          */
-        const ReviewsCarouselModule = (function() {
+        const ReviewsInfiniteScrollModule = (function() {
             'use strict';
 
+            /**
+             * 配置参数
+             * @constant {Object}
+             */
             const CONFIG = {
-                ANIMATION_DURATION: 400,
-                AUTO_PLAY_INTERVAL: 4000,
-                PAUSE_DURATION: 7000,
-                DEFAULT_CARD_HEIGHT: 80,
-                MAX_FLIP_COUNT: 5
+                AUTO_SCROLL_SPEED: 0.6,       // 自动滚动速度（像素/帧）
+                LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
+                LOAD_THRESHOLD: 150,          // 触发加载的阈值（像素）
+                MAX_NODES: 20,                // 最大DOM节点数量
+                RECYCLE_THRESHOLD: 300        // 回收阈值（距离视口多远才回收）
             };
 
+            /**
+             * 评价数据池
+             * @constant {Array}
+             */
+            const REVIEWS_POOL = [
+                {
+                    id: 1,
+                    initial: 'A',
+                    nameKey: 'reviews.review1.name',
+                    name: 'Ahmad - 印尼客户',
+                    textKey: 'reviews.review1.text',
+                    text: '休闲装的定制很符合我们的需求，面料舒适，版型好看，客户都很喜欢，已经返单了。',
+                    rating: 5
+                },
+                {
+                    id: 2,
+                    initial: '陈',
+                    nameKey: 'reviews.review2.name',
+                    name: '陈先生 - 台湾客户',
+                    textKey: 'reviews.review2.text',
+                    text: '480件职业装的打板很精准，交期准时，版型很符合我们的需求，后续会继续合作。',
+                    rating: 5
+                },
+                {
+                    id: 3,
+                    initial: 'S',
+                    nameKey: 'reviews.review3.name',
+                    name: 'Sara - 泰国客户',
+                    textKey: 'reviews.review3.text',
+                    text: '复古服装的打板效果超出预期，色彩还原度很高，很适合我们的市场，已经返单了。',
+                    rating: 4.5
+                },
+                {
+                    id: 4,
+                    initial: 'M',
+                    nameKey: 'reviews.review4.name',
+                    name: 'Mohamed - 马来西亚客户',
+                    textKey: 'reviews.review4.text',
+                    text: '穆斯林服装的设计很符合我们的要求，细节处理很到位，合作很顺畅，交付也很准时。',
+                    rating: 5
+                },
+                {
+                    id: 5,
+                    initial: '李',
+                    nameKey: 'reviews.review5.name',
+                    name: '李先生 - 香港客户',
+                    textKey: 'reviews.review5.text',
+                    text: '我们定制的420件商务装版型很合身，员工都很满意，交期也很准时，合作很愉快。',
+                    rating: 5
+                },
+                {
+                    id: 6,
+                    initial: 'N',
+                    nameKey: 'reviews.review6.name',
+                    name: 'Nguyen - 越南客户',
+                    textKey: 'reviews.review6.text',
+                    text: '定制的传统服装很符合我们的文化需求，细节处理很到位，质量也很好，下次还会合作。',
+                    rating: 4.5
+                },
+                {
+                    id: 7,
+                    initial: 'W',
+                    nameKey: 'reviews.review7.name',
+                    name: 'William - 新加坡客户',
+                    textKey: 'reviews.review7.text',
+                    text: '制服定制质量非常好，面料透气舒适，员工反馈都很满意，已经推荐给合作伙伴。',
+                    rating: 5
+                },
+                {
+                    id: 8,
+                    initial: 'M',
+                    nameKey: 'reviews.review8.name',
+                    name: 'Maria - 菲律宾客户',
+                    textKey: 'reviews.review8.text',
+                    text: '夏季连衣裙的打板效果很棒，版型时尚，面料轻盈，非常适合热带气候。',
+                    rating: 4.5
+                }
+            ];
+
+            /**
+             * DOM元素引用
+             * @type {Object}
+             */
             let elements = {};
+
+            /**
+             * 模块状态
+             * @type {Object}
+             */
             let state = {
-                currentIndex: 0,
-                autoPlayInterval: null,
-                pauseTimeout: null,
-                isPaused: false,
-                flipCount: 0
+                isHovering: false,           // 是否悬停中
+                isAutoScrolling: false,      // 是否自动滚动中
+                animationFrameId: null,      // 动画帧ID
+                leaveTimeoutId: null,        // 离开延迟定时器ID
+                currentIndex: 0,             // 当前数据索引（向下加载用）
+                prevIndex: 0,                // 上一个数据索引（向上加载用）
+                loadedCount: 0,              // 已加载计数
+                totalHeight: 0               // 内容总高度（用于向上插入时调整滚动位置）
             };
 
-            function getCardHeight() {
-                if (elements.cards && elements.cards.length > 0) {
-                    return elements.cards[0].offsetHeight || CONFIG.DEFAULT_CARD_HEIGHT;
-                }
-                return CONFIG.DEFAULT_CARD_HEIGHT;
-            }
-
-            function updatePosition() {
-                const cardHeight = getCardHeight();
-                const offset = state.currentIndex * cardHeight;
-                elements.track.style.transform = `translateY(-${offset}px)`;
-            }
-
-            function resetToStart() {
-                state.currentIndex = 0;
-                state.flipCount = 0;
-                updatePosition();
-            }
-
-            function checkAndReset() {
-                if (state.flipCount >= CONFIG.MAX_FLIP_COUNT) {
-                    resetToStart();
-                }
-            }
-
-            function nextSlide() {
-                state.flipCount++;
-                checkAndReset();
+            /**
+             * 生成星星评分HTML
+             * @param {number} rating - 评分值
+             * @returns {string} 星星HTML字符串
+             */
+            function generateStarsHTML(rating) {
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 !== 0;
+                let html = '';
                 
-                if (state.flipCount < CONFIG.MAX_FLIP_COUNT) {
-                    state.currentIndex = (state.currentIndex + 1) % elements.cards.length;
-                    updatePosition();
+                for (let i = 0; i < fullStars; i++) {
+                    html += '<i class="fas fa-star"></i>';
+                }
+                if (hasHalfStar) {
+                    html += '<i class="fas fa-star-half-alt"></i>';
+                }
+                
+                return html;
+            }
+
+            /**
+             * 创建评价卡片DOM元素
+             * @param {Object} review - 评价数据
+             * @param {number} index - 索引值
+             * @returns {HTMLElement} 评价卡片元素
+             */
+            function createReviewCard(review, index) {
+                const card = document.createElement('div');
+                card.className = 'review-card py-4 px-2';
+                card.dataset.index = index;
+                card.dataset.reviewId = review.id;
+                
+                card.innerHTML = `
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                            <span class="text-primary font-bold text-lg">${review.initial}</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-bold text-base text-dark" data-i18n="${review.nameKey}">${review.name}</h4>
+                                <div class="flex text-yellow-400 text-sm">
+                                    ${generateStarsHTML(review.rating)}
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="${review.textKey}">${review.text}</p>
+                        </div>
+                    </div>
+                `;
+                
+                return card;
+            }
+
+            /**
+             * 获取下一个评价数据（向下加载用）
+             * @returns {Object} 评价数据和索引
+             */
+            function getNextReview() {
+                const poolSize = REVIEWS_POOL.length;
+                const review = REVIEWS_POOL[state.currentIndex];
+                const index = state.currentIndex;
+                
+                state.currentIndex = (state.currentIndex + 1) % poolSize;
+                state.loadedCount++;
+                
+                return { review, index };
+            }
+
+            /**
+             * 获取上一个评价数据（向上加载用）
+             * @returns {Object} 评价数据和索引
+             */
+            function getPrevReview() {
+                const poolSize = REVIEWS_POOL.length;
+                state.prevIndex = (state.prevIndex - 1 + poolSize) % poolSize;
+                const review = REVIEWS_POOL[state.prevIndex];
+                
+                return { review, index: state.prevIndex };
+            }
+
+            /**
+             * 追加新评价到容器底部
+             */
+            function appendReview() {
+                if (!elements.content) return;
+                
+                const { review, index } = getNextReview();
+                const card = createReviewCard(review, state.loadedCount);
+                elements.content.appendChild(card);
+            }
+
+            /**
+             * 在容器顶部插入评价
+             */
+            function prependReview() {
+                if (!elements.content) return;
+                
+                const { review, index } = getPrevReview();
+                const card = createReviewCard(review, state.loadedCount);
+                
+                // 记录插入前的高度
+                const oldScrollHeight = elements.viewport.scrollHeight;
+                
+                // 插入到顶部
+                elements.content.insertBefore(card, elements.content.firstChild);
+                
+                // 调整滚动位置，保持视觉位置不变
+                const newScrollHeight = elements.viewport.scrollHeight;
+                const heightDiff = newScrollHeight - oldScrollHeight;
+                elements.viewport.scrollTop += heightDiff;
+            }
+
+            /**
+             * 检查并加载更多内容（双向）
+             * @param {boolean} isAuto - 是否为自动滚动调用
+             */
+            function checkAndLoadMore(isAuto) {
+                if (!elements.viewport || !elements.content) return;
+                
+                const { scrollTop, scrollHeight, clientHeight } = elements.viewport;
+                const scrollBottom = scrollTop + clientHeight;
+                
+                // 检测是否接近底部，向下加载更多
+                if (scrollHeight - scrollBottom < CONFIG.LOAD_THRESHOLD) {
+                    appendReview();
+                }
+                
+                // 只在用户手动滚动时向上加载（自动滚动不需要）
+                if (!isAuto && scrollTop < CONFIG.LOAD_THRESHOLD) {
+                    prependReview();
                 }
             }
 
-            function prevSlide() {
-                state.currentIndex = (state.currentIndex - 1 + elements.cards.length) % elements.cards.length;
-                updatePosition();
-            }
-
-            function startAutoPlay() {
-                stopAutoPlay();
-                state.autoPlayInterval = setInterval(() => {
-                    if (!state.isPaused) {
-                        nextSlide();
+            /**
+             * 回收远离视口的DOM节点（双向）
+             */
+            function recycleOffscreenNodes() {
+                if (!elements.viewport || !elements.content) return;
+                
+                const { scrollTop, clientHeight } = elements.viewport;
+                const visibleTop = scrollTop - CONFIG.RECYCLE_THRESHOLD;
+                const visibleBottom = scrollTop + clientHeight + CONFIG.RECYCLE_THRESHOLD;
+                
+                const nodes = elements.content.querySelectorAll('.review-card');
+                let removedFromTop = 0;
+                let removedFromBottom = 0;
+                let totalRemoved = 0;
+                
+                // 从顶部回收远离视口的节点
+                for (let i = 0; i < nodes.length && totalRemoved < 5; i++) {
+                    const node = nodes[i];
+                    if (nodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
+                    
+                    const nodeBottom = node.offsetTop + node.offsetHeight;
+                    if (nodeBottom < visibleTop) {
+                        // 记录高度差，调整滚动位置
+                        const nodeHeight = node.offsetHeight;
+                        node.remove();
+                        elements.viewport.scrollTop -= nodeHeight;
+                        removedFromTop++;
+                        totalRemoved++;
+                    } else {
+                        break;
                     }
-                }, CONFIG.AUTO_PLAY_INTERVAL);
-            }
-
-            function stopAutoPlay() {
-                if (state.autoPlayInterval) {
-                    clearInterval(state.autoPlayInterval);
+                }
+                
+                // 从底部回收远离视口的节点
+                const remainingNodes = elements.content.querySelectorAll('.review-card');
+                for (let i = remainingNodes.length - 1; i >= 0 && totalRemoved < 5; i--) {
+                    if (remainingNodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
+                    
+                    const node = remainingNodes[i];
+                    const nodeTop = node.offsetTop;
+                    if (nodeTop > visibleBottom) {
+                        node.remove();
+                        removedFromBottom++;
+                        totalRemoved++;
+                    } else {
+                        break;
+                    }
                 }
             }
 
-            function pauseForDuration() {
-                state.isPaused = true;
-                clearTimeout(state.pauseTimeout);
-                state.pauseTimeout = setTimeout(() => {
-                    state.isPaused = false;
-                }, CONFIG.PAUSE_DURATION);
+            /**
+             * 初始化内容
+             * @param {number} count - 初始加载数量
+             */
+            function initContent(count) {
+                if (!elements.content) return;
+                
+                elements.content.innerHTML = '';
+                state.currentIndex = 0;
+                state.prevIndex = 0;
+                state.loadedCount = 0;
+                
+                for (let i = 0; i < count; i++) {
+                    appendReview();
+                }
+                
+                // 设置prevIndex为当前index，这样向上滚动时从当前最后一条的前一条开始
+                state.prevIndex = state.currentIndex;
             }
 
+            /**
+             * 启动自动滚动
+             */
+            function startAutoScroll() {
+                if (state.isHovering || state.isAutoScrolling) return;
+                
+                state.isAutoScrolling = true;
+                
+                /**
+                 * 自动滚动动画帧
+                 */
+                function animate() {
+                    if (state.isHovering) {
+                        state.isAutoScrolling = false;
+                        return;
+                    }
+                    
+                    if (!elements.viewport) {
+                        state.isAutoScrolling = false;
+                        return;
+                    }
+                    
+                    // 滚动
+                    elements.viewport.scrollTop += CONFIG.AUTO_SCROLL_SPEED;
+                    
+                    // 检查是否需要加载更多（自动滚动只向下加载）
+                    checkAndLoadMore(true);
+                    
+                    // 注意：自动滚动时不回收节点，避免闪动
+                    // 节点回收只在用户手动滚动时触发
+                    
+                    state.animationFrameId = requestAnimationFrame(animate);
+                }
+                
+                state.animationFrameId = requestAnimationFrame(animate);
+            }
+
+            /**
+             * 停止自动滚动
+             */
+            function stopAutoScroll() {
+                state.isAutoScrolling = false;
+                if (state.animationFrameId) {
+                    cancelAnimationFrame(state.animationFrameId);
+                    state.animationFrameId = null;
+                }
+            }
+
+            /**
+             * 处理用户离开后的行为
+             */
+            function handleUserLeave() {
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                }
+                
+                state.leaveTimeoutId = setTimeout(() => {
+                    startAutoScroll();
+                }, CONFIG.LEAVE_DELAY);
+            }
+
+            /**
+             * 处理滚动事件（用户手动滚动）
+             * 注意：自动滚动时也会触发此事件，需要检查状态避免冲突
+             */
+            function handleScroll() {
+                // 自动滚动时不执行回收，避免闪动
+                if (state.isAutoScrolling) return;
+                
+                checkAndLoadMore(false);
+                recycleOffscreenNodes();
+            }
+
+            /**
+             * 绑定事件监听器
+             */
             function bindEvents() {
-                if (elements.prevBtn) {
-                    elements.prevBtn.addEventListener('click', () => {
-                        prevSlide();
-                        pauseForDuration();
-                    });
-                }
-                if (elements.nextBtn) {
-                    elements.nextBtn.addEventListener('click', () => {
-                        nextSlide();
-                        pauseForDuration();
-                    });
-                }
-                if (elements.carousel) {
-                    elements.carousel.addEventListener('mouseenter', () => {
-                        state.isPaused = true;
-                    });
-                    elements.carousel.addEventListener('mouseleave', () => {
-                        state.isPaused = false;
-                    });
-                }
-                document.addEventListener('keydown', (e) => {
-                    if (elements.carousel && 
-                        (document.activeElement === elements.carousel || 
-                         elements.carousel.contains(document.activeElement))) {
-                        if (e.key === 'ArrowUp') {
-                            e.preventDefault();
-                            prevSlide();
-                            pauseForDuration();
-                        } else if (e.key === 'ArrowDown') {
-                            e.preventDefault();
-                            nextSlide();
-                            pauseForDuration();
-                        }
+                if (!elements.carousel || !elements.viewport) return;
+
+                // PC端：鼠标进入事件
+                elements.carousel.addEventListener('mouseenter', () => {
+                    state.isHovering = true;
+                    elements.carousel.classList.add('is-hovering');
+                    stopAutoScroll();
+                    
+                    if (state.leaveTimeoutId) {
+                        clearTimeout(state.leaveTimeoutId);
+                        state.leaveTimeoutId = null;
                     }
                 });
+
+                // PC端：鼠标离开事件
+                elements.carousel.addEventListener('mouseleave', () => {
+                    state.isHovering = false;
+                    elements.carousel.classList.remove('is-hovering');
+                    handleUserLeave();
+                });
+
+                // PC端：滚轮事件
+                elements.viewport.addEventListener('wheel', (e) => {
+                    if (state.isHovering) {
+                        e.stopPropagation();
+                    }
+                }, { passive: false });
+
+                // 滚动事件
+                elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
+
+                // 移动端：触摸开始事件
+                elements.viewport.addEventListener('touchstart', () => {
+                    state.isHovering = true;
+                    stopAutoScroll();
+                    
+                    if (state.leaveTimeoutId) {
+                        clearTimeout(state.leaveTimeoutId);
+                        state.leaveTimeoutId = null;
+                    }
+                }, { passive: true });
+
+                // 移动端：触摸结束事件
+                elements.viewport.addEventListener('touchend', () => {
+                    state.isHovering = false;
+                    handleUserLeave();
+                }, { passive: true });
             }
 
+            /**
+             * 初始化模块
+             * @param {Object} domElements - DOM元素集合
+             */
             function init(domElements) {
                 elements = domElements;
+                
+                // 初始化内容（加载初始评价）
+                initContent(10);
+                
+                // 绑定事件
                 bindEvents();
-                updatePosition();
-                startAutoPlay();
+                
+                // 延迟启动自动滚动
+                setTimeout(() => {
+                    startAutoScroll();
+                }, 1500);
             }
 
             return {
-                init: init,
-                nextSlide: nextSlide,
-                prevSlide: prevSlide
+                init: init
             };
         })();
 
-        // 初始化客户评价轮播模块
-        ReviewsCarouselModule.init({
+        // 初始化客户评价无限滚动模块
+        ReviewsInfiniteScrollModule.init({
             carousel: document.getElementById('reviewsCarousel'),
-            track: document.getElementById('reviewsTrack'),
-            cards: document.querySelectorAll('.review-card'),
-            prevBtn: document.getElementById('prevReview'),
-            nextBtn: document.getElementById('nextReview')
+            viewport: document.getElementById('reviewsViewport'),
+            content: document.getElementById('reviewsContent')
         });
 
         // 初始化地图
