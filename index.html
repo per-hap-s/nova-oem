@@ -1370,42 +1370,53 @@ const CasesCarouselModule = (function() {
                 const visibleBottom = scrollTop + clientHeight + CONFIG.RECYCLE_THRESHOLD;
                 
                 const nodes = elements.content.querySelectorAll('.review-card');
-                let removedFromTop = 0;
-                let removedFromBottom = 0;
                 let totalRemoved = 0;
+                let totalHeightRemoved = 0;
                 
-                // 从顶部回收远离视口的节点
+                // 收集要移除的节点
+                const nodesToRemove = [];
+                
+                // 从顶部收集远离视口的节点
                 for (let i = 0; i < nodes.length && totalRemoved < 5; i++) {
                     const node = nodes[i];
                     if (nodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
                     
                     const nodeBottom = node.offsetTop + node.offsetHeight;
                     if (nodeBottom < visibleTop) {
-                        // 记录高度差，调整滚动位置
-                        const nodeHeight = node.offsetHeight;
-                        node.remove();
-                        elements.viewport.scrollTop -= nodeHeight;
-                        removedFromTop++;
+                        nodesToRemove.push(node);
+                        totalHeightRemoved += node.offsetHeight;
                         totalRemoved++;
                     } else {
                         break;
                     }
                 }
                 
-                // 从底部回收远离视口的节点
-                const remainingNodes = elements.content.querySelectorAll('.review-card');
-                for (let i = remainingNodes.length - 1; i >= 0 && totalRemoved < 5; i--) {
-                    if (remainingNodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
+                // 从底部收集远离视口的节点
+                for (let i = nodes.length - 1; i >= 0 && totalRemoved < 5; i--) {
+                    if (nodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
                     
-                    const node = remainingNodes[i];
+                    const node = nodes[i];
                     const nodeTop = node.offsetTop;
                     if (nodeTop > visibleBottom) {
-                        node.remove();
-                        removedFromBottom++;
+                        nodesToRemove.push(node);
                         totalRemoved++;
                     } else {
                         break;
                     }
+                }
+                
+                // 一次性移除所有节点
+                if (nodesToRemove.length > 0) {
+                    // 使用 requestAnimationFrame 确保操作在同一帧内完成
+                    requestAnimationFrame(() => {
+                        // 先移除所有节点
+                        nodesToRemove.forEach(node => node.remove());
+                        
+                        // 只调整顶部移除节点时的滚动位置
+                        if (totalHeightRemoved > 0) {
+                            elements.viewport.scrollTop = Math.max(0, scrollTop - totalHeightRemoved);
+                        }
+                    });
                 }
             }
 
