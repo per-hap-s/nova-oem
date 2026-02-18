@@ -166,6 +166,10 @@
     "emailLabel": "이메일",
     "locationTitle": "우리의 위치"
   },
+  "map": {
+    "factoryName": "NOVA 의류 공장",
+    "factoryAddress": "주소: 광저우시 판위구"
+  },
   "footer": {
     "copyright": "© 2026 NOVA 의류 공장. 저작권 보유."
   },

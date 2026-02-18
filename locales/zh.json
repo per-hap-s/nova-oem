@@ -166,6 +166,10 @@
     "emailLabel": "邮箱",
     "locationTitle": "我们的位置"
   },
+  "map": {
+    "factoryName": "NOVA 服装代工厂",
+    "factoryAddress": "地址：广州市番禺区"
+  },
   "footer": {
     "copyright": "© 2026 NOVA服装工厂 版权所有"
   },

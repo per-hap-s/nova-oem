@@ -166,6 +166,10 @@
     "emailLabel": "郵箱",
     "locationTitle": "我們的位置"
   },
+  "map": {
+    "factoryName": "NOVA 服裝代工廠",
+    "factoryAddress": "地址：廣州市番禺區"
+  },
   "footer": {
     "copyright": "© 2026 NOVA服裝工廠 版權所有"
   },

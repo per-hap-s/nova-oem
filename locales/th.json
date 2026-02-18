@@ -166,6 +166,10 @@
     "emailLabel": "อีเมล",
     "locationTitle": "สถานที่ตั้งของเรา"
   },
+  "map": {
+    "factoryName": "โรงงานผลิตเสื้อผ้า NOVA",
+    "factoryAddress": "ที่อยู่: เขตผานยฺวี่, กวางโจว"
+  },
   "footer": {
     "copyright": "© 2026 โรงงานผลิตเสื้อผ้า NOVA จัดทำ"
   },

@@ -166,6 +166,10 @@
     "emailLabel": "メール",
     "locationTitle": "当社の所在地"
   },
+  "map": {
+    "factoryName": "NOVA アパレル工場",
+    "factoryAddress": "住所：広州市番禺区"
+  },
   "footer": {
     "copyright": "© 2026 NOVAアパレル工場 全権所有"
   },

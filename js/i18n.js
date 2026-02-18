@@ -155,6 +155,11 @@
             htmlEl.setAttribute('lang', currentLang);
         }
         
+        // 更新地图标签
+        if (typeof window.updateMapPopup === 'function') {
+            window.updateMapPopup();
+        }
+        
         log('Page translations updated');
     }
 

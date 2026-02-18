@@ -166,6 +166,10 @@
     "emailLabel": "Email",
     "locationTitle": "Our Location"
   },
+  "map": {
+    "factoryName": "NOVA Apparel Factory",
+    "factoryAddress": "Address: Panyu District, Guangzhou"
+  },
   "footer": {
     "copyright": "© 2026 NOVA Apparel Factory. All Rights Reserved."
   },

@@ -1617,15 +1617,41 @@
         });
 
         // 初始化地图
+        // ========== 地图模块 ==========
+        let mapInstance = null;
+        let factoryMarkerInstance = null;
+
+        /**
+         * 获取地图标签的翻译文本
+         * @returns {Object} 包含工厂名称和地址的对象
+         */
+        function getMapTranslations() {
+            const factoryName = window.I18n ? window.I18n.t('map.factoryName') : 'NOVA 服装代工厂';
+            const factoryAddress = window.I18n ? window.I18n.t('map.factoryAddress') : '地址：广州市番禺区';
+            return { factoryName, factoryAddress };
+        }
+
+        /**
+         * 更新地图标签内容
+         */
+        function updateMapPopup() {
+            if (!factoryMarkerInstance) return;
+            
+            const { factoryName, factoryAddress } = getMapTranslations();
+            const popupContent = `<div style="background: rgba(255, 255, 255, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #121212; min-width: 180px; text-align: center;"><b>${factoryName}</b><br>${factoryAddress}</div>`;
+            
+            factoryMarkerInstance.setPopupContent(popupContent);
+        }
+
         function initMap() {
             // 工厂坐标：广州番禺区 23.0338, 113.3910
             const factoryCoords = [23.0338, 113.3910];
-            const map = L.map('factoryMap').setView(factoryCoords, 4);
+            mapInstance = L.map('factoryMap').setView(factoryCoords, 4);
 
             // 添加OpenStreetMap图层
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            }).addTo(map);
+            }).addTo(mapInstance);
 
             // 创建红色双同心圆标记
             const redCircleIcon = L.divIcon({
@@ -1635,9 +1661,13 @@
                 iconAnchor: [12, 12]
             });
 
+            // 获取翻译文本
+            const { factoryName, factoryAddress } = getMapTranslations();
+            const popupContent = `<div style="background: rgba(255, 255, 255, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #121212; min-width: 180px; text-align: center;"><b>${factoryName}</b><br>${factoryAddress}</div>`;
+
             // 添加工厂标记
-            const factoryMarker = L.marker(factoryCoords, { icon: redCircleIcon }).addTo(map)
-                .bindPopup('<div style="background: rgba(255, 255, 255, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #121212; min-width: 180px; text-align: center;"><b>NOVA 服装代工厂</b><br>地址：广州市番禺区</div>', {
+            factoryMarkerInstance = L.marker(factoryCoords, { icon: redCircleIcon }).addTo(mapInstance)
+                .bindPopup(popupContent, {
                     className: 'custom-popup',
                     closeButton: false,
                     autoClose: false,
@@ -1646,8 +1676,8 @@
                 }).openPopup();
 
             // 允许用户移动地图和缩放
-            map.dragging.enable();
-            map.scrollWheelZoom.enable();
+            mapInstance.dragging.enable();
+            mapInstance.scrollWheelZoom.enable();
         }
 
         // 页面加载完成后初始化地图
