@@ -2,31 +2,25 @@
 
 ## 备份信息
 - **备份时间**: 2026-02-19
-- **备份版本**: v11
-- **备份内容**: 移动端触摸滚动优化
+- **备份版本**: v12
+- **备份内容**: 修复 touchmove 事件 cancelable 警告
 
 ## 更新内容
-1. **修复移动端滑动过于敏感问题**:
-   - 添加触摸移动事件处理，实现边界检查
-   - 防止过度滚动导致的页面跳动
-   - 优化触摸滑动的阻尼效果
+1. **修复浏览器 Intervention 警告**:
+   - 在调用 `e.preventDefault()` 前添加 `e.cancelable` 检查
+   - 避免浏览器忽略不可取消的 touchmove 事件
+   - 优化移动端触摸事件处理
 
-2. **修复案例展示移动端问题**:
-   - 添加触摸移动事件处理
-   - 修复自动轮播在移动端的问题
-   - 添加案例卡片最小宽度，确保显示完整
+2. **问题分析**:
+   - 浏览器为了提高性能，将某些 `touchmove` 事件标记为 `cancelable=false`
+   - 直接调用 `preventDefault()` 会导致浏览器警告
+   - 添加检查后可以安全地处理这些事件
 
-3. **CSS样式优化**:
-   - 添加 `overscroll-behavior: contain` 防止滚动穿透
-   - 添加移动端媒体查询优化
-   - 优化 `touch-action` 属性
-
-4. **文件更新**:
-   - index.html: 优化触摸事件处理
-   - css/styles.css: 添加移动端滚动优化样式
+3. **文件更新**:
+   - index.html: 修复案例展示和用户评价模块的 touchmove 事件处理
 
 ## 备份文件
-- geo-language.js.backup.20260219_v11
-- i18n.js.backup.20260219_v11
-- index.html.backup.20260219_v11
-- styles.css.backup.20260219_v11
+- geo-language.js.backup.20260219_v12
+- i18n.js.backup.20260219_v12
+- index.html.backup.20260219_v12
+- styles.css.backup.20260219_v12

@@ -1011,7 +1011,7 @@
                     // 如果滚动到边界，阻止默认行为
                     if (clampedScrollLeft <= 0 || clampedScrollLeft >= maxScrollLeft) {
                         // 允许一定的弹性滚动，但限制范围
-                        if (Math.abs(diff) > 50) {
+                        if (Math.abs(diff) > 50 && e.cancelable) {
                             e.preventDefault();
                         }
                     }
@@ -1572,7 +1572,7 @@
                     // 如果滚动到边界，阻止默认行为
                     if (clampedScrollTop <= 0 || clampedScrollTop >= maxScrollTop) {
                         // 允许一定的弹性滚动，但限制范围
-                        if (Math.abs(diff) > 50) {
+                        if (Math.abs(diff) > 50 && e.cancelable) {
                             e.preventDefault();
                         }
                     }
