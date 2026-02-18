@@ -694,7 +694,9 @@
                 leaveTimeoutId: null,        // 离开延迟定时器ID
                 currentIndex: 0,             // 当前数据索引（向右加载用）
                 prevIndex: 0,                // 上一个数据索引（向左加载用）
-                loadedCount: 0               // 已加载计数
+                loadedCount: 0,              // 已加载计数
+                touchStartX: 0,              // 触摸起始X坐标
+                touchStartScrollLeft: 0      // 触摸起始滚动位置
             };
 
             /**
@@ -982,8 +984,10 @@
                 elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
 
                 // 移动端：触摸开始事件
-                elements.viewport.addEventListener('touchstart', () => {
+                elements.viewport.addEventListener('touchstart', (e) => {
                     state.isHovering = true;
+                    state.touchStartX = e.touches[0].clientX;
+                    state.touchStartScrollLeft = elements.viewport.scrollLeft;
                     stopAutoScroll();
                     
                     if (state.leaveTimeoutId) {
@@ -991,6 +995,27 @@
                         state.leaveTimeoutId = null;
                     }
                 }, { passive: true });
+
+                // 移动端：触摸移动事件（防止过度滚动）
+                elements.viewport.addEventListener('touchmove', (e) => {
+                    if (!state.isHovering) return;
+                    
+                    const touchX = e.touches[0].clientX;
+                    const diff = state.touchStartX - touchX;
+                    const newScrollLeft = state.touchStartScrollLeft + diff;
+                    
+                    // 边界检查
+                    const maxScrollLeft = elements.viewport.scrollWidth - elements.viewport.clientWidth;
+                    const clampedScrollLeft = Math.max(0, Math.min(newScrollLeft, maxScrollLeft));
+                    
+                    // 如果滚动到边界，阻止默认行为
+                    if (clampedScrollLeft <= 0 || clampedScrollLeft >= maxScrollLeft) {
+                        // 允许一定的弹性滚动，但限制范围
+                        if (Math.abs(diff) > 50) {
+                            e.preventDefault();
+                        }
+                    }
+                }, { passive: false });
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {
@@ -1200,7 +1225,9 @@
                 currentIndex: 0,             // 当前数据索引（向下加载用）
                 prevIndex: 0,                // 上一个数据索引（向上加载用）
                 loadedCount: 0,              // 已加载计数
-                totalHeight: 0               // 内容总高度（用于向上插入时调整滚动位置）
+                totalHeight: 0,              // 内容总高度（用于向上插入时调整滚动位置）
+                touchStartY: 0,              // 触摸起始Y坐标
+                touchStartScrollTop: 0       // 触摸起始滚动位置
             };
 
             /**
@@ -1518,8 +1545,10 @@
                 elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
 
                 // 移动端：触摸开始事件
-                elements.viewport.addEventListener('touchstart', () => {
+                elements.viewport.addEventListener('touchstart', (e) => {
                     state.isHovering = true;
+                    state.touchStartY = e.touches[0].clientY;
+                    state.touchStartScrollTop = elements.viewport.scrollTop;
                     stopAutoScroll();
                     
                     if (state.leaveTimeoutId) {
@@ -1527,6 +1556,27 @@
                         state.leaveTimeoutId = null;
                     }
                 }, { passive: true });
+
+                // 移动端：触摸移动事件（防止过度滚动）
+                elements.viewport.addEventListener('touchmove', (e) => {
+                    if (!state.isHovering) return;
+                    
+                    const touchY = e.touches[0].clientY;
+                    const diff = state.touchStartY - touchY;
+                    const newScrollTop = state.touchStartScrollTop + diff;
+                    
+                    // 边界检查
+                    const maxScrollTop = elements.viewport.scrollHeight - elements.viewport.clientHeight;
+                    const clampedScrollTop = Math.max(0, Math.min(newScrollTop, maxScrollTop));
+                    
+                    // 如果滚动到边界，阻止默认行为
+                    if (clampedScrollTop <= 0 || clampedScrollTop >= maxScrollTop) {
+                        // 允许一定的弹性滚动，但限制范围
+                        if (Math.abs(diff) > 50) {
+                            e.preventDefault();
+                        }
+                    }
+                }, { passive: false });
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {

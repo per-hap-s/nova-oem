@@ -81,6 +81,7 @@
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
+    overscroll-behavior: contain;
 }
 
 .reviews-scroll-container::-webkit-scrollbar {
@@ -94,6 +95,7 @@
     -webkit-overflow-scrolling: touch;
     overflow-y: hidden;
     overflow-x: auto;
+    overscroll-behavior: contain;
 }
 
 .cases-scroll-container::-webkit-scrollbar {
@@ -108,6 +110,24 @@
 .case-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 移动端触摸优化 */
+@media (max-width: 768px) {
+    .reviews-scroll-container,
+    .cases-scroll-container {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: pan-y pan-x;
+    }
+    
+    .case-card {
+        min-width: 280px;
+    }
+    
+    .review-card {
+        touch-action: pan-y;
+    }
 }
 
 /* 轮播触摸反馈 */
