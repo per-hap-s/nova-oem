@@ -289,79 +289,12 @@
     <section id="cases" class="py-20 bg-white relative" aria-label="案例展示">
         <div class="container mx-auto px-4">
             <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-i18n="cases.title">案例展示</h2>
-            <div class="relative w-full overflow-x-hidden pb-8">
-                <div id="casesCarousel" class="flex gap-6 transition-transform duration-500 ease-in-out" style="width: max-content;">
-                    <!-- 复制最后一个案例到开头，用于无缝循环 -->
-                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
-                        <img src="images/case-indonesia.webp" alt="印尼休闲装定制案例" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="cases.case1.title">印尼休闲装定制</h3>
-                            <p class="text-gray-700 mb-2" data-i18n="cases.case1.desc">350件休闲装定制，舒适透气，符合当地气候，适合日常穿着</p>
-                            <p class="text-gray-500 text-sm" data-i18n="cases.case1.feedback">交付周期：12天 | 客户反馈：休闲装很舒适，很适合当地的气候，已经返单了</p>
-                        </div>
-                    </div>
-                    <!-- 台湾案例 -->
-                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
-                        <img src="images/banner.webp" alt="台湾职业装定制案例" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="cases.case2.title">台湾职业装定制</h3>
-                            <p class="text-gray-700 mb-2" data-i18n="cases.case2.desc">480件质感职业装定制，版型精准，交期准时</p>
-                            <p class="text-gray-500 text-sm" data-i18n="cases.case2.feedback">交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意</p>
-                        </div>
-                    </div>
-                    <!-- 泰国案例 -->
-                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
-                        <img src="images/case-thailand.webp" alt="泰国复古连衣裙定制案例" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="cases.case3.title">泰国复古连衣裙定制</h3>
-                            <p class="text-gray-700 mb-2" data-i18n="cases.case3.desc">520件复古连衣裙定制，色彩还原度高，符合当地市场</p>
-                            <p class="text-gray-500 text-sm" data-i18n="cases.case3.feedback">交付周期：10天 | 客户反馈：复古风格很受我们客户欢迎，已经返单了</p>
-                        </div>
-                    </div>
-                    <!-- 马来西亚案例 -->
-                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
-                        <img src="images/case-malaysia.webp" alt="马来西亚穆斯林服装定制案例" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="cases.case4.title">马来西亚穆斯林服装定制</h3>
-                            <p class="text-gray-700 mb-2" data-i18n="cases.case4.desc">280件穆斯林服装定制，细节处理到位，符合当地需求</p>
-                            <p class="text-gray-500 text-sm" data-i18n="cases.case4.feedback">交付周期：15天 | 客户反馈：细节处理很到位，符合我们的宗教要求</p>
-                        </div>
-                    </div>
-                    <!-- 新加坡案例 -->
-                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
-                        <img src="images/case-singapore.webp" alt="新加坡商务装定制案例" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="cases.case5.title">新加坡商务装定制</h3>
-                            <p class="text-gray-700 mb-2" data-i18n="cases.case5.desc">420件质感商务装定制，版型精准，适合商务场合，交期准时</p>
-                            <p class="text-gray-500 text-sm" data-i18n="cases.case5.feedback">交付周期：11天 | 客户反馈：商务版型很专业，符合我们的商务需求</p>
-                        </div>
-                    </div>
-                    <!-- 越南案例 -->
-                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
-                        <img src="images/case-vietnam.webp" alt="越南传统奥黛定制案例" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="cases.case6.title">越南传统奥黛定制</h3>
-                            <p class="text-gray-700 mb-2" data-i18n="cases.case6.desc">380件传统奥黛定制，还原传统风格，细节处理到位，符合当地文化</p>
-                            <p class="text-gray-500 text-sm" data-i18n="cases.case6.feedback">交付周期：12天 | 客户反馈：传统风格还原度很高，很受当地客户欢迎</p>
-                        </div>
-                    </div>
-                    <!-- 复制最后一个案例（台湾）到开头，用于无缝循环 -->
-                    <div class="w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
-                        <img src="images/banner.webp" alt="台湾职业装定制案例" class="w-full h-48 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="cases.case2.title">台湾职业装定制</h3>
-                            <p class="text-gray-700 mb-2" data-i18n="cases.case2.desc">480件质感职业装定制，版型精准，交期准时</p>
-                            <p class="text-gray-500 text-sm" data-i18n="cases.case2.feedback">交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意</p>
-                        </div>
-                    </div>
+            <div class="relative w-full pb-8" id="casesCarousel" tabindex="0" role="region" aria-label="案例展示轮播">
+                <!-- 水平滚动视口 -->
+                <div class="overflow-x-auto cases-scroll-container" id="casesViewport">
+                    <!-- 内容容器 - 由JavaScript动态填充 -->
+                    <div id="casesContent" class="flex gap-6" style="width: max-content;"></div>
                 </div>
-                <!-- 轮播控制按钮 -->
-                <button id="prevCase" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="上一个案例">
-                    <i class="fas fa-chevron-left text-xl"></i>
-                </button>
-                <button id="nextCase" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="下一个案例">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </button>
             </div>
         </div>
     </section>
@@ -652,408 +585,446 @@
         });
 
         /**
- * 案例展示轮播模块
- * 提供水平无缝循环轮播功能，支持自动轮播、手动控制、触摸滑动和响应式适配
- */
-const CasesCarouselModule = (function() {
-    'use strict';
-
-    /**
-     * 轮播配置参数
-     * @const {Object}
-     */
-    const CONFIG = {
-        ANIMATION_DURATION: 400,      // 动画时长(ms)
-        AUTO_PLAY_INTERVAL: 4000,     // 自动轮播间隔(ms)
-        PAUSE_DELAY: 5000,           // 交互后暂停延迟(ms)
-        SWIPE_THRESHOLD: 50,         // 滑动阈值(px)
-        SLIDE_GAP: 24,               // 卡片间距(px)
-        DEFAULT_SLIDE_WIDTH: 320,    // 默认卡片宽度(px)
-        FRICTION: 0.95,              // 惯性摩擦系数
-        MIN_VELOCITY: 0.1,           // 最小速度阈值
-        VELOCITY_THRESHOLD: 0.3      // 触发滑动的速度阈值
-    };
-
-    /**
-     * DOM元素缓存
-     */
-    let elements = {};
-    
-    /**
-     * 轮播状态
-     */
-    let state = {
-        currentSlide: 1,             // 当前幻灯片索引
-        autoPlayInterval: null,      // 自动轮播定时器
-        lastInteractionTime: Date.now(), // 最后交互时间
-        isPaused: false,             // 是否暂停
-        touchStartX: 0,             // 触摸起始X坐标
-        touchEndX: 0,               // 触摸结束X坐标
-        isDragging: false,           // 是否正在拖拽
-        slideWidth: 0,               // 单个卡片宽度
-        startSlide: 0,               // 拖拽开始时的幻灯片索引
-        velocity: 0,                 // 当前速度
-        lastMoveX: 0,                // 上次移动位置
-        lastMoveTime: 0,             // 上次移动时间
-        inertiaAnimation: null       // 惯性动画帧ID
-    };
-
-    /**
-     * 根据屏幕宽度动态计算滑动阈值
-     * @returns {number} 滑动阈值(px)
-     */
-    function getSwipeThreshold() {
-        const screenWidth = window.innerWidth;
-        if (screenWidth < 480) return 30;
-        if (screenWidth < 768) return 40;
-        return CONFIG.SWIPE_THRESHOLD;
-    }
-
-    /**
-     * 获取单个幻灯片的实际宽度
-     * @returns {number} 幻灯片宽度(含间距)
-     */
-    function getSlideWidth() {
-        if (elements.carousel && elements.carousel.children.length > 0) {
-            let maxWidth = 0;
-            for (let i = 0; i < elements.carousel.children.length; i++) {
-                const slide = elements.carousel.children[i];
-                if (slide.offsetWidth > maxWidth) {
-                    maxWidth = slide.offsetWidth;
-                }
-            }
-            return maxWidth + CONFIG.SLIDE_GAP;
-        }
-        return CONFIG.DEFAULT_SLIDE_WIDTH + CONFIG.SLIDE_GAP;
-    }
-
-    /**
-     * 更新轮播容器位置
-     * @param {boolean} animate - 是否使用动画
-     */
-    function updatePosition(animate = true) {
-        const slideWidth = getSlideWidth();
-        const offset = state.currentSlide * slideWidth;
-        
-        if (animate) {
-            elements.carousel.style.transition = `transform ${CONFIG.ANIMATION_DURATION}ms ease-in-out`;
-        } else {
-            elements.carousel.style.transition = 'none';
-        }
-        
-        elements.carousel.style.transform = `translateX(-${offset}px)`;
-    }
-
-    /**
-     * 切换到下一个幻灯片
-     */
-    function nextSlide() {
-        state.currentSlide++;
-        updatePosition(true);
-
-        // 无缝循环：到达末尾时跳回起点
-        if (state.currentSlide >= elements.carousel.children.length - 1) {
-            setTimeout(() => {
-                state.currentSlide = 1;
-                updatePosition(false);
-            }, CONFIG.ANIMATION_DURATION);
-        }
-    }
-
-    /**
-     * 切换到上一个幻灯片
-     */
-    function prevSlide() {
-        state.currentSlide--;
-        updatePosition(true);
-
-        // 无缝循环：到达起点时跳回末尾
-        if (state.currentSlide <= 0) {
-            setTimeout(() => {
-                state.currentSlide = elements.carousel.children.length - 2;
-                updatePosition(false);
-            }, CONFIG.ANIMATION_DURATION);
-        }
-    }
-
-    /**
-     * 开始自动轮播
-     */
-    function startAutoPlay() {
-        clearInterval(state.autoPlayInterval);
-        state.autoPlayInterval = setInterval(() => {
-            const shouldPlay = !state.isPaused && 
-                              (Date.now() - state.lastInteractionTime > CONFIG.PAUSE_DELAY);
-            if (shouldPlay) {
-                nextSlide();
-            }
-        }, CONFIG.AUTO_PLAY_INTERVAL);
-    }
-
-    /**
-     * 停止自动轮播
-     */
-    function stopAutoPlay() {
-        if (state.autoPlayInterval) {
-            clearInterval(state.autoPlayInterval);
-        }
-    }
-
-    /**
-     * 处理触摸滑动开始
-     * @param {TouchEvent} e - 触摸事件
-     */
-    function handleTouchStart(e) {
-        // 取消正在进行的惯性动画
-        if (state.inertiaAnimation) {
-            cancelAnimationFrame(state.inertiaAnimation);
-            state.inertiaAnimation = null;
-        }
-        
-        // 移除所有卡片的焦点，防止跳动
-        const cards = elements.carousel.querySelectorAll(':focus');
-        cards.forEach(card => card.blur());
-        
-        // 添加触摸视觉反馈
-        elements.carousel.classList.add('carousel-touching');
-        
-        state.touchStartX = e.touches[0].clientX;
-        state.lastMoveX = state.touchStartX;
-        state.lastMoveTime = Date.now();
-        state.velocity = 0;
-        state.lastInteractionTime = Date.now();
-        state.isDragging = true;
-        state.startSlide = state.currentSlide;
-        state.slideWidth = getSlideWidth();
-    }
-
-    /**
-     * 处理触摸滑动中（实时拖拽）
-     * @param {TouchEvent} e - 触摸事件
-     */
-    function handleTouchMove(e) {
-        if (!state.isDragging) return;
-        
-        const currentX = e.touches[0].clientX;
-        const currentTime = Date.now();
-        const diff = state.touchStartX - currentX;
-        
-        // 计算速度
-        const moveDiff = state.lastMoveX - currentX;
-        const moveTime = currentTime - state.lastMoveTime;
-        if (moveTime > 0) {
-            state.velocity = moveDiff / moveTime;
-        }
-        state.lastMoveX = currentX;
-        state.lastMoveTime = currentTime;
-        
-        // 实时更新位置（无动画）
-        const offset = state.startSlide * state.slideWidth + diff;
-        elements.carousel.style.transition = 'none';
-        elements.carousel.style.transform = `translateX(-${offset}px)`;
-    }
-
-    /**
-     * 处理触摸滑动结束
-     * @param {TouchEvent} e - 触摸事件
-     */
-    function handleTouchEnd(e) {
-        // 移除触摸视觉反馈
-        elements.carousel.classList.remove('carousel-touching');
-        
-        state.touchEndX = e.changedTouches[0].clientX;
-        state.lastInteractionTime = Date.now();
-        state.isDragging = false;
-        
-        // 判断是否需要惯性滚动
-        const absVelocity = Math.abs(state.velocity);
-        if (absVelocity > CONFIG.VELOCITY_THRESHOLD) {
-            startInertiaScroll();
-        } else {
-            handleSwipe();
-        }
-    }
-
-    /**
-     * 开始惯性滚动
-     */
-    function startInertiaScroll() {
-        let velocity = state.velocity;
-        let currentOffset = state.startSlide * state.slideWidth + (state.touchStartX - state.lastMoveX);
-        
-        /**
-         * 惯性动画帧
+         * 案例展示无限滚动模块
+         * 
+         * 功能特性：
+         * - 水平无限滚动：动态加载内容，无跳跃感
+         * - 自动滚动：默认自动向左滚动
+         * - 用户交互：悬停时滚轮控制，触摸滑动
+         * - 性能优化：DOM节点回收机制
+         * 
+         * @module CasesInfiniteScrollModule
          */
-        function inertiaFrame() {
-            // 应用摩擦力减速
-            velocity *= CONFIG.FRICTION;
-            
-            // 更新偏移量
-            currentOffset += velocity * 16; // 假设60fps，每帧约16ms
-            
-            // 更新位置
-            elements.carousel.style.transition = 'none';
-            elements.carousel.style.transform = `translateX(-${currentOffset}px)`;
-            
-            // 计算当前幻灯片索引
-            const newSlide = Math.round(currentOffset / state.slideWidth);
-            const clampedSlide = Math.max(1, Math.min(newSlide, elements.carousel.children.length - 2));
-            
-            // 当速度足够小时停止
-            if (Math.abs(velocity) < CONFIG.MIN_VELOCITY) {
-                // 吸附到最近的幻灯片
-                state.currentSlide = clampedSlide;
-                updatePosition(true);
-                state.inertiaAnimation = null;
-                // 确保没有元素获取焦点
-                if (document.activeElement && elements.carousel.contains(document.activeElement)) {
-                    document.activeElement.blur();
+        const CasesInfiniteScrollModule = (function() {
+            'use strict';
+
+            /**
+             * 配置参数
+             * @constant {Object}
+             */
+            const CONFIG = {
+                AUTO_SCROLL_SPEED: 0.8,       // 自动滚动速度（像素/帧）
+                LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
+                LOAD_THRESHOLD: 400,          // 触发加载的阈值（像素）
+                MAX_NODES: 15,                // 最大DOM节点数量
+                RECYCLE_THRESHOLD: 600        // 回收阈值（距离视口多远才回收）
+            };
+
+            /**
+             * 案例数据池
+             * @constant {Array}
+             */
+            const CASES_POOL = [
+                {
+                    id: 1,
+                    image: 'images/case-indonesia.webp',
+                    titleKey: 'cases.case1.title',
+                    title: '印尼休闲装定制',
+                    descKey: 'cases.case1.desc',
+                    desc: '350件休闲装定制，舒适透气，符合当地气候，适合日常穿着',
+                    feedbackKey: 'cases.case1.feedback',
+                    feedback: '交付周期：12天 | 客户反馈：休闲装很舒适，很适合当地的气候，已经返单了'
+                },
+                {
+                    id: 2,
+                    image: 'images/banner.webp',
+                    titleKey: 'cases.case2.title',
+                    title: '台湾职业装定制',
+                    descKey: 'cases.case2.desc',
+                    desc: '480件质感职业装定制，版型精准，交期准时',
+                    feedbackKey: 'cases.case2.feedback',
+                    feedback: '交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意'
+                },
+                {
+                    id: 3,
+                    image: 'images/case-thailand.webp',
+                    titleKey: 'cases.case3.title',
+                    title: '泰国复古连衣裙定制',
+                    descKey: 'cases.case3.desc',
+                    desc: '520件复古连衣裙定制，色彩还原度高，符合当地市场',
+                    feedbackKey: 'cases.case3.feedback',
+                    feedback: '交付周期：10天 | 客户反馈：复古风格很受我们客户欢迎，已经返单了'
+                },
+                {
+                    id: 4,
+                    image: 'images/case-malaysia.webp',
+                    titleKey: 'cases.case4.title',
+                    title: '马来西亚穆斯林服装定制',
+                    descKey: 'cases.case4.desc',
+                    desc: '280件穆斯林服装定制，细节处理到位，符合当地需求',
+                    feedbackKey: 'cases.case4.feedback',
+                    feedback: '交付周期：15天 | 客户反馈：细节处理很到位，符合我们的宗教要求'
+                },
+                {
+                    id: 5,
+                    image: 'images/case-singapore.webp',
+                    titleKey: 'cases.case5.title',
+                    title: '新加坡商务装定制',
+                    descKey: 'cases.case5.desc',
+                    desc: '420件质感商务装定制，版型精准，适合商务场合，交期准时',
+                    feedbackKey: 'cases.case5.feedback',
+                    feedback: '交付周期：11天 | 客户反馈：商务版型很专业，符合我们的商务需求'
+                },
+                {
+                    id: 6,
+                    image: 'images/case-vietnam.webp',
+                    titleKey: 'cases.case6.title',
+                    title: '越南传统奥黛定制',
+                    descKey: 'cases.case6.desc',
+                    desc: '380件传统奥黛定制，还原传统风格，细节处理到位，符合当地文化',
+                    feedbackKey: 'cases.case6.feedback',
+                    feedback: '交付周期：12天 | 客户反馈：传统风格还原度很高，很受当地客户欢迎'
                 }
-                return;
+            ];
+
+            /**
+             * DOM元素引用
+             * @type {Object}
+             */
+            let elements = {};
+
+            /**
+             * 模块状态
+             * @type {Object}
+             */
+            let state = {
+                isHovering: false,           // 是否悬停中
+                isAutoScrolling: false,      // 是否自动滚动中
+                animationFrameId: null,      // 动画帧ID
+                leaveTimeoutId: null,        // 离开延迟定时器ID
+                currentIndex: 0,             // 当前数据索引（向右加载用）
+                prevIndex: 0,                // 上一个数据索引（向左加载用）
+                loadedCount: 0               // 已加载计数
+            };
+
+            /**
+             * 创建案例卡片DOM元素
+             * @param {Object} caseData - 案例数据
+             * @param {number} index - 索引值
+             * @returns {HTMLElement} 案例卡片元素
+             */
+            function createCaseCard(caseData, index) {
+                const card = document.createElement('div');
+                card.className = 'case-card w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover';
+                card.dataset.index = index;
+                card.dataset.caseId = caseData.id;
+                
+                card.innerHTML = `
+                    <img src="${caseData.image}" alt="${caseData.title}" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="${caseData.titleKey}">${caseData.title}</h3>
+                        <p class="text-gray-700 mb-2" data-i18n="${caseData.descKey}">${caseData.desc}</p>
+                        <p class="text-gray-500 text-sm" data-i18n="${caseData.feedbackKey}">${caseData.feedback}</p>
+                    </div>
+                `;
+                
+                return card;
             }
-            
-            // 边界检查
-            if (newSlide < 0 || newSlide >= elements.carousel.children.length - 1) {
-                state.currentSlide = clampedSlide;
-                updatePosition(true);
-                state.inertiaAnimation = null;
-                // 确保没有元素获取焦点
-                if (document.activeElement && elements.carousel.contains(document.activeElement)) {
-                    document.activeElement.blur();
-                }
-                return;
+
+            /**
+             * 获取下一个案例数据（向右加载用）
+             * @returns {Object} 案例数据和索引
+             */
+            function getNextCase() {
+                const poolSize = CASES_POOL.length;
+                const caseData = CASES_POOL[state.currentIndex];
+                const index = state.currentIndex;
+                
+                state.currentIndex = (state.currentIndex + 1) % poolSize;
+                state.loadedCount++;
+                
+                return { caseData, index };
             }
-            
-            // 继续动画
-            state.inertiaAnimation = requestAnimationFrame(inertiaFrame);
-        }
-        
-        state.inertiaAnimation = requestAnimationFrame(inertiaFrame);
-    }
 
-    /**
-     * 处理滑动逻辑
-     */
-    function handleSwipe() {
-        const diff = state.touchStartX - state.touchEndX;
-        const threshold = getSwipeThreshold();
-        
-        if (diff > threshold) {
-            nextSlide();
-        } else if (diff < -threshold) {
-            prevSlide();
-        } else {
-            // 滑动距离不够，回到原位
-            updatePosition(true);
-        }
-    }
+            /**
+             * 获取上一个案例数据（向左加载用）
+             * @returns {Object} 案例数据和索引
+             */
+            function getPrevCase() {
+                const poolSize = CASES_POOL.length;
+                state.prevIndex = (state.prevIndex - 1 + poolSize) % poolSize;
+                const caseData = CASES_POOL[state.prevIndex];
+                
+                return { caseData, index: state.prevIndex };
+            }
 
-    /**
-     * 绑定事件监听器
-     */
-    function bindEvents() {
-        // 上一张/下一张按钮
-        if (elements.prevBtn) {
-            elements.prevBtn.addEventListener('click', () => {
-                state.lastInteractionTime = Date.now();
-                prevSlide();
-            });
-        }
-        if (elements.nextBtn) {
-            elements.nextBtn.addEventListener('click', () => {
-                state.lastInteractionTime = Date.now();
-                nextSlide();
-            });
-        }
+            /**
+             * 追加新案例到容器右侧
+             */
+            function appendCase() {
+                if (!elements.content) return;
+                
+                const { caseData, index } = getNextCase();
+                const card = createCaseCard(caseData, state.loadedCount);
+                elements.content.appendChild(card);
+            }
 
-        // 鼠标悬停暂停
-        const container = elements.carousel.parentElement;
-        if (container) {
-            container.addEventListener('mouseenter', () => {
-                state.isPaused = true;
-            });
-            container.addEventListener('mouseleave', () => {
-                state.isPaused = false;
-            });
-        }
+            /**
+             * 在容器左侧插入案例
+             */
+            function prependCase() {
+                if (!elements.content) return;
+                
+                const { caseData, index } = getPrevCase();
+                const card = createCaseCard(caseData, state.loadedCount);
+                
+                // 记录插入前的宽度
+                const oldScrollWidth = elements.viewport.scrollWidth;
+                
+                // 插入到左侧
+                elements.content.insertBefore(card, elements.content.firstChild);
+                
+                // 调整滚动位置，保持视觉位置不变
+                const newScrollWidth = elements.viewport.scrollWidth;
+                const widthDiff = newScrollWidth - oldScrollWidth;
+                elements.viewport.scrollLeft += widthDiff;
+            }
 
-        // 触摸滑动支持
-        elements.carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
-        elements.carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
-        elements.carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-        // 窗口大小改变适配
-        window.addEventListener('resize', () => {
-            updatePosition(false);
-        });
-    }
-
-    /**
-     * 初始化轮播模块
-     * @param {Object} domElements - DOM元素映射
-     */
-    function init(domElements) {
-        elements = domElements;
-        state.currentSlide = 1;
-        state.lastInteractionTime = Date.now();
-        
-        bindEvents();
-        
-        const carouselImages = elements.carousel.querySelectorAll('img');
-        const totalImages = carouselImages.length;
-        let loadedImages = 0;
-        
-        function onAllImagesLoaded() {
-            updatePosition(false);
-            startAutoPlay();
-        }
-        
-        if (totalImages === 0) {
-            onAllImagesLoaded();
-            return;
-        }
-        
-        carouselImages.forEach((img) => {
-            if (img.complete) {
-                loadedImages++;
-                if (loadedImages === totalImages) {
-                    onAllImagesLoaded();
+            /**
+             * 检查并加载更多内容（双向）
+             * @param {boolean} isAuto - 是否为自动滚动调用
+             */
+            function checkAndLoadMore(isAuto) {
+                if (!elements.viewport || !elements.content) return;
+                
+                const { scrollLeft, scrollWidth, clientWidth } = elements.viewport;
+                const scrollRight = scrollLeft + clientWidth;
+                
+                // 检测是否接近右侧，向右加载更多
+                if (scrollWidth - scrollRight < CONFIG.LOAD_THRESHOLD) {
+                    appendCase();
                 }
-            } else {
-                img.addEventListener('load', () => {
-                    loadedImages++;
-                    if (loadedImages === totalImages) {
-                        onAllImagesLoaded();
+                
+                // 只在用户手动滚动时向左加载（自动滚动不需要）
+                if (!isAuto && scrollLeft < CONFIG.LOAD_THRESHOLD) {
+                    prependCase();
+                }
+            }
+
+            /**
+             * 回收远离视口的DOM节点（双向）
+             */
+            function recycleOffscreenNodes() {
+                if (!elements.viewport || !elements.content) return;
+                
+                const { scrollLeft, clientWidth } = elements.viewport;
+                const visibleLeft = scrollLeft - CONFIG.RECYCLE_THRESHOLD;
+                const visibleRight = scrollLeft + clientWidth + CONFIG.RECYCLE_THRESHOLD;
+                
+                const nodes = elements.content.querySelectorAll('.case-card');
+                let totalRemoved = 0;
+                let totalWidthRemoved = 0;
+                
+                // 从左侧回收远离视口的节点
+                for (let i = 0; i < nodes.length && totalRemoved < 3; i++) {
+                    const node = nodes[i];
+                    if (nodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
+                    
+                    const nodeRight = node.offsetLeft + node.offsetWidth;
+                    if (nodeRight < visibleLeft) {
+                        totalWidthRemoved += node.offsetWidth;
+                        node.remove();
+                        totalRemoved++;
+                    } else {
+                        break;
+                    }
+                }
+                
+                // 从右侧回收远离视口的节点
+                const remainingNodes = elements.content.querySelectorAll('.case-card');
+                for (let i = remainingNodes.length - 1; i >= 0 && totalRemoved < 3; i--) {
+                    if (remainingNodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
+                    
+                    const node = remainingNodes[i];
+                    const nodeLeft = node.offsetLeft;
+                    if (nodeLeft > visibleRight) {
+                        node.remove();
+                        totalRemoved++;
+                    } else {
+                        break;
+                    }
+                }
+                
+                // 调整滚动位置（同步执行，避免闪动）
+                if (totalWidthRemoved > 0) {
+                    elements.viewport.scrollLeft = Math.max(0, scrollLeft - totalWidthRemoved);
+                }
+            }
+
+            /**
+             * 初始化内容
+             * @param {number} count - 初始加载数量
+             */
+            function initContent(count) {
+                if (!elements.content) return;
+                
+                elements.content.innerHTML = '';
+                state.currentIndex = 0;
+                state.prevIndex = 0;
+                state.loadedCount = 0;
+                
+                for (let i = 0; i < count; i++) {
+                    appendCase();
+                }
+                
+                // 设置prevIndex为当前index，这样向左滚动时从当前最后一条的前一条开始
+                state.prevIndex = state.currentIndex;
+            }
+
+            /**
+             * 启动自动滚动
+             */
+            function startAutoScroll() {
+                if (state.isHovering || state.isAutoScrolling) return;
+                
+                state.isAutoScrolling = true;
+                
+                /**
+                 * 自动滚动动画帧
+                 */
+                function animate() {
+                    if (state.isHovering) {
+                        state.isAutoScrolling = false;
+                        return;
+                    }
+                    
+                    if (!elements.viewport) {
+                        state.isAutoScrolling = false;
+                        return;
+                    }
+                    
+                    // 滚动
+                    elements.viewport.scrollLeft += CONFIG.AUTO_SCROLL_SPEED;
+                    
+                    // 检查是否需要加载更多（自动滚动只向右加载）
+                    checkAndLoadMore(true);
+                    
+                    state.animationFrameId = requestAnimationFrame(animate);
+                }
+                
+                state.animationFrameId = requestAnimationFrame(animate);
+            }
+
+            /**
+             * 停止自动滚动
+             */
+            function stopAutoScroll() {
+                state.isAutoScrolling = false;
+                if (state.animationFrameId) {
+                    cancelAnimationFrame(state.animationFrameId);
+                    state.animationFrameId = null;
+                }
+            }
+
+            /**
+             * 处理用户离开后的行为
+             */
+            function handleUserLeave() {
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                }
+                
+                state.leaveTimeoutId = setTimeout(() => {
+                    startAutoScroll();
+                }, CONFIG.LEAVE_DELAY);
+            }
+
+            /**
+             * 处理滚动事件（用户手动滚动）
+             */
+            function handleScroll() {
+                // 自动滚动时不执行回收，避免闪动
+                if (state.isAutoScrolling) return;
+                
+                checkAndLoadMore(false);
+                recycleOffscreenNodes();
+            }
+
+            /**
+             * 绑定事件监听器
+             */
+            function bindEvents() {
+                if (!elements.carousel || !elements.viewport) return;
+
+                // PC端：鼠标进入事件
+                elements.carousel.addEventListener('mouseenter', () => {
+                    state.isHovering = true;
+                    elements.carousel.classList.add('is-hovering');
+                    stopAutoScroll();
+                    
+                    if (state.leaveTimeoutId) {
+                        clearTimeout(state.leaveTimeoutId);
+                        state.leaveTimeoutId = null;
                     }
                 });
-                img.addEventListener('error', () => {
-                    loadedImages++;
-                    if (loadedImages === totalImages) {
-                        onAllImagesLoaded();
-                    }
+
+                // PC端：鼠标离开事件
+                elements.carousel.addEventListener('mouseleave', () => {
+                    state.isHovering = false;
+                    elements.carousel.classList.remove('is-hovering');
+                    handleUserLeave();
                 });
+
+                // PC端：滚轮事件（水平滚动）
+                elements.viewport.addEventListener('wheel', (e) => {
+                    if (state.isHovering) {
+                        e.preventDefault();
+                        elements.viewport.scrollLeft += e.deltaY;
+                    }
+                }, { passive: false });
+
+                // 滚动事件
+                elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
+
+                // 移动端：触摸开始事件
+                elements.viewport.addEventListener('touchstart', () => {
+                    state.isHovering = true;
+                    stopAutoScroll();
+                    
+                    if (state.leaveTimeoutId) {
+                        clearTimeout(state.leaveTimeoutId);
+                        state.leaveTimeoutId = null;
+                    }
+                }, { passive: true });
+
+                // 移动端：触摸结束事件
+                elements.viewport.addEventListener('touchend', () => {
+                    state.isHovering = false;
+                    handleUserLeave();
+                }, { passive: true });
             }
-        });
-    }
 
-    /**
-     * 公共API
-     */
-    return {
-        init: init,
-        nextSlide: nextSlide,
-        prevSlide: prevSlide,
-        updatePosition: updatePosition,
-        startAutoPlay: startAutoPlay,
-        stopAutoPlay: stopAutoPlay
-    };
-})();
+            /**
+             * 初始化模块
+             * @param {Object} domElements - DOM元素映射
+             */
+            function init(domElements) {
+                elements = domElements;
+                
+                // 初始化内容（加载足够多的案例卡片）
+                initContent(8);
+                
+                bindEvents();
+                
+                // 启动自动滚动
+                startAutoScroll();
+            }
 
-        // 初始化案例轮播模块
-        CasesCarouselModule.init({
+            /**
+             * 公共API
+             */
+            return {
+                init: init,
+                startAutoScroll: startAutoScroll,
+                stopAutoScroll: stopAutoScroll
+            };
+        })();
+
+        // 初始化案例无限滚动模块
+        CasesInfiniteScrollModule.init({
             carousel: document.getElementById('casesCarousel'),
-            prevBtn: document.getElementById('prevCase'),
-            nextBtn: document.getElementById('nextCase')
+            viewport: document.getElementById('casesViewport'),
+            content: document.getElementById('casesContent')
         });
 
         /**

@@ -87,6 +87,29 @@
     display: none;
 }
 
+/* 案例展示水平滚动容器样式 */
+.cases-scroll-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.cases-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 案例卡片样式 */
+.case-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
 /* 轮播触摸反馈 */
 .carousel-touching {
     cursor: grabbing !important;

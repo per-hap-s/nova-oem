@@ -2,26 +2,30 @@
 
 ## 备份信息
 - **备份时间**: 2026-02-19
-- **备份版本**: v8
-- **备份内容**: 客户评价板块滚动闪动问题修复（最终版）
+- **备份版本**: v9
+- **备份内容**: 案例展示轮播改为水平无限滚动方案
 
 ## 更新内容
-1. **修复了客户评价板块滚动闪动问题（最终版）**:
-   - 移除了 `requestAnimationFrame` 异步操作
-   - 改为同步执行所有DOM操作和滚动位置调整
-   - 解决了部署环境与本地环境表现不一致的问题
+1. **案例展示轮播重构**:
+   - 移除了左右箭头按钮
+   - 采用与用户评价相同的无限滚动机制
+   - 实现水平方向的无限滚动
+   - 支持鼠标悬停时滚轮控制
+   - 支持移动端触摸滑动
+   - 添加DOM节点回收机制，优化性能
 
-2. **问题原因分析**:
-   - `requestAnimationFrame` 是异步操作，在回调执行前滚动事件可能多次触发
-   - 多次调用 `recycleOffscreenNodes` 导致重复收集节点
-   - 部署环境的网络延迟和性能特征不同，导致异步操作执行时机不同
-   - 多次 `requestAnimationFrame` 回调可能在短时间内连续执行
+2. **新增 CasesInfiniteScrollModule 模块**:
+   - 水平无限滚动：动态加载内容，无跳跃感
+   - 自动滚动：默认自动向左滚动
+   - 用户交互：悬停时滚轮控制，触摸滑动
+   - 性能优化：DOM节点回收机制（最大15个节点）
 
 3. **文件更新**:
-   - index.html: 优化了节点回收逻辑，改为同步执行
+   - index.html: 重构案例展示HTML结构，新增CasesInfiniteScrollModule模块
+   - css/styles.css: 添加案例展示水平滚动容器样式
 
 ## 备份文件
-- geo-language.js.backup.20260219_v8
-- i18n.js.backup.20260219_v8
-- index.html.backup.20260219_v8
-- styles.css.backup.20260219_v8
+- geo-language.js.backup.20260219_v9
+- i18n.js.backup.20260219_v9
+- index.html.backup.20260219_v9
+- styles.css.backup.20260219_v9
