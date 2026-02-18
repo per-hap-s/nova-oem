@@ -1,0 +1,135 @@
+/**
+ * NOVA服装OEM网站自定义样式
+ * 包含：地图弹窗样式、动画类、响应式优化、移动端触摸优化
+ */
+
+/* ========== 地图弹窗样式 ========== */
+.custom-popup .leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-popup .leaflet-popup-content {
+    margin: 8px 12px;
+    font-size: 13px;
+    color: #121212;
+    min-width: 180px;
+    text-align: center;
+}
+
+.custom-popup .leaflet-popup-tip {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.custom-div-icon {
+    background: transparent;
+    border: none;
+}
+
+/* ========== 动画辅助类 ========== */
+.visible {
+    visibility: visible !important;
+}
+
+.opacity-100 {
+    opacity: 1 !important;
+}
+
+.translate-y-0 {
+    transform: translateY(0) !important;
+}
+
+/* ========== 语言选择按钮响应式优化 ========== */
+@media (max-width: 639px) {
+    #currentLang {
+        display: inline !important;
+        font-size: 0.875rem;
+    }
+    
+    #langDropdownBtn {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        gap: 0.5rem;
+    }
+    
+    #langDropdownBtn .fa-globe {
+        font-size: 1rem;
+    }
+    
+    #langDropdownBtn .fa-chevron-down {
+        font-size: 0.75rem;
+    }
+}
+
+/* ========== 移动端触摸体验优化样式 ========== */
+
+/* 轮播触摸反馈 */
+.carousel-touching {
+    cursor: grabbing !important;
+}
+
+.carousel-touching .card-hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* 触摸目标优化 - 防止误触 */
+#casesCarousel {
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* 移动端按钮尺寸优化 - 符合48px最小触摸标准 */
+@media (max-width: 639px) {
+    #prevCase, #nextCase {
+        width: 48px !important;
+        height: 48px !important;
+    }
+    
+    #prevCase {
+        left: 0.75rem !important;
+    }
+    
+    #nextCase {
+        right: 0.75rem !important;
+    }
+    
+    /* 移动端案例卡片间距优化 */
+    #casesCarousel {
+        gap: 0.75rem !important;
+    }
+    
+    /* 移动端案例卡片宽度优化 */
+    #casesCarousel > div {
+        width: 280px !important;
+    }
+    
+    /* 移动端标题文字大小优化 */
+    #cases h2 {
+        font-size: 1.75rem !important;
+    }
+}
+
+/* 平板端优化 */
+@media (min-width: 640px) and (max-width: 1023px) {
+    #casesCarousel {
+        gap: 1.25rem !important;
+    }
+    
+    #casesCarousel > div {
+        width: 320px !important;
+    }
+    
+    #prevCase, #nextCase {
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
+
+/* 桌面端优化 */
+@media (min-width: 1024px) {
+    #casesCarousel {
+        gap: 1.5rem !important;
+    }
+}
