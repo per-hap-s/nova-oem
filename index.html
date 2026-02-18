@@ -151,6 +151,72 @@
                 font-size: 0.75rem;
             }
         }
+
+        /* ========== 移动端触摸体验优化样式 ========== */
+        
+        /* 轮播触摸反馈 */
+        .carousel-touching {
+            cursor: grabbing !important;
+        }
+        
+        .carousel-touching .card-hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* 触摸目标优化 - 防止误触 */
+        #casesCarousel {
+            touch-action: pan-y;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* 移动端按钮尺寸优化 - 符合48px最小触摸标准 */
+        @media (max-width: 639px) {
+            #prevCase, #nextCase {
+                width: 48px !important;
+                height: 48px !important;
+                left: 0.75rem !important;
+                right: 0.75rem !important;
+            }
+            
+            /* 移动端案例卡片间距优化 */
+            #casesCarousel {
+                gap: 0.75rem !important;
+            }
+            
+            /* 移动端案例卡片宽度优化 */
+            #casesCarousel > div {
+                width: 280px !important;
+            }
+            
+            /* 移动端标题文字大小优化 */
+            #cases h2 {
+                font-size: 1.75rem !important;
+            }
+        }
+        
+        /* 平板端优化 */
+        @media (min-width: 640px) and (max-width: 1023px) {
+            #casesCarousel {
+                gap: 1.25rem !important;
+            }
+            
+            #casesCarousel > div {
+                width: 320px !important;
+            }
+            
+            #prevCase, #nextCase {
+                width: 44px !important;
+                height: 44px !important;
+            }
+        }
+        
+        /* 桌面端优化 */
+        @media (min-width: 1024px) {
+            #casesCarousel {
+                gap: 1.5rem !important;
+            }
+        }
     </style>
 </head>
 <body class="font-inter bg-neutral text-dark">
@@ -584,10 +650,10 @@
                     </div>
                 </div>
                 <!-- 轮播控制按钮 -->
-                <button id="prevCase" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="上一个案例">
+                <button id="prevCase" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="上一个案例">
                     <i class="fas fa-chevron-left text-xl"></i>
                 </button>
-                <button id="nextCase" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="下一个案例">
+                <button id="nextCase" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-12 h-12 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 btn-hover z-30" aria-label="下一个案例">
                     <i class="fas fa-chevron-right text-xl"></i>
                 </button>
             </div>
@@ -909,8 +975,22 @@ const CasesCarouselModule = (function() {
         lastInteractionTime: Date.now(), // 最后交互时间
         isPaused: false,             // 是否暂停
         touchStartX: 0,             // 触摸起始X坐标
-        touchEndX: 0                // 触摸结束X坐标
+        touchEndX: 0,               // 触摸结束X坐标
+        isDragging: false,           // 是否正在拖拽
+        slideWidth: 0,               // 单个卡片宽度
+        startSlide: 0                // 拖拽开始时的幻灯片索引
     };
+
+    /**
+     * 根据屏幕宽度动态计算滑动阈值
+     * @returns {number} 滑动阈值(px)
+     */
+    function getSwipeThreshold() {
+        const screenWidth = window.innerWidth;
+        if (screenWidth < 480) return 30;
+        if (screenWidth < 768) return 40;
+        return CONFIG.SWIPE_THRESHOLD;
+    }
 
     /**
      * 获取单个幻灯片的实际宽度
@@ -1007,8 +1087,30 @@ const CasesCarouselModule = (function() {
      * @param {TouchEvent} e - 触摸事件
      */
     function handleTouchStart(e) {
+        // 添加触摸视觉反馈
+        elements.carousel.classList.add('carousel-touching');
+        
         state.touchStartX = e.touches[0].clientX;
         state.lastInteractionTime = Date.now();
+        state.isDragging = true;
+        state.startSlide = state.currentSlide;
+        state.slideWidth = getSlideWidth();
+    }
+
+    /**
+     * 处理触摸滑动中（实时拖拽）
+     * @param {TouchEvent} e - 触摸事件
+     */
+    function handleTouchMove(e) {
+        if (!state.isDragging) return;
+        
+        const currentX = e.touches[0].clientX;
+        const diff = state.touchStartX - currentX;
+        
+        // 实时更新位置（无动画）
+        const offset = state.startSlide * state.slideWidth + diff;
+        elements.carousel.style.transition = 'none';
+        elements.carousel.style.transform = `translateX(-${offset}px)`;
     }
 
     /**
@@ -1016,8 +1118,13 @@ const CasesCarouselModule = (function() {
      * @param {TouchEvent} e - 触摸事件
      */
     function handleTouchEnd(e) {
+        // 移除触摸视觉反馈
+        elements.carousel.classList.remove('carousel-touching');
+        
         state.touchEndX = e.changedTouches[0].clientX;
         state.lastInteractionTime = Date.now();
+        state.isDragging = false;
+        
         handleSwipe();
     }
 
@@ -1026,10 +1133,15 @@ const CasesCarouselModule = (function() {
      */
     function handleSwipe() {
         const diff = state.touchStartX - state.touchEndX;
-        if (diff > CONFIG.SWIPE_THRESHOLD) {
+        const threshold = getSwipeThreshold();
+        
+        if (diff > threshold) {
             nextSlide();
-        } else if (diff < -CONFIG.SWIPE_THRESHOLD) {
+        } else if (diff < -threshold) {
             prevSlide();
+        } else {
+            // 滑动距离不够，回到原位
+            updatePosition(true);
         }
     }
 
@@ -1064,6 +1176,7 @@ const CasesCarouselModule = (function() {
 
         // 触摸滑动支持
         elements.carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+        elements.carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
         elements.carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
 
         // 窗口大小改变适配
