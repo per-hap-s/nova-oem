@@ -818,10 +818,10 @@
                 e.preventDefault();
                 const targetSection = document.querySelector(target.getAttribute('href'));
                 if (targetSection) {
-                    // 获取固定头部的高度
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    // 计算目标位置，考虑头部高度
-                    const targetPosition = targetSection.offsetTop - headerHeight;
+                    // 获取固定导航栏的高度（仅nav部分，确保跳转位置一致）
+                    const navbarHeight = document.getElementById('navbar').offsetHeight;
+                    // 计算目标位置，考虑导航栏高度
+                    const targetPosition = targetSection.offsetTop - navbarHeight;
                     // 平滑滚动到目标位置
                     window.scrollTo({
                         top: targetPosition,
