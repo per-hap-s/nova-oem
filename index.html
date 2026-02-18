@@ -217,6 +217,48 @@
                 gap: 1.5rem !important;
             }
         }
+
+        /* ========== 客户评价移动端触摸体验优化样式 ========== */
+        
+        /* 轮播触摸反馈 */
+        .reviews-touching {
+            cursor: grabbing !important;
+        }
+        
+        /* 触摸目标优化 - 防止水平误触 */
+        #reviewsCarousel {
+            touch-action: pan-x;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* 移动端客户评价按钮尺寸优化 */
+        @media (max-width: 639px) {
+            #prevReview, #nextReview {
+                width: 44px !important;
+                height: 44px !important;
+                left: 0.5rem !important;
+                right: 0.5rem !important;
+            }
+            
+            /* 移动端视口高度优化 */
+            #reviewsViewport {
+                height: 280px !important;
+            }
+            
+            /* 移动端评价卡片间距优化 */
+            .review-card {
+                padding-top: 0.75rem !important;
+                padding-bottom: 0.75rem !important;
+            }
+        }
+        
+        /* 平板端客户评价优化 */
+        @media (min-width: 640px) and (max-width: 1023px) {
+            #prevReview, #nextReview {
+                width: 40px !important;
+                height: 40px !important;
+            }
+        }
     </style>
 </head>
 <body class="font-inter bg-neutral text-dark">
@@ -1255,28 +1297,59 @@ const CasesCarouselModule = (function() {
 
         /**
          * 客户评价垂直轮播模块
-         * 提供垂直无缝循环轮播功能，支持自动轮播、手动控制、键盘导航和悬停暂停
+         * 提供垂直轮播功能，支持自动轮播、手动控制、键盘导航、悬停暂停和移动端触摸滑动
          */
         const ReviewsCarouselModule = (function() {
             'use strict';
 
+            /**
+             * 轮播配置参数
+             * @const {Object}
+             */
             const CONFIG = {
                 ANIMATION_DURATION: 400,
                 AUTO_PLAY_INTERVAL: 4000,
                 PAUSE_DURATION: 7000,
                 DEFAULT_CARD_HEIGHT: 80,
-                MAX_FLIP_COUNT: 5
+                SWIPE_THRESHOLD: 50
             };
 
+            /**
+             * DOM元素缓存
+             */
             let elements = {};
+            
+            /**
+             * 轮播状态
+             */
             let state = {
                 currentIndex: 0,
                 autoPlayInterval: null,
                 pauseTimeout: null,
                 isPaused: false,
-                flipCount: 0
+                touchStartY: 0,
+                touchEndY: 0,
+                isDragging: false,
+                cardHeight: 0,
+                startIndex: 0,
+                lastInteractionTime: Date.now()
             };
 
+            /**
+             * 根据屏幕宽度动态计算滑动阈值
+             * @returns {number} 滑动阈值(px)
+             */
+            function getSwipeThreshold() {
+                const screenWidth = window.innerWidth;
+                if (screenWidth < 480) return 30;
+                if (screenWidth < 768) return 40;
+                return CONFIG.SWIPE_THRESHOLD;
+            }
+
+            /**
+             * 获取单个评价卡片的实际高度
+             * @returns {number} 卡片高度
+             */
             function getCardHeight() {
                 if (elements.cards && elements.cards.length > 0) {
                     return elements.cards[0].offsetHeight || CONFIG.DEFAULT_CARD_HEIGHT;
@@ -1284,62 +1357,143 @@ const CasesCarouselModule = (function() {
                 return CONFIG.DEFAULT_CARD_HEIGHT;
             }
 
-            function updatePosition() {
+            /**
+             * 更新轮播容器位置
+             * @param {boolean} animate - 是否使用动画
+             */
+            function updatePosition(animate = true) {
                 const cardHeight = getCardHeight();
                 const offset = state.currentIndex * cardHeight;
+                
+                if (animate) {
+                    elements.track.style.transition = `transform ${CONFIG.ANIMATION_DURATION}ms ease-in-out`;
+                } else {
+                    elements.track.style.transition = 'none';
+                }
+                
                 elements.track.style.transform = `translateY(-${offset}px)`;
             }
 
-            function resetToStart() {
-                state.currentIndex = 0;
-                state.flipCount = 0;
-                updatePosition();
-            }
-
-            function checkAndReset() {
-                if (state.flipCount >= CONFIG.MAX_FLIP_COUNT) {
-                    resetToStart();
-                }
-            }
-
+            /**
+             * 切换到下一个评价
+             */
             function nextSlide() {
-                state.flipCount++;
-                checkAndReset();
-                
-                if (state.flipCount < CONFIG.MAX_FLIP_COUNT) {
-                    state.currentIndex = (state.currentIndex + 1) % elements.cards.length;
-                    updatePosition();
+                if (state.currentIndex < elements.cards.length - 1) {
+                    state.currentIndex++;
+                    updatePosition(true);
                 }
             }
 
+            /**
+             * 切换到上一个评价
+             */
             function prevSlide() {
-                state.currentIndex = (state.currentIndex - 1 + elements.cards.length) % elements.cards.length;
-                updatePosition();
+                if (state.currentIndex > 0) {
+                    state.currentIndex--;
+                    updatePosition(true);
+                }
             }
 
+            /**
+             * 开始自动轮播
+             */
             function startAutoPlay() {
                 stopAutoPlay();
                 state.autoPlayInterval = setInterval(() => {
-                    if (!state.isPaused) {
+                    const shouldPlay = !state.isPaused && 
+                                      (Date.now() - state.lastInteractionTime > CONFIG.PAUSE_DURATION);
+                    if (shouldPlay && state.currentIndex < elements.cards.length - 1) {
                         nextSlide();
+                    } else if (shouldPlay && state.currentIndex >= elements.cards.length - 1) {
+                        state.currentIndex = 0;
+                        updatePosition(true);
                     }
                 }, CONFIG.AUTO_PLAY_INTERVAL);
             }
 
+            /**
+             * 停止自动轮播
+             */
             function stopAutoPlay() {
                 if (state.autoPlayInterval) {
                     clearInterval(state.autoPlayInterval);
                 }
             }
 
+            /**
+             * 暂停自动轮播一段时间
+             */
             function pauseForDuration() {
                 state.isPaused = true;
+                state.lastInteractionTime = Date.now();
                 clearTimeout(state.pauseTimeout);
                 state.pauseTimeout = setTimeout(() => {
                     state.isPaused = false;
                 }, CONFIG.PAUSE_DURATION);
             }
 
+            /**
+             * 处理触摸滑动开始
+             * @param {TouchEvent} e - 触摸事件
+             */
+            function handleTouchStart(e) {
+                elements.carousel.classList.add('reviews-touching');
+                
+                state.touchStartY = e.touches[0].clientY;
+                state.lastInteractionTime = Date.now();
+                state.isDragging = true;
+                state.startIndex = state.currentIndex;
+                state.cardHeight = getCardHeight();
+            }
+
+            /**
+             * 处理触摸滑动中（实时拖拽）
+             * @param {TouchEvent} e - 触摸事件
+             */
+            function handleTouchMove(e) {
+                if (!state.isDragging) return;
+                
+                const currentY = e.touches[0].clientY;
+                const diff = state.touchStartY - currentY;
+                
+                const offset = state.startIndex * state.cardHeight + diff;
+                elements.track.style.transition = 'none';
+                elements.track.style.transform = `translateY(-${offset}px)`;
+            }
+
+            /**
+             * 处理触摸滑动结束
+             * @param {TouchEvent} e - 触摸事件
+             */
+            function handleTouchEnd(e) {
+                elements.carousel.classList.remove('reviews-touching');
+                
+                state.touchEndY = e.changedTouches[0].clientY;
+                state.lastInteractionTime = Date.now();
+                state.isDragging = false;
+                
+                handleSwipe();
+            }
+
+            /**
+             * 处理滑动逻辑
+             */
+            function handleSwipe() {
+                const diff = state.touchStartY - state.touchEndY;
+                const threshold = getSwipeThreshold();
+                
+                if (diff > threshold && state.currentIndex < elements.cards.length - 1) {
+                    nextSlide();
+                } else if (diff < -threshold && state.currentIndex > 0) {
+                    prevSlide();
+                } else {
+                    updatePosition(true);
+                }
+            }
+
+            /**
+             * 绑定事件监听器
+             */
             function bindEvents() {
                 if (elements.prevBtn) {
                     elements.prevBtn.addEventListener('click', () => {
@@ -1360,6 +1514,10 @@ const CasesCarouselModule = (function() {
                     elements.carousel.addEventListener('mouseleave', () => {
                         state.isPaused = false;
                     });
+                    
+                    elements.carousel.addEventListener('touchstart', handleTouchStart, { passive: true });
+                    elements.carousel.addEventListener('touchmove', handleTouchMove, { passive: true });
+                    elements.carousel.addEventListener('touchend', handleTouchEnd, { passive: true });
                 }
                 document.addEventListener('keydown', (e) => {
                     if (elements.carousel && 
@@ -1376,19 +1534,36 @@ const CasesCarouselModule = (function() {
                         }
                     }
                 });
+                
+                window.addEventListener('resize', () => {
+                    updatePosition(false);
+                });
             }
 
+            /**
+             * 初始化轮播模块
+             * @param {Object} domElements - DOM元素映射
+             */
             function init(domElements) {
                 elements = domElements;
+                state.currentIndex = 0;
+                state.lastInteractionTime = Date.now();
+                
                 bindEvents();
-                updatePosition();
+                updatePosition(false);
                 startAutoPlay();
             }
 
+            /**
+             * 公共API
+             */
             return {
                 init: init,
                 nextSlide: nextSlide,
-                prevSlide: prevSlide
+                prevSlide: prevSlide,
+                updatePosition: updatePosition,
+                startAutoPlay: startAutoPlay,
+                stopAutoPlay: stopAutoPlay
             };
         })();
 
