@@ -818,16 +818,7 @@
                 e.preventDefault();
                 const targetSection = document.querySelector(target.getAttribute('href'));
                 if (targetSection) {
-                    // 获取固定导航栏的高度（仅nav部分，确保跳转位置一致）
-                    const navbarHeight = document.getElementById('navbar').offsetHeight;
-                    // 计算目标位置，考虑导航栏高度
-                    const targetPosition = targetSection.offsetTop - navbarHeight;
-                    // 平滑滚动到目标位置
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    // 关闭移动端菜单
+                    // 先关闭移动端菜单，确保navbar高度计算准确
                     if (!mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
                         mobileMenu.classList.remove('translate-y-0', 'opacity-100');
@@ -836,6 +827,19 @@
                         icon.classList.remove('fa-times');
                         icon.classList.add('fa-bars');
                     }
+                    
+                    // 使用setTimeout确保DOM更新后再计算跳转位置
+                    setTimeout(() => {
+                        // 获取固定导航栏的高度（仅nav部分，确保跳转位置一致）
+                        const navbarHeight = document.getElementById('navbar').offsetHeight;
+                        // 计算目标位置，考虑导航栏高度
+                        const targetPosition = targetSection.offsetTop - navbarHeight;
+                        // 平滑滚动到目标位置
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 10);
                 }
             }
 
