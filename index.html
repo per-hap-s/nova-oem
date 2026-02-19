@@ -274,7 +274,7 @@
                     <!-- 轮播容器 -->
                     <div class="relative" id="reviewsCarousel" tabindex="0" role="region" aria-label="客户评价轮播">
                         <!-- 轮播视口 - 无限滚动容器 -->
-                        <div class="overflow-y-auto h-80 reviews-scroll-container" id="reviewsViewport">
+                        <div class="h-80 reviews-scroll-container" id="reviewsViewport" style="overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch;">
                             <!-- 内容容器 - 由JavaScript动态填充 -->
                             <div id="reviewsContent"></div>
                         </div>
@@ -1538,9 +1538,12 @@
                         return;
                     }
                     
-                    // 滚动
+                    // 滚动 - 使用scrollTo方法在移动端更可靠
                     const oldScrollTop = elements.viewport.scrollTop;
-                    elements.viewport.scrollTop += CONFIG.AUTO_SCROLL_SPEED;
+                    elements.viewport.scrollTo({
+                        top: oldScrollTop + CONFIG.AUTO_SCROLL_SPEED,
+                        behavior: 'instant'
+                    });
                     const newScrollTop = elements.viewport.scrollTop;
                     
                     if (frameCount <= 10) {
