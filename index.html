@@ -1146,18 +1146,13 @@
              * @constant {Object}
              */
             const CONFIG = {
-                // PC端和移动端使用不同速度
-                AUTO_SCROLL_SPEED: isTouchDevice() ? 0.8 : 0.6,       // 移动端0.8，PC端0.6（都降低速度）
+                // 使用固定速度，不再动态检测（避免函数调用时序问题）
+                AUTO_SCROLL_SPEED: 0.7,       // 固定速度0.7像素/帧
                 LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
                 LOAD_THRESHOLD: 150,          // 触发加载的阈值（像素）
                 MAX_NODES: 20,                // 最大DOM节点数量
                 RECYCLE_THRESHOLD: 300        // 回收阈值（距离视口多远才回收）
             };
-            
-            // 再次定义isTouchDevice用于bindEvents（因为上面的定义在CONFIG中已使用）
-            function isTouchDeviceForEvents() {
-                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            }
 
             /**
              * 评价数据池
@@ -1576,7 +1571,7 @@
             function bindEvents() {
                 if (!elements.carousel || !elements.viewport) return;
 
-                const isMobile = isTouchDeviceForEvents();
+                const isMobile = isTouchDevice();
 
                 // 只在PC端绑定鼠标事件
                 if (!isMobile) {
