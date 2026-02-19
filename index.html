@@ -695,11 +695,7 @@
                 currentIndex: 0,             // 当前数据索引（向右加载用）
                 prevIndex: 0,                // 上一个数据索引（向左加载用）
                 loadedCount: 0,              // 已加载计数
-                touchStartX: 0,              // 触摸起始X坐标
-                touchStartScrollLeft: 0,     // 触摸起始滚动位置
-                isDragging: false,           // 是否正在拖动
-                currentTouchX: 0,            // 当前触摸X坐标
-                rafId: null                  // 触摸滚动的requestAnimationFrame ID
+                isDragging: false            // 是否正在拖动
             };
 
             /**
@@ -986,85 +982,29 @@
                 // 滚动事件
                 elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
 
-                // 移动端：触摸开始事件
-                elements.viewport.addEventListener('touchstart', (e) => {
+                // 移动端：触摸开始事件 - 只设置状态，使用原生滚动
+                elements.viewport.addEventListener('touchstart', () => {
                     state.isHovering = true;
                     state.isDragging = true;
-                    state.touchStartX = e.touches[0].clientX;
-                    state.currentTouchX = e.touches[0].clientX;
-                    state.touchStartScrollLeft = elements.viewport.scrollLeft;
                     stopAutoScroll();
                     
                     if (state.leaveTimeoutId) {
                         clearTimeout(state.leaveTimeoutId);
                         state.leaveTimeoutId = null;
                     }
-                    
-                    if (state.rafId) {
-                        cancelAnimationFrame(state.rafId);
-                        state.rafId = null;
-                    }
                 }, { passive: true });
-
-                // 移动端：触摸移动事件（使用requestAnimationFrame优化）
-                elements.viewport.addEventListener('touchmove', (e) => {
-                    if (!state.isDragging) return;
-                    
-                    // 阻止原生滚动，避免与自定义滚动冲突
-                    if (e.cancelable) {
-                        e.preventDefault();
-                    }
-                    
-                    state.currentTouchX = e.touches[0].clientX;
-                    
-                    if (!state.rafId) {
-                        state.rafId = requestAnimationFrame(() => {
-                            if (!state.isDragging || !elements.viewport) {
-                                state.rafId = null;
-                                return;
-                            }
-                            
-                            const diff = state.touchStartX - state.currentTouchX;
-                            const newScrollLeft = state.touchStartScrollLeft + diff;
-                            
-                            // 边界检查
-                            const maxScrollLeft = elements.viewport.scrollWidth - elements.viewport.clientWidth;
-                            const clampedScrollLeft = Math.max(0, Math.min(newScrollLeft, maxScrollLeft));
-                            
-                            // 设置滚动位置
-                            elements.viewport.scrollLeft = clampedScrollLeft;
-                            state.rafId = null;
-                        });
-                    }
-                }, { passive: false });
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {
-                    // 延迟重置状态，给动画帧时间完成
-                    setTimeout(() => {
-                        state.isDragging = false;
-                        state.isHovering = false;
-                        
-                        if (state.rafId) {
-                            cancelAnimationFrame(state.rafId);
-                            state.rafId = null;
-                        }
-                        
-                        handleUserLeave();
-                    }, 50);
+                    state.isDragging = false;
+                    state.isHovering = false;
+                    handleUserLeave();
                 }, { passive: true });
 
                 // 移动端：触摸取消事件
                 elements.viewport.addEventListener('touchcancel', () => {
-                    // 立即重置状态
                     state.isDragging = false;
                     state.isHovering = false;
-                    
-                    if (state.rafId) {
-                        cancelAnimationFrame(state.rafId);
-                        state.rafId = null;
-                    }
-                    
                     handleUserLeave();
                 }, { passive: true });
             }
@@ -1303,11 +1243,7 @@
                 prevIndex: 0,                // 上一个数据索引（向上加载用）
                 loadedCount: 0,              // 已加载计数
                 totalHeight: 0,              // 内容总高度（用于向上插入时调整滚动位置）
-                touchStartY: 0,              // 触摸起始Y坐标
-                touchStartScrollTop: 0,      // 触摸起始滚动位置
-                isDragging: false,           // 是否正在拖动
-                currentTouchY: 0,            // 当前触摸Y坐标
-                rafId: null                  // 触摸滚动的requestAnimationFrame ID
+                isDragging: false            // 是否正在拖动
             };
 
             /**
@@ -1624,85 +1560,29 @@
                 // 滚动事件
                 elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
 
-                // 移动端：触摸开始事件
-                elements.viewport.addEventListener('touchstart', (e) => {
+                // 移动端：触摸开始事件 - 只设置状态，使用原生滚动
+                elements.viewport.addEventListener('touchstart', () => {
                     state.isHovering = true;
                     state.isDragging = true;
-                    state.touchStartY = e.touches[0].clientY;
-                    state.currentTouchY = e.touches[0].clientY;
-                    state.touchStartScrollTop = elements.viewport.scrollTop;
                     stopAutoScroll();
                     
                     if (state.leaveTimeoutId) {
                         clearTimeout(state.leaveTimeoutId);
                         state.leaveTimeoutId = null;
                     }
-                    
-                    if (state.rafId) {
-                        cancelAnimationFrame(state.rafId);
-                        state.rafId = null;
-                    }
                 }, { passive: true });
-
-                // 移动端：触摸移动事件（使用requestAnimationFrame优化）
-                elements.viewport.addEventListener('touchmove', (e) => {
-                    if (!state.isDragging) return;
-                    
-                    // 阻止原生滚动，避免与自定义滚动冲突
-                    if (e.cancelable) {
-                        e.preventDefault();
-                    }
-                    
-                    state.currentTouchY = e.touches[0].clientY;
-                    
-                    if (!state.rafId) {
-                        state.rafId = requestAnimationFrame(() => {
-                            if (!state.isDragging || !elements.viewport) {
-                                state.rafId = null;
-                                return;
-                            }
-                            
-                            const diff = state.touchStartY - state.currentTouchY;
-                            const newScrollTop = state.touchStartScrollTop + diff;
-                            
-                            // 边界检查
-                            const maxScrollTop = elements.viewport.scrollHeight - elements.viewport.clientHeight;
-                            const clampedScrollTop = Math.max(0, Math.min(newScrollTop, maxScrollTop));
-                            
-                            // 设置滚动位置
-                            elements.viewport.scrollTop = clampedScrollTop;
-                            state.rafId = null;
-                        });
-                    }
-                }, { passive: false });
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {
-                    // 延迟重置状态，给动画帧时间完成
-                    setTimeout(() => {
-                        state.isDragging = false;
-                        state.isHovering = false;
-                        
-                        if (state.rafId) {
-                            cancelAnimationFrame(state.rafId);
-                            state.rafId = null;
-                        }
-                        
-                        handleUserLeave();
-                    }, 50);
+                    state.isDragging = false;
+                    state.isHovering = false;
+                    handleUserLeave();
                 }, { passive: true });
 
                 // 移动端：触摸取消事件
                 elements.viewport.addEventListener('touchcancel', () => {
-                    // 立即重置状态
                     state.isDragging = false;
                     state.isHovering = false;
-                    
-                    if (state.rafId) {
-                        cancelAnimationFrame(state.rafId);
-                        state.rafId = null;
-                    }
-                    
                     handleUserLeave();
                 }, { passive: true });
             }

@@ -123,7 +123,7 @@
     .cases-scroll-container {
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
-        touch-action: none;
+        touch-action: auto;
     }
     
     .case-card {
@@ -134,7 +134,7 @@
     }
     
     .review-card {
-        touch-action: none;
+        touch-action: auto;
     }
     
     /* 案例展示容器优化 */
