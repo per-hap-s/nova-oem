@@ -939,9 +939,16 @@
              * 处理滚动事件（用户手动滚动）
              */
             function handleScroll() {
-                // 自动滚动或拖动时不执行回收，避免闪动
-                if (state.isAutoScrolling || state.isDragging) return;
+                // 自动滚动时不执行任何操作
+                if (state.isAutoScrolling) return;
                 
+                // 拖动时只加载内容，不回收节点，避免闪动
+                if (state.isDragging) {
+                    checkAndLoadMore(false);
+                    return;
+                }
+                
+                // 非拖动时正常执行加载和回收
                 checkAndLoadMore(false);
                 recycleOffscreenNodes();
             }
@@ -1518,9 +1525,16 @@
              * 注意：自动滚动时也会触发此事件，需要检查状态避免冲突
              */
             function handleScroll() {
-                // 自动滚动或拖动时不执行回收，避免闪动
-                if (state.isAutoScrolling || state.isDragging) return;
+                // 自动滚动时不执行任何操作
+                if (state.isAutoScrolling) return;
                 
+                // 拖动时只加载内容，不回收节点，避免闪动
+                if (state.isDragging) {
+                    checkAndLoadMore(false);
+                    return;
+                }
+                
+                // 非拖动时正常执行加载和回收
                 checkAndLoadMore(false);
                 recycleOffscreenNodes();
             }
