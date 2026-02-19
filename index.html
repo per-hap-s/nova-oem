@@ -603,7 +603,7 @@
              * @constant {Object}
              */
             const CONFIG = {
-                AUTO_SCROLL_SPEED: 0.8,       // 自动滚动速度（像素/帧）
+                AUTO_SCROLL_SPEED: 2.0,       // 自动滚动速度（像素/帧）- 增大速度使效果明显
                 LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
                 LOAD_THRESHOLD: 400,          // 触发加载的阈值（像素）
                 MAX_NODES: 15,                // 最大DOM节点数量
@@ -894,7 +894,13 @@
                 /**
                  * 自动滚动动画帧
                  */
+                let frameCount = 0;
                 function animate() {
+                    frameCount++;
+                    if (frameCount <= 5 || frameCount % 60 === 0) {
+                        console.log('[案例展示] animate frame:', frameCount, 'isDragging:', state.isDragging);
+                    }
+                    
                     // 只检查isDragging
                     if (state.isDragging) {
                         state.isAutoScrolling = false;
@@ -910,6 +916,7 @@
                     
                     // 滚动
                     elements.viewport.scrollLeft += CONFIG.AUTO_SCROLL_SPEED;
+                    console.log('[案例展示] Scrolling to:', elements.viewport.scrollLeft);
                     
                     // 检查是否需要加载更多（自动滚动只向右加载）
                     checkAndLoadMore(true);
@@ -1130,7 +1137,7 @@
              * @constant {Object}
              */
             const CONFIG = {
-                AUTO_SCROLL_SPEED: 0.6,       // 自动滚动速度（像素/帧）
+                AUTO_SCROLL_SPEED: 1.5,       // 自动滚动速度（像素/帧）- 增大速度使效果明显
                 LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
                 LOAD_THRESHOLD: 150,          // 触发加载的阈值（像素）
                 MAX_NODES: 20,                // 最大DOM节点数量
