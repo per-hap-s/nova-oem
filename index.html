@@ -1040,19 +1040,23 @@
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {
-                    state.isDragging = false;
-                    state.isHovering = false;
-                    
-                    if (state.rafId) {
-                        cancelAnimationFrame(state.rafId);
-                        state.rafId = null;
-                    }
-                    
-                    handleUserLeave();
+                    // 延迟重置状态，给动画帧时间完成
+                    setTimeout(() => {
+                        state.isDragging = false;
+                        state.isHovering = false;
+                        
+                        if (state.rafId) {
+                            cancelAnimationFrame(state.rafId);
+                            state.rafId = null;
+                        }
+                        
+                        handleUserLeave();
+                    }, 50);
                 }, { passive: true });
 
                 // 移动端：触摸取消事件
                 elements.viewport.addEventListener('touchcancel', () => {
+                    // 立即重置状态
                     state.isDragging = false;
                     state.isHovering = false;
                     
@@ -1063,6 +1067,24 @@
                     
                     handleUserLeave();
                 }, { passive: true });
+            }
+
+            /**
+             * 重置所有状态，确保自动轮播能正常启动
+             */
+            function resetAllStates() {
+                state.isHovering = false;
+                state.isDragging = false;
+                
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                    state.leaveTimeoutId = null;
+                }
+                
+                if (state.rafId) {
+                    cancelAnimationFrame(state.rafId);
+                    state.rafId = null;
+                }
             }
 
             /**
@@ -1077,8 +1099,22 @@
                 
                 bindEvents();
                 
-                // 启动自动滚动
-                startAutoScroll();
+                // 添加页面可见性监听
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') {
+                        resetAllStates();
+                        startAutoScroll();
+                    } else {
+                        stopAutoScroll();
+                        resetAllStates();
+                    }
+                });
+                
+                // 延迟启动自动滚动，确保DOM完全加载
+                setTimeout(() => {
+                    resetAllStates();
+                    startAutoScroll();
+                }, 1000);
             }
 
             /**
@@ -1642,19 +1678,23 @@
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {
-                    state.isDragging = false;
-                    state.isHovering = false;
-                    
-                    if (state.rafId) {
-                        cancelAnimationFrame(state.rafId);
-                        state.rafId = null;
-                    }
-                    
-                    handleUserLeave();
+                    // 延迟重置状态，给动画帧时间完成
+                    setTimeout(() => {
+                        state.isDragging = false;
+                        state.isHovering = false;
+                        
+                        if (state.rafId) {
+                            cancelAnimationFrame(state.rafId);
+                            state.rafId = null;
+                        }
+                        
+                        handleUserLeave();
+                    }, 50);
                 }, { passive: true });
 
                 // 移动端：触摸取消事件
                 elements.viewport.addEventListener('touchcancel', () => {
+                    // 立即重置状态
                     state.isDragging = false;
                     state.isHovering = false;
                     
@@ -1665,6 +1705,24 @@
                     
                     handleUserLeave();
                 }, { passive: true });
+            }
+
+            /**
+             * 重置所有状态，确保自动轮播能正常启动
+             */
+            function resetAllStates() {
+                state.isHovering = false;
+                state.isDragging = false;
+                
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                    state.leaveTimeoutId = null;
+                }
+                
+                if (state.rafId) {
+                    cancelAnimationFrame(state.rafId);
+                    state.rafId = null;
+                }
             }
 
             /**
@@ -1680,8 +1738,20 @@
                 // 绑定事件
                 bindEvents();
                 
-                // 延迟启动自动滚动
+                // 添加页面可见性监听
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') {
+                        resetAllStates();
+                        startAutoScroll();
+                    } else {
+                        stopAutoScroll();
+                        resetAllStates();
+                    }
+                });
+                
+                // 延迟启动自动滚动，确保DOM完全加载
                 setTimeout(() => {
+                    resetAllStates();
                     startAutoScroll();
                 }, 1500);
             }
