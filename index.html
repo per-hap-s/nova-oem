@@ -1509,15 +1509,23 @@
                 /**
                  * 自动滚动动画帧
                  */
+                let frameCount = 0;
                 function animate() {
+                    frameCount++;
+                    if (frameCount <= 5 || frameCount % 60 === 0) {
+                        console.log('[评价] animate frame:', frameCount, 'isDragging:', state.isDragging, 'scrollTop:', elements.viewport ? elements.viewport.scrollTop : 'no viewport');
+                    }
+                    
                     // 只检查isDragging
                     if (state.isDragging) {
                         state.isAutoScrolling = false;
+                        console.log('[评价] animate stopped - isDragging');
                         return;
                     }
                     
                     if (!elements.viewport) {
                         state.isAutoScrolling = false;
+                        console.log('[评价] animate stopped - no viewport');
                         return;
                     }
                     
