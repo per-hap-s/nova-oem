@@ -1010,6 +1010,11 @@
                 elements.viewport.addEventListener('touchmove', (e) => {
                     if (!state.isDragging) return;
                     
+                    // 阻止原生滚动，避免与自定义滚动冲突
+                    if (e.cancelable) {
+                        e.preventDefault();
+                    }
+                    
                     state.currentTouchX = e.touches[0].clientX;
                     
                     if (!state.rafId) {
@@ -1031,7 +1036,7 @@
                             state.rafId = null;
                         });
                     }
-                }, { passive: true });
+                }, { passive: false });
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {
@@ -1607,6 +1612,11 @@
                 elements.viewport.addEventListener('touchmove', (e) => {
                     if (!state.isDragging) return;
                     
+                    // 阻止原生滚动，避免与自定义滚动冲突
+                    if (e.cancelable) {
+                        e.preventDefault();
+                    }
+                    
                     state.currentTouchY = e.touches[0].clientY;
                     
                     if (!state.rafId) {
@@ -1628,7 +1638,7 @@
                             state.rafId = null;
                         });
                     }
-                }, { passive: true });
+                }, { passive: false });
 
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {

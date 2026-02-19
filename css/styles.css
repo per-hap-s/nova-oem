@@ -93,12 +93,14 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
-    overflow-y: hidden;
-    overflow-x: auto;
+    overflow-y: hidden !important;
+    overflow-x: auto !important;
     overscroll-behavior: contain;
     width: 100%;
+    max-width: 100%;
     box-sizing: border-box;
     padding: 0 1rem;
+    margin: 0;
 }
 
 .cases-scroll-container::-webkit-scrollbar {
@@ -121,31 +123,37 @@
     .cases-scroll-container {
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
-        touch-action: pan-y pan-x;
+        touch-action: none;
     }
     
     .case-card {
-        min-width: 280px;
-        max-width: 300px;
-        flex-shrink: 0;
+        width: 280px !important;
+        min-width: 280px !important;
+        max-width: 280px !important;
+        flex-shrink: 0 !important;
     }
     
     .review-card {
-        touch-action: pan-y;
+        touch-action: none;
     }
     
     /* 案例展示容器优化 */
     #casesCarousel {
-        width: 100%;
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
     }
     
     /* 确保案例内容容器正确计算宽度 */
     #casesContent {
-        box-sizing: border-box;
-        padding-right: 1rem;
+        box-sizing: border-box !important;
+        padding-right: 1rem !important;
+        width: max-content !important;
+        display: flex !important;
+        gap: 1.5rem !important;
     }
 }
 
