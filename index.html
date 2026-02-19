@@ -881,10 +881,15 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
+                console.log('[案例展示] startAutoScroll called, isDragging:', state.isDragging, 'isAutoScrolling:', state.isAutoScrolling);
                 // 只检查isDragging和isAutoScrolling，不检查isHovering
-                if (state.isDragging || state.isAutoScrolling) return;
+                if (state.isDragging || state.isAutoScrolling) {
+                    console.log('[案例展示] startAutoScroll blocked');
+                    return;
+                }
                 
                 state.isAutoScrolling = true;
+                console.log('[案例展示] Auto scroll started');
                 
                 /**
                  * 自动滚动动画帧
@@ -893,11 +898,13 @@
                     // 只检查isDragging
                     if (state.isDragging) {
                         state.isAutoScrolling = false;
+                        console.log('[案例展示] Animation stopped - isDragging');
                         return;
                     }
                     
                     if (!elements.viewport) {
                         state.isAutoScrolling = false;
+                        console.log('[案例展示] Animation stopped - no viewport');
                         return;
                     }
                     
@@ -970,11 +977,14 @@
                 if (!elements.carousel || !elements.viewport) return;
 
                 const isMobile = isTouchDevice();
+                console.log('[案例展示] bindEvents - isTouchDevice:', isMobile);
 
                 // 只在PC端绑定鼠标事件
                 if (!isMobile) {
+                    console.log('[案例展示] Binding PC mouse events');
                     // PC端：鼠标进入事件
                     elements.carousel.addEventListener('mouseenter', () => {
+                        console.log('[案例展示] mouseenter triggered');
                         state.isHovering = true;
                         elements.carousel.classList.add('is-hovering');
                         stopAutoScroll();
@@ -987,6 +997,7 @@
 
                     // PC端：鼠标离开事件
                     elements.carousel.addEventListener('mouseleave', () => {
+                        console.log('[案例展示] mouseleave triggered');
                         state.isHovering = false;
                         elements.carousel.classList.remove('is-hovering');
                         handleUserLeave();
@@ -1006,8 +1017,10 @@
 
                 // 只在移动端绑定触摸事件
                 if (isMobile) {
+                    console.log('[案例展示] Binding mobile touch events');
                     // 移动端：触摸开始事件
                     elements.viewport.addEventListener('touchstart', () => {
+                        console.log('[案例展示] touchstart triggered');
                         state.isDragging = true;
                         stopAutoScroll();
                         
@@ -1019,12 +1032,14 @@
 
                     // 移动端：触摸结束事件
                     elements.viewport.addEventListener('touchend', () => {
+                        console.log('[案例展示] touchend triggered');
                         state.isDragging = false;
                         handleUserLeave();
                     }, { passive: true });
 
                     // 移动端：触摸取消事件
                     elements.viewport.addEventListener('touchcancel', () => {
+                        console.log('[案例展示] touchcancel triggered');
                         state.isDragging = false;
                         handleUserLeave();
                     }, { passive: true });
