@@ -881,12 +881,8 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
-                // 移动端不检查isHovering，只检查isDragging
-                const shouldNotStart = isMobileDevice() 
-                    ? (state.isDragging || state.isAutoScrolling)
-                    : (state.isHovering || state.isAutoScrolling);
-                
-                if (shouldNotStart) return;
+                // 只检查isDragging和isAutoScrolling，不检查isHovering
+                if (state.isDragging || state.isAutoScrolling) return;
                 
                 state.isAutoScrolling = true;
                 
@@ -894,12 +890,8 @@
                  * 自动滚动动画帧
                  */
                 function animate() {
-                    // 移动端只检查isDragging
-                    const shouldStop = isMobileDevice() 
-                        ? state.isDragging 
-                        : state.isHovering;
-                    
-                    if (shouldStop) {
+                    // 只检查isDragging
+                    if (state.isDragging) {
                         state.isAutoScrolling = false;
                         return;
                     }
@@ -1478,12 +1470,8 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
-                // 移动端不检查isHovering，只检查isDragging
-                const shouldNotStart = isMobileDevice() 
-                    ? (state.isDragging || state.isAutoScrolling)
-                    : (state.isHovering || state.isAutoScrolling);
-                
-                if (shouldNotStart) return;
+                // 只检查isDragging和isAutoScrolling，不检查isHovering
+                if (state.isDragging || state.isAutoScrolling) return;
                 
                 state.isAutoScrolling = true;
                 
@@ -1491,12 +1479,8 @@
                  * 自动滚动动画帧
                  */
                 function animate() {
-                    // 移动端只检查isDragging
-                    const shouldStop = isMobileDevice() 
-                        ? state.isDragging 
-                        : state.isHovering;
-                    
-                    if (shouldStop) {
+                    // 只检查isDragging
+                    if (state.isDragging) {
                         state.isAutoScrolling = false;
                         return;
                     }
