@@ -979,14 +979,6 @@
             }
 
             /**
-             * 检测是否为触摸设备（移动端）
-             * @returns {boolean} 是否为触摸设备
-             */
-            function isTouchDevice() {
-                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-            }
-
-            /**
              * 绑定事件监听器
              */
             function bindEvents() {
@@ -1140,6 +1132,14 @@
          */
         const ReviewsInfiniteScrollModule = (function() {
             'use strict';
+
+            /**
+             * 检测是否为触摸设备（移动端）
+             * @returns {boolean} 是否为触摸设备
+             */
+            function isTouchDevice() {
+                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            }
 
             /**
              * 配置参数
