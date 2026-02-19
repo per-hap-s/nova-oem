@@ -1421,7 +1421,7 @@
             }
 
             /**
-             * 检查并加载更多内容（双向）
+             * 检查并加载更多内容（只向下加载，避免首次滑动闪动）
              * @param {boolean} isAuto - 是否为自动滚动调用
              */
             function checkAndLoadMore(isAuto) {
@@ -1435,47 +1435,27 @@
                     appendReview();
                 }
                 
-                // 只在用户手动滚动时向上加载（自动滚动不需要）
-                if (!isAuto && scrollTop < CONFIG.LOAD_THRESHOLD) {
-                    prependReview();
-                }
+                // 注意：移除向上加载逻辑，避免首次滑动时闪动
+                // 真实手机上向上滑动时不需要无限加载历史内容
             }
 
             /**
-             * 回收远离视口的DOM节点（双向）
+             * 回收远离视口的DOM节点（只回收底部，避免顶部回收导致闪动）
              */
             function recycleOffscreenNodes() {
                 if (!elements.viewport || !elements.content) return;
                 
                 const { scrollTop, clientHeight } = elements.viewport;
-                const visibleTop = scrollTop - CONFIG.RECYCLE_THRESHOLD;
                 const visibleBottom = scrollTop + clientHeight + CONFIG.RECYCLE_THRESHOLD;
                 
                 const nodes = elements.content.querySelectorAll('.review-card');
                 let totalRemoved = 0;
-                let totalHeightRemoved = 0;
                 
-                // 从顶部回收远离视口的节点
-                for (let i = 0; i < nodes.length && totalRemoved < 5; i++) {
-                    const node = nodes[i];
+                // 只从底部回收远离视口的节点，避免顶部回收导致滚动位置变化
+                for (let i = nodes.length - 1; i >= 0 && totalRemoved < 5; i--) {
                     if (nodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
                     
-                    const nodeBottom = node.offsetTop + node.offsetHeight;
-                    if (nodeBottom < visibleTop) {
-                        totalHeightRemoved += node.offsetHeight;
-                        node.remove();
-                        totalRemoved++;
-                    } else {
-                        break;
-                    }
-                }
-                
-                // 从底部回收远离视口的节点
-                const remainingNodes = elements.content.querySelectorAll('.review-card');
-                for (let i = remainingNodes.length - 1; i >= 0 && totalRemoved < 5; i--) {
-                    if (remainingNodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
-                    
-                    const node = remainingNodes[i];
+                    const node = nodes[i];
                     const nodeTop = node.offsetTop;
                     if (nodeTop > visibleBottom) {
                         node.remove();
@@ -1485,10 +1465,7 @@
                     }
                 }
                 
-                // 调整滚动位置（同步执行，避免闪动）
-                if (totalHeightRemoved > 0) {
-                    elements.viewport.scrollTop = Math.max(0, scrollTop - totalHeightRemoved);
-                }
+                // 注意：不移除顶部节点，避免滚动位置调整导致闪动
             }
 
             /**
