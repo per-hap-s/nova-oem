@@ -1487,10 +1487,21 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
+                console.log('[评价] startAutoScroll called, isDragging:', state.isDragging, 'isAutoScrolling:', state.isAutoScrolling, 'viewport exists:', !!elements.viewport);
+                
                 // 只检查isDragging和isAutoScrolling，不检查isHovering
-                if (state.isDragging || state.isAutoScrolling) return;
+                if (state.isDragging || state.isAutoScrolling) {
+                    console.log('[评价] startAutoScroll blocked');
+                    return;
+                }
+                
+                if (!elements.viewport) {
+                    console.log('[评价] No viewport, cannot start');
+                    return;
+                }
                 
                 state.isAutoScrolling = true;
+                console.log('[评价] Auto scroll started');
                 
                 /**
                  * 自动滚动动画帧
@@ -1499,11 +1510,13 @@
                     // 只检查isDragging
                     if (state.isDragging) {
                         state.isAutoScrolling = false;
+                        console.log('[评价] Animation stopped - isDragging');
                         return;
                     }
                     
                     if (!elements.viewport) {
                         state.isAutoScrolling = false;
+                        console.log('[评价] Animation stopped - no viewport');
                         return;
                     }
                     
@@ -1512,9 +1525,6 @@
                     
                     // 检查是否需要加载更多（自动滚动只向下加载）
                     checkAndLoadMore(true);
-                    
-                    // 注意：自动滚动时不回收节点，避免闪动
-                    // 节点回收只在用户手动滚动时触发
                     
                     state.animationFrameId = requestAnimationFrame(animate);
                 }
