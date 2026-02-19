@@ -1490,6 +1490,12 @@
                 
                 // 设置prevIndex为当前index，这样向上滚动时从当前最后一条的前一条开始
                 state.prevIndex = state.currentIndex;
+                
+                // 重要：初始化后将滚动位置重置为顶部
+                if (elements.viewport) {
+                    elements.viewport.scrollTop = 0;
+                    console.log('[评价] initContent: scrollTop reset to 0');
+                }
             }
 
             /**
@@ -1513,7 +1519,10 @@
                 function animate() {
                     frameCount++;
                     if (frameCount <= 5 || frameCount % 60 === 0) {
-                        console.log('[评价] animate frame:', frameCount, 'isDragging:', state.isDragging, 'scrollTop:', elements.viewport ? elements.viewport.scrollTop : 'no viewport');
+                        const vh = elements.viewport ? elements.viewport.scrollHeight : 0;
+                        const ch = elements.viewport ? elements.viewport.clientHeight : 0;
+                        const st = elements.viewport ? elements.viewport.scrollTop : 0;
+                        console.log('[评价] animate frame:', frameCount, 'isDragging:', state.isDragging, 'scrollTop:', st, 'scrollHeight:', vh, 'clientHeight:', ch, 'maxScroll:', vh - ch);
                     }
                     
                     // 只检查isDragging
