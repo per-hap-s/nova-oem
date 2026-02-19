@@ -982,9 +982,14 @@
              * 绑定事件监听器
              */
             function bindEvents() {
-                if (!elements.carousel || !elements.viewport) return;
+                console.log('[评价] bindEvents called');
+                if (!elements.carousel || !elements.viewport) {
+                    console.error('[评价] bindEvents: missing elements');
+                    return;
+                }
 
                 const isMobile = isTouchDevice();
+                console.log('[评价] isMobile:', isMobile, 'ontouchstart:', 'ontouchstart' in window, 'maxTouchPoints:', navigator.maxTouchPoints);
                 console.log('[案例展示] bindEvents - isTouchDevice:', isMobile);
 
                 // 只在PC端绑定鼠标事件
@@ -1574,12 +1579,18 @@
              * 绑定事件监听器
              */
             function bindEvents() {
-                if (!elements.carousel || !elements.viewport) return;
+                console.log('[评价] bindEvents called');
+                if (!elements.carousel || !elements.viewport) {
+                    console.error('[评价] bindEvents: missing elements');
+                    return;
+                }
 
                 const isMobile = isTouchDevice();
+                console.log('[评价] isMobile:', isMobile, 'ontouchstart:', 'ontouchstart' in window, 'maxTouchPoints:', navigator.maxTouchPoints);
 
                 // 只在PC端绑定鼠标事件
                 if (!isMobile) {
+                    console.log('[评价] Binding PC mouse events');
                     // PC端：鼠标进入事件
                     elements.carousel.addEventListener('mouseenter', () => {
                         state.isHovering = true;
@@ -1612,8 +1623,10 @@
 
                 // 只在移动端绑定触摸事件
                 if (isMobile) {
+                    console.log('[评价] Binding mobile touch events');
                     // 移动端：触摸开始事件
                     elements.viewport.addEventListener('touchstart', () => {
+                        console.log('[评价] touchstart');
                         state.isDragging = true;
                         stopAutoScroll();
                         
@@ -1625,16 +1638,20 @@
 
                     // 移动端：触摸结束事件
                     elements.viewport.addEventListener('touchend', () => {
+                        console.log('[评价] touchend');
                         state.isDragging = false;
                         handleUserLeave();
                     }, { passive: true });
 
                     // 移动端：触摸取消事件
                     elements.viewport.addEventListener('touchcancel', () => {
+                        console.log('[评价] touchcancel');
                         state.isDragging = false;
                         handleUserLeave();
                     }, { passive: true });
                 }
+                
+                console.log('[评价] bindEvents completed');
             }
 
             /**
