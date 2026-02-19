@@ -881,7 +881,12 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
-                if (state.isHovering || state.isAutoScrolling) return;
+                // 移动端不检查isHovering，只检查isDragging
+                const shouldNotStart = isMobileDevice() 
+                    ? (state.isDragging || state.isAutoScrolling)
+                    : (state.isHovering || state.isAutoScrolling);
+                
+                if (shouldNotStart) return;
                 
                 state.isAutoScrolling = true;
                 
@@ -889,7 +894,12 @@
                  * 自动滚动动画帧
                  */
                 function animate() {
-                    if (state.isHovering) {
+                    // 移动端只检查isDragging
+                    const shouldStop = isMobileDevice() 
+                        ? state.isDragging 
+                        : state.isHovering;
+                    
+                    if (shouldStop) {
                         state.isAutoScrolling = false;
                         return;
                     }
@@ -954,6 +964,14 @@
             }
 
             /**
+             * 检测是否为移动设备
+             * @returns {boolean} 是否为移动设备
+             */
+            function isMobileDevice() {
+                return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            }
+
+            /**
              * 绑定事件监听器
              */
             function bindEvents() {
@@ -989,9 +1007,8 @@
                 // 滚动事件
                 elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
 
-                // 移动端：触摸开始事件 - 只设置状态，使用原生滚动
+                // 移动端：触摸开始事件 - 只设置isDragging，不设置isHovering
                 elements.viewport.addEventListener('touchstart', () => {
-                    state.isHovering = true;
                     state.isDragging = true;
                     stopAutoScroll();
                     
@@ -1004,14 +1021,12 @@
                 // 移动端：触摸结束事件
                 elements.viewport.addEventListener('touchend', () => {
                     state.isDragging = false;
-                    state.isHovering = false;
                     handleUserLeave();
                 }, { passive: true });
 
                 // 移动端：触摸取消事件
                 elements.viewport.addEventListener('touchcancel', () => {
                     state.isDragging = false;
-                    state.isHovering = false;
                     handleUserLeave();
                 }, { passive: true });
             }
@@ -1463,7 +1478,12 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
-                if (state.isHovering || state.isAutoScrolling) return;
+                // 移动端不检查isHovering，只检查isDragging
+                const shouldNotStart = isMobileDevice() 
+                    ? (state.isDragging || state.isAutoScrolling)
+                    : (state.isHovering || state.isAutoScrolling);
+                
+                if (shouldNotStart) return;
                 
                 state.isAutoScrolling = true;
                 
@@ -1471,7 +1491,12 @@
                  * 自动滚动动画帧
                  */
                 function animate() {
-                    if (state.isHovering) {
+                    // 移动端只检查isDragging
+                    const shouldStop = isMobileDevice() 
+                        ? state.isDragging 
+                        : state.isHovering;
+                    
+                    if (shouldStop) {
                         state.isAutoScrolling = false;
                         return;
                     }
