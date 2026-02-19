@@ -1703,12 +1703,25 @@
             };
         })();
 
-        // 初始化客户评价无限滚动模块
-        ReviewsInfiniteScrollModule.init({
-            carousel: document.getElementById('reviewsCarousel'),
-            viewport: document.getElementById('reviewsViewport'),
-            content: document.getElementById('reviewsContent')
-        });
+        // 初始化客户评价无限滚动模块 - 确保DOM加载完成后执行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('[评价] DOMContentLoaded - initializing module');
+                ReviewsInfiniteScrollModule.init({
+                    carousel: document.getElementById('reviewsCarousel'),
+                    viewport: document.getElementById('reviewsViewport'),
+                    content: document.getElementById('reviewsContent')
+                });
+            });
+        } else {
+            // DOM已经加载完成
+            console.log('[评价] DOM already loaded - initializing module immediately');
+            ReviewsInfiniteScrollModule.init({
+                carousel: document.getElementById('reviewsCarousel'),
+                viewport: document.getElementById('reviewsViewport'),
+                content: document.getElementById('reviewsContent')
+            });
+        }
 
         // 初始化地图
         // ========== 地图模块 ==========
