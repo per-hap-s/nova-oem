@@ -1004,17 +1004,17 @@
                     const diff = state.touchStartX - touchX;
                     const newScrollLeft = state.touchStartScrollLeft + diff;
                     
+                    // 完全阻止浏览器默认滚动行为，完全手动控制滚动
+                    if (e.cancelable) {
+                        e.preventDefault();
+                    }
+                    
                     // 边界检查
                     const maxScrollLeft = elements.viewport.scrollWidth - elements.viewport.clientWidth;
                     const clampedScrollLeft = Math.max(0, Math.min(newScrollLeft, maxScrollLeft));
                     
-                    // 如果滚动到边界，阻止默认行为
-                    if (clampedScrollLeft <= 0 || clampedScrollLeft >= maxScrollLeft) {
-                        // 允许一定的弹性滚动，但限制范围
-                        if (Math.abs(diff) > 50 && e.cancelable) {
-                            e.preventDefault();
-                        }
-                    }
+                    // 设置滚动位置
+                    elements.viewport.scrollLeft = clampedScrollLeft;
                 }, { passive: false });
 
                 // 移动端：触摸结束事件
@@ -1565,17 +1565,17 @@
                     const diff = state.touchStartY - touchY;
                     const newScrollTop = state.touchStartScrollTop + diff;
                     
+                    // 完全阻止浏览器默认滚动行为，完全手动控制滚动
+                    if (e.cancelable) {
+                        e.preventDefault();
+                    }
+                    
                     // 边界检查
                     const maxScrollTop = elements.viewport.scrollHeight - elements.viewport.clientHeight;
                     const clampedScrollTop = Math.max(0, Math.min(newScrollTop, maxScrollTop));
                     
-                    // 如果滚动到边界，阻止默认行为
-                    if (clampedScrollTop <= 0 || clampedScrollTop >= maxScrollTop) {
-                        // 允许一定的弹性滚动，但限制范围
-                        if (Math.abs(diff) > 50 && e.cancelable) {
-                            e.preventDefault();
-                        }
-                    }
+                    // 设置滚动位置
+                    elements.viewport.scrollTop = clampedScrollTop;
                 }, { passive: false });
 
                 // 移动端：触摸结束事件

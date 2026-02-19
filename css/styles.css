@@ -3,6 +3,45 @@
  * 包含：地图弹窗样式、动画类、响应式优化、移动端触摸优化
  */
 
+/* ========== 案例展示修复 ========== */
+#cases {
+    overflow: hidden;
+}
+
+#cases .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#casesCarousel {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.cases-scroll-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0 1rem;
+    margin: 0 -1rem;
+    box-sizing: border-box;
+}
+
+#casesContent {
+    width: max-content;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0.5rem 0;
+}
+
+.case-card {
+    min-width: 280px;
+    max-width: calc(100vw - 4rem);
+    flex-shrink: 0;
+}
+
 /* ========== 地图弹窗样式 ========== */
 .custom-popup .leaflet-popup-content-wrapper {
     background: rgba(255, 255, 255, 0.5);

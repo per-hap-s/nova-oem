@@ -2,30 +2,31 @@
 
 ## 备份信息
 - **备份时间**: 2026-02-19
-- **备份版本**: v17
-- **备份内容**: 实现地图标签多语言动态切换功能
+- **备份版本**: v18
+- **备份内容**: 修复移动端触摸滚动异常和案例展示显示不全问题
 
 ## 更新内容
-1. **地图标签多语言支持**:
-   - 在所有语言文件中添加地图翻译键（map.factoryName, map.factoryAddress）
-   - 支持语言：简体中文、繁体中文、英语、泰语、日语、韩语
+1. **修复移动端触摸滚动异常问题**:
+   - 问题原因：触摸事件处理时，浏览器默认滚动行为与手动控制冲突
+   - 修复方案：在 touchmove 事件中完全阻止浏览器默认滚动行为，完全手动控制滚动位置
+   - 修复模块：用户评价模块和案例展示模块
+   - 修改内容：在 touchmove 事件中无条件调用 e.preventDefault()，然后手动设置 scrollTop/scrollLeft
 
-2. **地图模块重构**:
-   - 添加 `getMapTranslations()` 函数获取翻译文本
-   - 添加 `updateMapPopup()` 函数更新地图标签内容
-   - 将地图实例和标记实例存储为全局变量
+2. **修复案例展示显示不全问题**:
+   - 问题原因：容器宽度和边距设置不当导致案例左侧被截断
+   - 修复方案：添加专用的CSS样式修复
+   - 修改内容：
+     - 添加 #cases 容器 overflow: hidden
+     - 优化 .cases-scroll-container 的宽度和边距设置
+     - 添加负边距技巧确保内容完整显示
+     - 优化案例卡片的宽度设置
 
-3. **i18n模块更新**:
-   - 在 `updatePageTranslations()` 函数中添加地图标签更新逻辑
-   - 语言切换时自动更新地图标签内容
-
-4. **文件更新**:
-   - index.html: 重构地图模块，支持多语言
-   - js/i18n.js: 添加地图标签更新逻辑
-   - locales/*.json: 添加地图翻译键
+3. **文件更新**:
+   - index.html: 修复触摸事件处理逻辑
+   - css/styles.css: 添加案例展示显示修复样式
 
 ## 备份文件
-- geo-language.js.backup.20260219_v17
-- i18n.js.backup.20260219_v17
-- index.html.backup.20260219_v17
-- styles.css.backup.20260219_v17
+- geo-language.js.backup.20260219_v18
+- i18n.js.backup.20260219_v18
+- index.html.backup.20260219_v18
+- styles.css.backup.20260219_v18
