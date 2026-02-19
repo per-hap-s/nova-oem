@@ -1487,16 +1487,10 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
-                console.log('[评价] startAutoScroll called, isDragging:', state.isDragging, 'isAutoScrolling:', state.isAutoScrolling, 'viewport exists:', !!elements.viewport);
-                
+                console.log('[评价] startAutoScroll called, isDragging:', state.isDragging, 'isAutoScrolling:', state.isAutoScrolling);
                 // 只检查isDragging和isAutoScrolling，不检查isHovering
                 if (state.isDragging || state.isAutoScrolling) {
                     console.log('[评价] startAutoScroll blocked');
-                    return;
-                }
-                
-                if (!elements.viewport) {
-                    console.log('[评价] No viewport, cannot start');
                     return;
                 }
                 
@@ -1510,13 +1504,11 @@
                     // 只检查isDragging
                     if (state.isDragging) {
                         state.isAutoScrolling = false;
-                        console.log('[评价] Animation stopped - isDragging');
                         return;
                     }
                     
                     if (!elements.viewport) {
                         state.isAutoScrolling = false;
-                        console.log('[评价] Animation stopped - no viewport');
                         return;
                     }
                     
@@ -1525,6 +1517,9 @@
                     
                     // 检查是否需要加载更多（自动滚动只向下加载）
                     checkAndLoadMore(true);
+                    
+                    // 注意：自动滚动时不回收节点，避免闪动
+                    // 节点回收只在用户手动滚动时触发
                     
                     state.animationFrameId = requestAnimationFrame(animate);
                 }
@@ -1667,19 +1662,25 @@
             function init(domElements) {
                 console.log('[评价] init called');
                 elements = domElements;
-                console.log('[评价] elements set:', elements);
+                
+                // 检查DOM元素是否存在
+                if (!elements.carousel || !elements.viewport || !elements.content) {
+                    console.error('[评价] DOM elements missing:', elements);
+                    return;
+                }
+                console.log('[评价] DOM elements found');
                 
                 // 初始化内容（加载初始评价）
                 initContent(10);
-                console.log('[评价] content initialized');
+                console.log('[评价] Content initialized');
                 
                 // 绑定事件
                 bindEvents();
-                console.log('[评价] events bound');
+                console.log('[评价] Events bound');
                 
                 // 添加页面可见性监听
                 document.addEventListener('visibilitychange', () => {
-                    console.log('[评价] visibility changed:', document.visibilityState);
+                    console.log('[评价] visibilitychange:', document.visibilityState);
                     if (document.visibilityState === 'visible') {
                         resetAllStates();
                         startAutoScroll();
@@ -1690,9 +1691,8 @@
                 });
                 
                 // 延迟启动自动滚动，确保DOM完全加载
-                console.log('[评价] starting auto scroll in 1500ms');
                 setTimeout(() => {
-                    console.log('[评价] timeout triggered, starting auto scroll');
+                    console.log('[评价] Starting auto scroll after delay');
                     resetAllStates();
                     startAutoScroll();
                 }, 1500);
