@@ -599,11 +599,20 @@
             'use strict';
 
             /**
+             * 检测是否为触摸设备（移动端）
+             * @returns {boolean} 是否为触摸设备
+             */
+            function isTouchDevice() {
+                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            }
+
+            /**
              * 配置参数
              * @constant {Object}
              */
             const CONFIG = {
-                AUTO_SCROLL_SPEED: 2.0,       // 自动滚动速度（像素/帧）- 增大速度使效果明显
+                // PC端和移动端使用不同速度
+                AUTO_SCROLL_SPEED: isTouchDevice() ? 1.0 : 0.8,       // 移动端1.0，PC端0.8（都降低速度）
                 LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
                 LOAD_THRESHOLD: 400,          // 触发加载的阈值（像素）
                 MAX_NODES: 15,                // 最大DOM节点数量
@@ -1137,7 +1146,8 @@
              * @constant {Object}
              */
             const CONFIG = {
-                AUTO_SCROLL_SPEED: 1.5,       // 自动滚动速度（像素/帧）- 增大速度使效果明显
+                // PC端和移动端使用不同速度
+                AUTO_SCROLL_SPEED: isTouchDevice() ? 0.8 : 0.6,       // 移动端0.8，PC端0.6（都降低速度）
                 LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
                 LOAD_THRESHOLD: 150,          // 触发加载的阈值（像素）
                 MAX_NODES: 20,                // 最大DOM节点数量
