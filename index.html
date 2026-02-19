@@ -1538,12 +1538,9 @@
                         return;
                     }
                     
-                    // 滚动 - 使用scrollTo方法在移动端更可靠
+                    // 滚动 - 使用scrollBy方法在移动端更可靠
                     const oldScrollTop = elements.viewport.scrollTop;
-                    elements.viewport.scrollTo({
-                        top: oldScrollTop + CONFIG.AUTO_SCROLL_SPEED,
-                        behavior: 'instant'
-                    });
+                    elements.viewport.scrollBy(0, CONFIG.AUTO_SCROLL_SPEED);
                     const newScrollTop = elements.viewport.scrollTop;
                     
                     if (frameCount <= 10) {
