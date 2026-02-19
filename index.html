@@ -1539,7 +1539,13 @@
                     }
                     
                     // 滚动
+                    const oldScrollTop = elements.viewport.scrollTop;
                     elements.viewport.scrollTop += CONFIG.AUTO_SCROLL_SPEED;
+                    const newScrollTop = elements.viewport.scrollTop;
+                    
+                    if (frameCount <= 10) {
+                        console.log('[评价] scroll attempt:', 'old:', oldScrollTop, 'new:', newScrollTop, 'delta:', CONFIG.AUTO_SCROLL_SPEED, 'changed:', newScrollTop - oldScrollTop);
+                    }
                     
                     // 检查是否需要加载更多（自动滚动只向下加载）
                     checkAndLoadMore(true);
