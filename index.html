@@ -906,9 +906,7 @@
                 let frameCount = 0;
                 function animate() {
                     frameCount++;
-                    if (frameCount <= 5 || frameCount % 60 === 0) {
-                        console.log('[案例展示] animate frame:', frameCount, 'isDragging:', state.isDragging);
-                    }
+
                     
                     // 只检查isDragging
                     if (state.isDragging) {
@@ -925,7 +923,7 @@
                     
                     // 滚动
                     elements.viewport.scrollLeft += CONFIG.AUTO_SCROLL_SPEED;
-                    console.log('[案例展示] Scrolling to:', elements.viewport.scrollLeft);
+
                     
                     // 检查是否需要加载更多（自动滚动只向右加载）
                     checkAndLoadMore(true);
