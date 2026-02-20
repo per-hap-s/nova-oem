@@ -1564,12 +1564,21 @@
 
             /**
              * 处理滚动事件（用户手动滚动）
-             * 注意：使用 transform 方案时，scroll 事件不会触发
-             * 此函数保留用于兼容性，但不再执行任何操作
              */
             function handleScroll() {
-                // 使用 transform 方案时，scroll 事件不会触发
-                // 此函数保留用于兼容性
+                if (!elements.viewport || !elements.content) return;
+                
+                // 自动滚动时不处理
+                if (state.isAutoScrolling) return;
+                
+                const { scrollTop, scrollHeight, clientHeight } = elements.viewport;
+                
+                // 当接近底部时，加载更多内容
+                if (scrollHeight - scrollTop - clientHeight < clientHeight) {
+                    for (let i = 0; i < 5; i++) {
+                        appendReview();
+                    }
+                }
             }
 
             /**
@@ -1622,6 +1631,19 @@
                         if (state.leaveTimeoutId) {
                             clearTimeout(state.leaveTimeoutId);
                             state.leaveTimeoutId = null;
+                        }
+                    }, { passive: true });
+
+                    // 移动端：触摸移动事件
+                    elements.viewport.addEventListener('touchmove', () => {
+                        if (!state.isDragging || state.isAutoScrolling) return;
+                        
+                        const { scrollTop, scrollHeight, clientHeight } = elements.viewport;
+                        
+                        if (scrollHeight - scrollTop - clientHeight < clientHeight) {
+                            for (let i = 0; i < 5; i++) {
+                                appendReview();
+                            }
                         }
                     }, { passive: true });
 
