@@ -2,13 +2,13 @@
   "common": {
     "title": "NOVA Apparel OEM Factory - Small Batch Apparel Customization",
     "description": "NOVA Apparel OEM Factory specializes in small batch apparel OEM services with a minimum order of 100 pieces, serving customers in Taiwan, Thailand, Malaysia and other regions. We provide professional pattern making and OEM services with reliable quality and on-time delivery.",
-    "keywords": "Apparel OEM, Small Batch Customization, Taiwan Apparel OEM, Thailand Apparel OEM, Malaysia Apparel OEM, NOVA Apparel Factory",
+    "keywords": "Apparel OEM, Small Batch Production, Taiwan Apparel OEM, Thailand Apparel OEM, Malaysia Apparel OEM, NOVA Apparel Factory",
     "ogTitle": "NOVA Apparel OEM Factory - Small Batch Apparel Customization",
     "ogDescription": "NOVA Apparel OEM Factory specializes in small batch apparel OEM services with a minimum order of 100 pieces, serving customers in Taiwan, Thailand, Malaysia and other regions. We provide professional pattern making and OEM services with reliable quality and on-time delivery."
   },
   "nav": {
     "home": "Home",
-    "cases": "Case Showcase",
+    "cases": "Case Studies",
     "about": "About Us",
     "contact": "Contact Us"
   },
@@ -21,12 +21,12 @@
     "en": "English"
   },
   "hero": {
-    "title": "NOVA Apparel OEM - Minimum 100 Pieces",
-    "subtitle": "We focus on apparel customization services for customers in Taiwan, Thailand, Malaysia and other regions, providing professional pattern making and OEM services with reliable quality and on-time delivery.",
+    "title": "NOVA Apparel OEM - MOQ: 100 Pieces",
+    "subtitle": "We specialize in apparel customization services for customers in Taiwan, Thailand, Malaysia and other regions, offering professional pattern making and OEM services with reliable quality and on-time delivery.",
     "viewCases": "View Cases"
   },
   "advantages": {
-    "title": "Core Advantages",
+    "title": "Key Advantages",
     "advantage1": {
       "title": "Small Minimum Order Quantity",
       "desc": "We support a minimum order of 100 pieces to meet small batch customization needs"
@@ -41,7 +41,7 @@
     }
   },
   "trust": {
-    "title": "Trust Endorsement",
+    "title": "Customer Testimonials",
     "sampleTitle": "Pattern Making Samples",
     "sampleDesc": "Showcasing our pattern making quality with meticulous attention to detail and precise patterns"
   },
@@ -101,7 +101,7 @@
     }
   },
   "cases": {
-    "title": "Case Showcase",
+    "title": "Case Studies",
     "case1": {
       "title": "Indonesia Casual Wear Customization",
       "desc": "320 pieces of casual wear customization with comfortable and breathable fabric, suitable for the local climate and daily wear",
@@ -139,7 +139,7 @@
     "teamDesc": "NOVA Apparel Factory has over 5 years of specialized experience in apparel pattern making, focusing on batch apparel OEM production. We are familiar with apparel style requirements in different regions and can accurately realize our customers' design specifications.",
     "coopTitle": "Cooperation Model",
     "coopDesc": "We have established deep partnerships with reputable apparel factories, ensuring that orders with a minimum of 100 pieces are delivered on time with quality that meets customer requirements. You don't need to worry about production or delivery issues.",
-    "processTitle": "Service Process",
+    "processTitle": "Our Process",
     "process": {
       "step1": {
         "title": "Requirements Communication",
