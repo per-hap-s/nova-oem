@@ -1489,10 +1489,13 @@
                     }
                 }
                 
-                // 确保有足够的卡片
+                // 确保有足够的卡片（视口高度的3倍）
                 const totalHeight = getContentHeight();
-                if (totalHeight + state.translateY < viewportHeight * 2) {
-                    appendReview();
+                if (totalHeight + state.translateY < viewportHeight * 3) {
+                    // 添加多张卡片而不是1张
+                    for (let i = 0; i < 3; i++) {
+                        appendReview();
+                    }
                 }
             }
 
@@ -1665,7 +1668,7 @@
                 if (!elements.carousel || !elements.viewport || !elements.content) return;
                 
                 // 初始化内容（加载初始评价）
-                initContent(10);
+                initContent(15);
                 
                 // 绑定事件
                 bindEvents();
