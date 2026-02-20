@@ -1137,10 +1137,8 @@
          * 
          * @module ReviewsInfiniteScrollModule
          */
-        console.log('[评价] Module definition starting, document.readyState:', document.readyState);
         const ReviewsInfiniteScrollModule = (function() {
             'use strict';
-            console.log('[评价] Module IIFE executing');
 
             /**
              * 检测是否为触摸设备（移动端）
@@ -1155,12 +1153,8 @@
              * @constant {Object}
              */
             const CONFIG = {
-                // 使用固定速度，不再动态检测（避免函数调用时序问题）
                 AUTO_SCROLL_SPEED: 0.7,       // 固定速度0.7像素/帧
-                LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
-                LOAD_THRESHOLD: 150,          // 触发加载的阈值（像素）
-                MAX_NODES: 20,                // 最大DOM节点数量
-                RECYCLE_THRESHOLD: 300        // 回收阈值（距离视口多远才回收）
+                LEAVE_DELAY: 2000             // 用户离开后延迟启动自动滚动（毫秒）
             };
 
             /**
@@ -1426,54 +1420,6 @@
             }
 
             /**
-             * 检查并加载更多内容（只向下加载，避免首次滑动闪动）
-             * @param {boolean} isAuto - 是否为自动滚动调用
-             */
-            function checkAndLoadMore(isAuto) {
-                if (!elements.viewport || !elements.content) return;
-                
-                const { scrollTop, scrollHeight, clientHeight } = elements.viewport;
-                const scrollBottom = scrollTop + clientHeight;
-                
-                // 检测是否接近底部，向下加载更多
-                if (scrollHeight - scrollBottom < CONFIG.LOAD_THRESHOLD) {
-                    appendReview();
-                }
-                
-                // 注意：移除向上加载逻辑，避免首次滑动时闪动
-                // 真实手机上向上滑动时不需要无限加载历史内容
-            }
-
-            /**
-             * 回收远离视口的DOM节点（只回收底部，避免顶部回收导致闪动）
-             */
-            function recycleOffscreenNodes() {
-                if (!elements.viewport || !elements.content) return;
-                
-                const { scrollTop, clientHeight } = elements.viewport;
-                const visibleBottom = scrollTop + clientHeight + CONFIG.RECYCLE_THRESHOLD;
-                
-                const nodes = elements.content.querySelectorAll('.review-card');
-                let totalRemoved = 0;
-                
-                // 只从底部回收远离视口的节点，避免顶部回收导致滚动位置变化
-                for (let i = nodes.length - 1; i >= 0 && totalRemoved < 5; i--) {
-                    if (nodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
-                    
-                    const node = nodes[i];
-                    const nodeTop = node.offsetTop;
-                    if (nodeTop > visibleBottom) {
-                        node.remove();
-                        totalRemoved++;
-                    } else {
-                        break;
-                    }
-                }
-                
-                // 注意：不移除顶部节点，避免滚动位置调整导致闪动
-            }
-
-            /**
              * 初始化内容
              * @param {number} count - 初始加载数量
              */
@@ -1494,10 +1440,9 @@
                 // 设置prevIndex为当前index，这样向上滚动时从当前最后一条的前一条开始
                 state.prevIndex = state.currentIndex;
                 
-                // 重要：初始化后将滚动位置重置为顶部
+                // 初始化后重置滚动位置
                 if (elements.viewport) {
                     elements.viewport.scrollTop = 0;
-                    console.log('[评价] initContent: scrollTop reset to 0');
                 }
             }
 
@@ -1514,72 +1459,40 @@
             }
 
             /**
-             * 检查并循环内容 - 简化方案：不移除卡片，保持足够内容
+             * 检查并循环内容 - 新方案：循环复用卡片
              */
             function checkAndLoopContent() {
                 if (!elements.content || !elements.viewport) return;
                 
                 const viewportHeight = elements.viewport.clientHeight;
-                const absTranslateY = Math.abs(state.translateY);
                 const cards = elements.content.querySelectorAll('.review-card');
                 
-                // 获取第一个可见卡片之后的内容高度
-                let remainingHeight = 0;
-                for (let i = 0; i < cards.length; i++) {
-                    const card = cards[i];
-                    const cardTop = card.offsetTop;
-                    // 计算相对于当前视口的位置
-                    const relativeTop = cardTop + state.translateY;
-                    if (relativeTop > 0) {
-                        remainingHeight += card.offsetHeight;
-                    }
-                }
-                
-                // 当剩余内容不足视口高度的3倍时，添加新内容
-                if (remainingHeight < viewportHeight * 3) {
-                    const cardsToAdd = 5;
-                    for (let i = 0; i < cardsToAdd; i++) {
-                        appendReview();
-                    }
-                    console.log('[评价] Added', cardsToAdd, 'new cards. Remaining height:', remainingHeight);
-                }
-                
-                // 当 translateY 超过一定值时，重置位置（无缝循环）
-                // 这个值应该足够大，确保用户看不到重置过程
-                const resetThreshold = viewportHeight * 10;
-                if (absTranslateY > resetThreshold) {
-                    // 获取当前第一个可见卡片
-                    let firstVisibleIndex = -1;
-                    let firstVisibleOffset = 0;
-                    for (let i = 0; i < cards.length; i++) {
-                        const card = cards[i];
-                        const relativeTop = card.offsetTop + state.translateY;
-                        if (relativeTop >= -card.offsetHeight && relativeTop <= viewportHeight) {
-                            firstVisibleIndex = i;
-                            firstVisibleOffset = relativeTop;
-                            break;
-                        }
-                    }
+                // 检查第一个卡片是否已经滚出视口
+                if (cards.length > 0) {
+                    const firstCard = cards[0];
+                    const firstCardBottom = firstCard.offsetTop + firstCard.offsetHeight + state.translateY;
                     
-                    if (firstVisibleIndex >= 0) {
-                        // 移除第一个可见卡片之前的所有卡片
-                        let removedHeight = 0;
-                        for (let i = 0; i < firstVisibleIndex; i++) {
-                            removedHeight += cards[i].offsetHeight;
-                            cards[i].remove();
-                        }
+                    // 如果第一个卡片完全滚出视口上方
+                    if (firstCardBottom < 0) {
+                        // 将第一个卡片移动到末尾
+                        const cardHeight = firstCard.offsetHeight;
+                        firstCard.remove();
                         
-                        // 重置 translateY，保持第一个可见卡片的位置不变
-                        state.translateY = firstVisibleOffset;
+                        // 更新 translateY，补偿移除的卡片高度
+                        state.translateY += cardHeight;
+                        
+                        // 在末尾添加新卡片
+                        appendReview();
+                        
+                        // 重新应用 transform
                         elements.content.style.transform = `translateY(${state.translateY}px)`;
-                        
-                        // 添加新卡片补充内容
-                        for (let i = 0; i < firstVisibleIndex; i++) {
-                            appendReview();
-                        }
-                        
-                        console.log('[评价] Reset: removed', firstVisibleIndex, 'cards, translateY reset to', state.translateY);
                     }
+                }
+                
+                // 确保有足够的卡片
+                const totalHeight = getContentHeight();
+                if (totalHeight + state.translateY < viewportHeight * 2) {
+                    appendReview();
                 }
             }
 
@@ -1587,49 +1500,31 @@
              * 启动自动滚动
              */
             function startAutoScroll() {
-                console.log('[评价] startAutoScroll called, isDragging:', state.isDragging, 'isAutoScrolling:', state.isAutoScrolling);
-                // 只检查isDragging和isAutoScrolling，不检查isHovering
+                // 只检查isDragging和isAutoScrolling
                 if (state.isDragging || state.isAutoScrolling) {
-                    console.log('[评价] startAutoScroll blocked');
                     return;
                 }
                 
                 state.isAutoScrolling = true;
-                console.log('[评价] Auto scroll started');
                 
                 /**
                  * 自动滚动动画帧
                  */
-                let frameCount = 0;
                 function animate() {
-                    frameCount++;
-                    if (frameCount <= 5 || frameCount % 60 === 0) {
-                        const vh = elements.viewport ? elements.viewport.scrollHeight : 0;
-                        const ch = elements.viewport ? elements.viewport.clientHeight : 0;
-                        const st = elements.viewport ? elements.viewport.scrollTop : 0;
-                        console.log('[评价] animate frame:', frameCount, 'isDragging:', state.isDragging, 'scrollTop:', st, 'scrollHeight:', vh, 'clientHeight:', ch, 'maxScroll:', vh - ch, 'translateY:', state.translateY);
-                    }
-                    
                     // 只检查isDragging
                     if (state.isDragging) {
                         state.isAutoScrolling = false;
-                        console.log('[评价] animate stopped - isDragging');
                         return;
                     }
                     
                     if (!elements.viewport || !elements.content) {
                         state.isAutoScrolling = false;
-                        console.log('[评价] animate stopped - no viewport/content');
                         return;
                     }
                     
                     // 使用 CSS transform 移动内容（移动端更可靠）
                     state.translateY -= CONFIG.AUTO_SCROLL_SPEED;
                     elements.content.style.transform = `translateY(${state.translateY}px)`;
-                    
-                    if (frameCount <= 10) {
-                        console.log('[评价] transform applied:', state.translateY);
-                    }
                     
                     // 检查并循环内容
                     checkAndLoopContent();
@@ -1666,39 +1561,24 @@
 
             /**
              * 处理滚动事件（用户手动滚动）
-             * 注意：自动滚动时也会触发此事件，需要检查状态避免冲突
+             * 注意：使用 transform 方案时，scroll 事件不会触发
+             * 此函数保留用于兼容性，但不再执行任何操作
              */
             function handleScroll() {
-                // 自动滚动时不执行任何操作
-                if (state.isAutoScrolling) return;
-                
-                // 拖动时只加载内容，不回收节点，避免闪动
-                if (state.isDragging) {
-                    checkAndLoadMore(false);
-                    return;
-                }
-                
-                // 非拖动时正常执行加载和回收
-                checkAndLoadMore(false);
-                recycleOffscreenNodes();
+                // 使用 transform 方案时，scroll 事件不会触发
+                // 此函数保留用于兼容性
             }
 
             /**
              * 绑定事件监听器
              */
             function bindEvents() {
-                console.log('[评价] bindEvents called');
-                if (!elements.carousel || !elements.viewport) {
-                    console.error('[评价] bindEvents: missing elements');
-                    return;
-                }
+                if (!elements.carousel || !elements.viewport) return;
 
                 const isMobile = isTouchDevice();
-                console.log('[评价] isMobile:', isMobile, 'ontouchstart:', 'ontouchstart' in window, 'maxTouchPoints:', navigator.maxTouchPoints);
 
                 // 只在PC端绑定鼠标事件
                 if (!isMobile) {
-                    console.log('[评价] Binding PC mouse events');
                     // PC端：鼠标进入事件
                     elements.carousel.addEventListener('mouseenter', () => {
                         state.isHovering = true;
@@ -1731,10 +1611,8 @@
 
                 // 只在移动端绑定触摸事件
                 if (isMobile) {
-                    console.log('[评价] Binding mobile touch events');
                     // 移动端：触摸开始事件
                     elements.viewport.addEventListener('touchstart', () => {
-                        console.log('[评价] touchstart');
                         state.isDragging = true;
                         stopAutoScroll();
                         
@@ -1746,27 +1624,22 @@
 
                     // 移动端：触摸结束事件
                     elements.viewport.addEventListener('touchend', () => {
-                        console.log('[评价] touchend');
                         state.isDragging = false;
                         handleUserLeave();
                     }, { passive: true });
 
                     // 移动端：触摸取消事件
                     elements.viewport.addEventListener('touchcancel', () => {
-                        console.log('[评价] touchcancel');
                         state.isDragging = false;
                         handleUserLeave();
                     }, { passive: true });
                 }
-                
-                console.log('[评价] bindEvents completed');
             }
 
             /**
              * 重置所有状态，确保自动轮播能正常启动
              */
             function resetAllStates() {
-                console.log('[评价] resetAllStates called, before: isDragging=', state.isDragging, 'isAutoScrolling=', state.isAutoScrolling);
                 state.isHovering = false;
                 state.isDragging = false;
                 
@@ -1775,11 +1648,10 @@
                     state.leaveTimeoutId = null;
                 }
                 
-                if (state.rafId) {
-                    cancelAnimationFrame(state.rafId);
-                    state.rafId = null;
+                if (state.animationFrameId) {
+                    cancelAnimationFrame(state.animationFrameId);
+                    state.animationFrameId = null;
                 }
-                console.log('[评价] resetAllStates done, after: isDragging=', state.isDragging, 'isAutoScrolling=', state.isAutoScrolling);
             }
 
             /**
@@ -1787,27 +1659,19 @@
              * @param {Object} domElements - DOM元素集合
              */
             function init(domElements) {
-                console.log('[评价] init called');
                 elements = domElements;
                 
                 // 检查DOM元素是否存在
-                if (!elements.carousel || !elements.viewport || !elements.content) {
-                    console.error('[评价] DOM elements missing:', elements);
-                    return;
-                }
-                console.log('[评价] DOM elements found');
+                if (!elements.carousel || !elements.viewport || !elements.content) return;
                 
                 // 初始化内容（加载初始评价）
                 initContent(10);
-                console.log('[评价] Content initialized');
                 
                 // 绑定事件
                 bindEvents();
-                console.log('[评价] Events bound');
                 
                 // 添加页面可见性监听
                 document.addEventListener('visibilitychange', () => {
-                    console.log('[评价] visibilitychange:', document.visibilityState);
                     if (document.visibilityState === 'visible') {
                         resetAllStates();
                         startAutoScroll();
@@ -1819,7 +1683,6 @@
                 
                 // 延迟启动自动滚动，确保DOM完全加载
                 setTimeout(() => {
-                    console.log('[评价] Starting auto scroll after delay');
                     resetAllStates();
                     startAutoScroll();
                 }, 1500);
@@ -1833,7 +1696,6 @@
         // 初始化客户评价无限滚动模块 - 确保DOM加载完成后执行
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', function() {
-                console.log('[评价] DOMContentLoaded - initializing module');
                 ReviewsInfiniteScrollModule.init({
                     carousel: document.getElementById('reviewsCarousel'),
                     viewport: document.getElementById('reviewsViewport'),
