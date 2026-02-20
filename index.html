@@ -1514,46 +1514,72 @@
             }
 
             /**
-             * 检查并循环内容
+             * 检查并循环内容 - 简化方案：不移除卡片，保持足够内容
              */
             function checkAndLoopContent() {
                 if (!elements.content || !elements.viewport) return;
                 
-                const contentHeight = getContentHeight();
                 const viewportHeight = elements.viewport.clientHeight;
                 const absTranslateY = Math.abs(state.translateY);
+                const cards = elements.content.querySelectorAll('.review-card');
                 
-                // 当滚动超过内容高度的一半时，重置位置并添加新内容
-                if (absTranslateY > contentHeight / 2) {
-                    // 移除已经滚过的一半内容
-                    const cards = elements.content.querySelectorAll('.review-card');
-                    let removedHeight = 0;
-                    const cardsToRemove = [];
-                    
+                // 获取第一个可见卡片之后的内容高度
+                let remainingHeight = 0;
+                for (let i = 0; i < cards.length; i++) {
+                    const card = cards[i];
+                    const cardTop = card.offsetTop;
+                    // 计算相对于当前视口的位置
+                    const relativeTop = cardTop + state.translateY;
+                    if (relativeTop > 0) {
+                        remainingHeight += card.offsetHeight;
+                    }
+                }
+                
+                // 当剩余内容不足视口高度的3倍时，添加新内容
+                if (remainingHeight < viewportHeight * 3) {
+                    const cardsToAdd = 5;
+                    for (let i = 0; i < cardsToAdd; i++) {
+                        appendReview();
+                    }
+                    console.log('[评价] Added', cardsToAdd, 'new cards. Remaining height:', remainingHeight);
+                }
+                
+                // 当 translateY 超过一定值时，重置位置（无缝循环）
+                // 这个值应该足够大，确保用户看不到重置过程
+                const resetThreshold = viewportHeight * 10;
+                if (absTranslateY > resetThreshold) {
+                    // 获取当前第一个可见卡片
+                    let firstVisibleIndex = -1;
+                    let firstVisibleOffset = 0;
                     for (let i = 0; i < cards.length; i++) {
                         const card = cards[i];
-                        const cardBottom = card.offsetTop + card.offsetHeight;
-                        if (cardBottom < absTranslateY) {
-                            cardsToRemove.push(card);
-                            removedHeight += card.offsetHeight;
-                        } else {
+                        const relativeTop = card.offsetTop + state.translateY;
+                        if (relativeTop >= -card.offsetHeight && relativeTop <= viewportHeight) {
+                            firstVisibleIndex = i;
+                            firstVisibleOffset = relativeTop;
                             break;
                         }
                     }
                     
-                    // 移除旧卡片
-                    cardsToRemove.forEach(card => card.remove());
-                    
-                    // 调整 translateY
-                    state.translateY += removedHeight;
-                    elements.content.style.transform = `translateY(${state.translateY}px)`;
-                    
-                    // 添加新卡片
-                    for (let i = 0; i < cardsToRemove.length; i++) {
-                        appendReview();
+                    if (firstVisibleIndex >= 0) {
+                        // 移除第一个可见卡片之前的所有卡片
+                        let removedHeight = 0;
+                        for (let i = 0; i < firstVisibleIndex; i++) {
+                            removedHeight += cards[i].offsetHeight;
+                            cards[i].remove();
+                        }
+                        
+                        // 重置 translateY，保持第一个可见卡片的位置不变
+                        state.translateY = firstVisibleOffset;
+                        elements.content.style.transform = `translateY(${state.translateY}px)`;
+                        
+                        // 添加新卡片补充内容
+                        for (let i = 0; i < firstVisibleIndex; i++) {
+                            appendReview();
+                        }
+                        
+                        console.log('[评价] Reset: removed', firstVisibleIndex, 'cards, translateY reset to', state.translateY);
                     }
-                    
-                    console.log('[评价] Loop: removed', cardsToRemove.length, 'cards, added new ones, adjusted translateY by', removedHeight);
                 }
             }
 
