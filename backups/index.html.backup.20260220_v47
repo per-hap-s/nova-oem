@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="common.title">NOVA服装OEM代工厂 - 小批量服装定制代工</title>
+    <!-- SEO优化 -->
+    <meta name="description" data-i18n="common.description" content="NOVA服装OEM代工厂，专注于小批量服装代工，100件起订，服务台湾、泰国、马来西亚客户，提供专业打板与代工服务，质量可靠，交期准时">
+    <meta name="keywords" data-i18n="common.keywords" content="服装OEM代工,小批量服装定制,台湾服装代工,泰国服装代工,马来西亚服装代工,NOVA服装工厂">
+    <!-- 社交媒体meta标签 -->
+    <meta property="og:title" data-i18n="common.ogTitle" content="NOVA服装OEM代工厂 - 小批量服装定制代工">
+    <meta property="og:description" data-i18n="common.ogDescription" content="NOVA服装OEM代工厂，专注于小批量服装代工，100件起订，服务台湾、泰国、马来西亚客户，提供专业打板与代工服务，质量可靠，交期准时">
+    <meta property="og:url" content="https://agent.doubaocdn.com/obj/eden-cn/upnbsw-tss/ljhwZthlaukjlkulzlp/supertask_webview/38229592360704002/clothing_oem_website/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/banner.webp">
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "NOVA服装OEM代工厂",
+      "description": "NOVA服装OEM代工厂，专注于小批量服装代工，100件起订，服务台湾、泰国、马来西亚客户，提供专业打板与代工服务，质量可靠，交期准时",
+      "image": "images/banner.webp",
+      "telephone": "+8619571788150",
+      "email": "19571788150@163.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "广州市",
+        "addressRegion": "番禺区",
+        "addressCountry": "中国"
+      },
+      "openingHours": "Mo-Su 09:00-18:00",
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "name": "服务区域",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": 23.0338,
+          "longitude": 113.3910
+        },
+        "radius": 500000
+      },
+      "serviceType": "服装OEM代工服务",
+      "priceRange": "100件起订"
+    }
+    </script>
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/v4-shims.min.css" rel="stylesheet">
+    <!-- Leaflet地图 -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- 配置Tailwind自定义颜色和字体 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#D4A574',
+                        neutral: '#F5F5F5',
+                        dark: '#121212'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- 自定义样式 -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            }
+            .card-hover {
+                @apply transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl hover:bg-white/90;
+            }
+            .btn-hover {
+                @apply transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+            }
+            .step-item {
+                @apply relative flex flex-col items-center;
+            }
+            .step-line {
+                @apply absolute top-8 left-1/2 w-full h-0.5 bg-primary/20 -translate-x-1/2 z-0;
+            }
+            .step-number {
+                @apply w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl z-10 relative transition-all duration-300 hover:bg-primary/90;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-neutral text-dark">
+    <!-- 整合式头部 -->
+    <header class="fixed top-0 left-0 right-0 z-50" aria-label="网站头部">
+        <!-- 滚动进度指示条 -->
+        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-white/20 z-10">
+            <div id="scrollProgress" class="h-full bg-secondary transition-all duration-150" style="width: 0%"></div>
+        </div>
+        
+        <!-- 顶部联系方式栏 - 移动端隐藏 -->
+        <div class="bg-primary/95 backdrop-blur-md text-white py-1 sm:py-2 px-4 sm:px-6 border-b border-white/10 hidden sm:block" aria-label="顶部联系方式栏">
+            <div class="container mx-auto flex items-center justify-between gap-2">
+                <div class="flex items-center gap-3 sm:gap-6">
+                    <a href="tel:+8619571788150" class="flex items-center hover:text-secondary transition-colors btn-hover" aria-label="拨打电话：+86 19571788150">
+                        <i class="fas fa-phone mr-1 sm:mr-2 text-base sm:text-lg"></i>
+                        <span class="text-xs sm:text-sm hidden sm:inline">+86 19571788150</span>
+                    </a>
+                    <a href="mailto:19571788150@163.com" class="flex items-center hover:text-secondary transition-colors btn-hover" aria-label="发送邮件到：19571788150@163.com">
+                        <i class="fas fa-envelope mr-1 sm:mr-2 text-base sm:text-lg"></i>
+                        <span class="text-xs sm:text-sm hidden sm:inline">19571788150@163.com</span>
+                    </a>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-5">
+                    <button id="wechatBtn" class="hover:text-secondary transition-colors btn-hover" aria-label="打开微信二维码">
+                        <i class="fab fa-weixin text-xl sm:text-2xl"></i>
+                    </button>
+                    <a href="https://wa.me/8619571788150" target="_blank" class="hover:text-secondary transition-colors btn-hover" aria-label="打开WhatsApp发起对话">
+                        <i class="fab fa-whatsapp text-xl sm:text-2xl"></i>
+                    </a>
+                    <a href="https://line.me/ti/p/3fRtAf8fuy" target="_blank" class="hover:text-secondary transition-colors btn-hover" aria-label="打开LINE添加好友">
+                        <i class="fab fa-line text-xl sm:text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 导航栏 -->
+        <nav class="w-full transition-all duration-300 bg-white/90 backdrop-blur-lg shadow-md border-b border-white/20" aria-label="主导航栏" id="navbar">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#home" class="flex items-center btn-hover" aria-label="回到首页">
+                <img src="images/nova-logo.webp" alt="NOVA Logo" class="h-9 object-contain" />
+            </a>
+            <!-- 桌面端菜单 -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="首页" data-i18n="nav.home">首页</a>
+                <a href="#cases" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="案例展示" data-i18n="nav.cases">案例展示</a>
+                <a href="#about" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="关于我们" data-i18n="nav.about">关于我们</a>
+                <a href="#contact" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="联系方式" data-i18n="nav.contact">联系方式</a>
+            </div>
+            <!-- 语言切换 -->
+            <div class="relative" aria-label="语言切换">
+                <button id="langDropdownBtn" class="flex items-center gap-2 text-dark hover:text-primary transition-colors btn-hover px-3 py-2 rounded-lg min-w-[150px] focus:outline-none focus:ring-2 focus:ring-primary" aria-label="选择语言" aria-expanded="false" aria-haspopup="true">
+                    <i class="fas fa-globe text-lg"></i>
+                    <span id="currentLang" class="hidden sm:inline">简体中文</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform duration-200" id="langDropdownIcon"></i>
+                </button>
+                <div id="langDropdown" class="absolute left-0 top-full mt-2 w-auto min-w-[150px] bg-white/90 backdrop-blur-lg rounded-lg shadow-lg border border-white/30 opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50" aria-label="语言选项">
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3 first:rounded-t-lg" data-lang="zh" aria-label="切换到简体中文">
+                        <span data-i18n="lang.zh">简体中文</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="zh-tw" aria-label="切换到繁体中文">
+                        <span data-i18n="lang.zh-tw">繁體中文</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="th" aria-label="切换到泰语">
+                        <span data-i18n="lang.th">ภาษาไทย</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="ja" aria-label="切换到日语">
+                        <span data-i18n="lang.ja">日本語</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3" data-lang="ko" aria-label="切换到韩语">
+                        <span data-i18n="lang.ko">한국어</span>
+                    </button>
+                    <button class="lang-option w-full text-left px-4 py-2.5 text-dark hover:bg-gray-50 hover:text-primary transition-colors duration-200 flex items-center gap-3 last:rounded-b-lg" data-lang="en" aria-label="切换到英文">
+                        <span data-i18n="lang.en">English</span>
+                    </button>
+                </div>
+            </div>
+            <!-- 移动端汉堡按钮 -->
+            <button id="menuBtn" class="md:hidden text-dark text-2xl focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="打开移动端菜单">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white/90 backdrop-blur-lg w-full shadow-lg transition-all duration-300 transform translate-y-[-10px] opacity-0 border-t border-white/20" aria-label="移动端导航菜单">
+            <div class="container mx-auto px-6 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="首页" data-i18n="nav.home">首页</a>
+                <a href="#cases" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="案例展示" data-i18n="nav.cases">案例展示</a>
+                <a href="#about" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="关于我们" data-i18n="nav.about">关于我们</a>
+                <a href="#contact" class="text-dark hover:text-primary transition-colors duration-300 px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:rounded btn-hover" aria-label="联系方式" data-i18n="nav.contact">联系方式</a>
+            </div>
+        </div>
+    </nav>
+    </header>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 bg-primary/70 hover:bg-primary/90 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-all duration-500 opacity-0 invisible z-50 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 btn-hover" aria-label="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="pt-24 pb-16 flex items-center justify-center relative overflow-hidden">
+        <!-- 背景图片 -->
+        <img src="images/banner.webp" alt="台湾风格职业装打板样品" class="absolute inset-0 w-full h-full object-cover z-0 opacity-0 transition-opacity duration-700" loading="lazy">
+        <!-- 渐变叠加层 -->
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-secondary/80 z-10"></div>
+        <div class="container mx-auto px-4 py-10 relative z-20">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2 text-white">
+                    <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6 text-shadow" data-i18n="hero.title">NOVA服装OEM代工，100件起订</h1>
+                    <p class="text-lg mb-8" data-i18n="hero.subtitle">专注于台湾、泰国、马来西亚等地区服装定制，提供专业打板与代工服务，质量可靠，交期准时</p>
+                    <a href="#cases" class="bg-white text-primary hover:bg-white/90 font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg inline-block btn-hover" aria-label="查看案例">
+                        <span data-i18n="hero.viewCases">查看案例</span>
+                    </a>
+                </div>
+                <div class="md:w-1/2 relative z-20">
+                    <img src="images/banner.webp" alt="台湾风格职业装打板样品" class="w-full h-auto rounded-xl shadow-2xl opacity-0 transition-opacity duration-700" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心优势 -->
+    <section class="py-20 bg-white" aria-label="核心优势">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-i18n="advantages.title">核心优势</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 优势1 -->
+                <div class="bg-neutral rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 hover:bg-primary/20">
+                        <i class="fas fa-shopping-cart text-2xl text-primary" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="advantages.advantage1.title">小批量起订</h3>
+                    <p class="text-gray-700" data-i18n="advantages.advantage1.desc">支持100件起订，满足小批量定制需求</p>
+                </div>
+                <!-- 优势2 -->
+                <div class="bg-neutral rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 hover:bg-primary/20">
+                        <i class="fas fa-pencil-ruler text-2xl text-primary" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="advantages.advantage2.title">专业打板</h3>
+                    <p class="text-gray-700" data-i18n="advantages.advantage2.desc">5年以上打板经验，精准还原客户需求</p>
+                </div>
+                <!-- 优势3 -->
+                <div class="bg-neutral rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 transition-all duration-300 hover:bg-primary/20">
+                        <i class="fas fa-clock text-2xl text-primary" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="advantages.advantage3.title">交期准时</h3>
+                    <p class="text-gray-700" data-i18n="advantages.advantage3.desc">与正规工厂合作，保障订单按时交付</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 信任背书 -->
+    <section class="py-20 bg-neutral" aria-label="信任背书">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-i18n="trust.title">信任背书</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 样品展示 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <img src="images/sample.webp" alt="服装打板细节实拍" class="w-full h-64 object-cover opacity-0 transition-opacity duration-700" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="trust.sampleTitle">打板样品实拍</h3>
+                        <p class="text-gray-700" data-i18n="trust.sampleDesc">展示我们的打板质量，细节处理到位，版型精准</p>
+                    </div>
+                </div>
+                <!-- 客户评价轮播 -->
+                <div class="bg-white rounded-xl shadow-md p-6 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                    <h3 class="text-xl font-bold mb-4 text-primary" data-i18n="reviews.title">客户评价</h3>
+                    
+                    <!-- 轮播容器 -->
+                    <div class="relative" id="reviewsCarousel" tabindex="0" role="region" aria-label="客户评价轮播">
+                        <!-- 轮播视口 - 无限滚动容器 -->
+                        <div class="h-80 reviews-scroll-container" id="reviewsViewport" style="overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch;">
+                            <!-- 内容容器 - 由JavaScript动态填充 -->
+                            <div id="reviewsContent"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 案例展示 -->
+    <section id="cases" class="py-20 bg-white relative" aria-label="案例展示">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-i18n="cases.title">案例展示</h2>
+            <div class="relative w-full pb-8" id="casesCarousel" tabindex="0" role="region" aria-label="案例展示轮播">
+                <!-- 水平滚动视口 -->
+                <div class="overflow-x-auto cases-scroll-container" id="casesViewport">
+                    <!-- 内容容器 - 由JavaScript动态填充 -->
+                    <div id="casesContent" class="flex gap-6" style="width: max-content;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about" class="py-20 bg-neutral" aria-label="关于我们">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-i18n="about.title">关于我们</h2>
+            <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md p-8 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/2">
+                        <img src="images/team.webp" alt="服装打板团队" class="w-full h-auto rounded-lg opacity-0 transition-opacity duration-700" loading="lazy">
+                    </div>
+                    <div class="md:w-1/2">
+                        <h3 class="text-xl font-bold mb-4 text-primary" data-i18n="about.teamTitle">我们的团队</h3>
+                        <p class="text-gray-700 mb-4" data-i18n="about.teamDesc">NOVA服装工厂拥有5年以上服装打板经验，专注于批量服装OEM代工，熟悉不同地区的服装风格需求，能够精准还原客户的设计要求。</p>
+                        <h3 class="text-xl font-bold mb-4 text-primary" data-i18n="about.coopTitle">合作模式</h3>
+                        <p class="text-gray-700 mb-6" data-i18n="about.coopDesc">我们与正规服装工厂深度合作，可保障100件起订的订单按时交付，质量符合客户要求，无需担心生产与交付问题。</p>
+                        
+                        <h3 class="text-xl font-bold mb-6 text-primary" data-i18n="about.processTitle">服务流程</h3>
+                        
+                        <div class="relative">
+                            <!-- 步骤线 -->
+                            <div class="step-line"></div>
+                            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                                <!-- 步骤1 -->
+                                <div class="step-item">
+                                    <div class="step-number">1</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-i18n="about.process.step1.title">需求沟通</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-i18n="about.process.step1.desc">与客户沟通定制需求，确定款式、数量、要求</p>
+                                </div>
+                                <!-- 步骤2 -->
+                                <div class="step-item">
+                                    <div class="step-number">2</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-i18n="about.process.step2.title">打板确认</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-i18n="about.process.step2.desc">制作打板样品，与客户确认版型与质量</p>
+                                </div>
+                                <!-- 步骤3 -->
+                                <div class="step-item">
+                                    <div class="step-number">3</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-i18n="about.process.step3.title">生产跟进</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-i18n="about.process.step3.desc">跟进生产进度，保障订单按时生产</p>
+                                </div>
+                                <!-- 步骤4 -->
+                                <div class="step-item">
+                                    <div class="step-number">4</div>
+                                    <h4 class="mt-4 font-bold text-center text-primary" data-i18n="about.process.step4.title">物流交付</h4>
+                                    <p class="text-sm text-center text-gray-700 mt-2" data-i18n="about.process.step4.desc">完成生产后，安排物流交付给客户</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section id="contact" class="py-20 bg-white" aria-label="联系方式">
+        <div class="container mx-auto px-4">
+            <h2 class="text-[clamp(1.8rem,3vw,2.5rem)] font-bold text-center mb-12 text-primary" data-i18n="contact.title">联系方式</h2>
+            <div class="max-w-3xl mx-auto bg-neutral rounded-xl shadow-md p-8 card-hover focus:outline-none focus:ring-2 focus:ring-primary focus:rounded">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-primary" data-i18n="contact.contactTitle">联系我们</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fas fa-phone text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700" data-i18n="contact.phoneLabel">电话</p>
+                                    <a href="tel:+8619571788150" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="拨打电话：+86 195 7178 8150">+86 195 7178 8150</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fas fa-envelope text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700" data-i18n="contact.emailLabel">邮箱</p>
+                                    <a href="mailto:19571788150@163.com" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="发送邮件到：19571788150@163.com">19571788150@163.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fab fa-weixin text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700">WeChat</p>
+                                    <button id="wechatContactBtn" class="text-dark hover:text-primary transition-colors btn-hover text-left" aria-label="显示微信二维码">L19571788150</button>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fab fa-whatsapp text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700">WhatsApp</p>
+                                    <a href="https://wa.me/8619571788150" target="_blank" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="打开WhatsApp发起对话">+86 195 7178 8150</a>
+                                </div>
+                            </div>
+                            <div class="flex items-center transition-all duration-300 hover:pl-2">
+                                <i class="fab fa-line text-primary text-xl w-10" aria-hidden="true"></i>
+                                <div>
+                                    <p class="text-gray-700">LINE</p>
+                                    <a href="https://line.me/ti/p/3fRtAf8fuy" target="_blank" class="text-dark hover:text-primary transition-colors btn-hover" aria-label="打开LINE添加好友">@nova1630</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-6 text-primary" data-i18n="contact.locationTitle">我们的位置</h3>
+                        <div id="factoryMap" class="bg-gray-200 rounded-lg h-64 shadow-md relative overflow-hidden" aria-label="工厂位置地图"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-primary text-white py-8" aria-label="页脚">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <a href="#home" class="flex items-center btn-hover" aria-label="回到首页">
+                        <span class="text-white font-bold text-2xl mr-2">NOVA</span>
+                        <span class="text-white font-bold text-xl">Apparel Factory</span>
+                    </a>
+                    <p class="text-white/70 mt-2" data-i18n="footer.copyright">© 2026 NOVA服装工厂 版权所有</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="首页" data-i18n="nav.home">首页</a>
+                    <a href="#cases" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="案例展示" data-i18n="nav.cases">案例展示</a>
+                    <a href="#about" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="关于我们" data-i18n="nav.about">关于我们</a>
+                    <a href="#contact" class="text-white/70 hover:text-white transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-white focus:rounded btn-hover" aria-label="联系方式" data-i18n="nav.contact">联系方式</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入IP地理位置语言检测模块 -->
+    <script src="js/geo-language.js"></script>
+    <!-- 引入i18n模块 -->
+    <script src="js/i18n.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const backToTopBtn = document.getElementById('backToTop');
+        const navbar = document.querySelector('nav');
+        const langDropdownBtn = document.getElementById('langDropdownBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const langDropdownIcon = document.getElementById('langDropdownIcon');
+
+        // 事件委托，处理所有导航链接的点击
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a[href^="#"]');
+            if (target) {
+                e.preventDefault();
+                const targetSection = document.querySelector(target.getAttribute('href'));
+                if (targetSection) {
+                    // 先关闭移动端菜单，确保navbar高度计算准确
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+                        mobileMenu.classList.add('translate-y-[-10px]', 'opacity-0');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    
+                    // 使用setTimeout确保DOM更新后再计算跳转位置
+                    setTimeout(() => {
+                        // 获取固定导航栏的高度（仅nav部分，确保跳转位置一致）
+                        const navbarHeight = document.getElementById('navbar').offsetHeight;
+                        // 计算目标位置，考虑导航栏高度
+                        const targetPosition = targetSection.offsetTop - navbarHeight;
+                        // 平滑滚动到目标位置
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }, 10);
+                }
+            }
+
+            // 语言下拉菜单切换
+            if (e.target.closest('#langDropdownBtn')) {
+                e.stopPropagation();
+                const isOpen = !langDropdown.classList.contains('invisible');
+                toggleLangDropdown(!isOpen);
+            }
+
+            // 点击其他地方关闭下拉菜单
+            if (!e.target.closest('#langDropdownBtn') && !e.target.closest('#langDropdown')) {
+                toggleLangDropdown(false);
+            }
+
+            // 回到顶部
+            if (e.target.closest('#backToTop')) {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            // 移动端菜单按钮
+            if (e.target.closest('#menuBtn')) {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.remove('translate-y-0', 'opacity-100');
+                    mobileMenu.classList.add('translate-y-[-10px]', 'opacity-0');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    mobileMenu.classList.remove('translate-y-[-10px]', 'opacity-0');
+                    mobileMenu.classList.add('translate-y-0', 'opacity-100');
+                    const icon = menuBtn.querySelector('i');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            }
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-lg', 'bg-white/70', 'backdrop-blur-xl', 'border-white/30');
+                navbar.classList.remove('shadow-md', 'bg-white/80', 'backdrop-blur-lg', 'border-white/20');
+            } else {
+                navbar.classList.add('shadow-md', 'bg-white/80', 'backdrop-blur-lg', 'border-white/20');
+                navbar.classList.remove('shadow-lg', 'bg-white/70', 'backdrop-blur-xl', 'border-white/30');
+            }
+
+            // 更新滚动进度条
+            const scrollProgress = document.getElementById('scrollProgress');
+            if (scrollProgress) {
+                const scrollTop = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const progress = (scrollTop / docHeight) * 100;
+                scrollProgress.style.width = Math.min(Math.max(progress, 0), 100) + '%';
+            }
+
+            // 回到顶部按钮显示/隐藏
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'invisible');
+                backToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopBtn.classList.remove('opacity-100', 'visible');
+                backToTopBtn.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        // 切换语言下拉菜单
+        function toggleLangDropdown(show) {
+            if (show) {
+                langDropdown.classList.remove('invisible', 'opacity-0', '-translate-y-2');
+                langDropdown.classList.add('visible', 'opacity-100', 'translate-y-0');
+                langDropdownBtn.setAttribute('aria-expanded', 'true');
+                langDropdownIcon.classList.add('rotate-180');
+            } else {
+                langDropdown.classList.add('invisible', 'opacity-0', '-translate-y-2');
+                langDropdown.classList.remove('visible', 'opacity-100', 'translate-y-0');
+                langDropdownBtn.setAttribute('aria-expanded', 'false');
+                langDropdownIcon.classList.remove('rotate-180');
+            }
+        }
+
+        // 图片懒加载完成后添加淡入效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.classList.add('opacity-100');
+                    this.classList.remove('opacity-0');
+                });
+                // 如果图片已经加载完成
+                if (img.complete) {
+                    img.classList.add('opacity-100');
+                    img.classList.remove('opacity-0');
+                }
+            });
+
+            // 为背景图片添加淡入效果
+            const bgImages = document.querySelectorAll('#home img');
+            setTimeout(() => {
+                bgImages.forEach(img => {
+                    img.classList.add('opacity-100');
+                    img.classList.remove('opacity-0');
+                });
+            }, 500);
+        });
+
+        /**
+         * 案例展示无限滚动模块
+         * 
+         * 功能特性：
+         * - 水平无限滚动：动态加载内容，无跳跃感
+         * - 自动滚动：默认自动向左滚动
+         * - 用户交互：悬停时滚轮控制，触摸滑动
+         * - 性能优化：DOM节点回收机制
+         * 
+         * @module CasesInfiniteScrollModule
+         */
+        const CasesInfiniteScrollModule = (function() {
+            'use strict';
+
+            /**
+             * 检测是否为触摸设备（移动端）
+             * @returns {boolean} 是否为触摸设备
+             */
+            function isTouchDevice() {
+                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            }
+
+            /**
+             * 配置参数
+             * @constant {Object}
+             */
+            const CONFIG = {
+                // PC端和移动端使用不同速度
+                AUTO_SCROLL_SPEED: isTouchDevice() ? 1.0 : 0.8,       // 移动端1.0，PC端0.8（都降低速度）
+                LEAVE_DELAY: 2000,            // 用户离开后延迟启动自动滚动（毫秒）
+                LOAD_THRESHOLD: 400,          // 触发加载的阈值（像素）
+                MAX_NODES: 15,                // 最大DOM节点数量
+                RECYCLE_THRESHOLD: 600        // 回收阈值（距离视口多远才回收）
+            };
+
+            /**
+             * 案例数据池
+             * @constant {Array}
+             */
+            const CASES_POOL = [
+                {
+                    id: 1,
+                    image: 'images/case-indonesia.webp',
+                    titleKey: 'cases.case1.title',
+                    title: '印尼休闲装定制',
+                    descKey: 'cases.case1.desc',
+                    desc: '350件休闲装定制，舒适透气，符合当地气候，适合日常穿着',
+                    feedbackKey: 'cases.case1.feedback',
+                    feedback: '交付周期：12天 | 客户反馈：休闲装很舒适，很适合当地的气候，已经返单了'
+                },
+                {
+                    id: 2,
+                    image: 'images/banner.webp',
+                    titleKey: 'cases.case2.title',
+                    title: '台湾职业装定制',
+                    descKey: 'cases.case2.desc',
+                    desc: '480件质感职业装定制，版型精准，交期准时',
+                    feedbackKey: 'cases.case2.feedback',
+                    feedback: '交付周期：14天 | 客户反馈：版型很贴合我们的需求，员工都很满意'
+                },
+                {
+                    id: 3,
+                    image: 'images/case-thailand.webp',
+                    titleKey: 'cases.case3.title',
+                    title: '泰国复古连衣裙定制',
+                    descKey: 'cases.case3.desc',
+                    desc: '520件复古连衣裙定制，色彩还原度高，符合当地市场',
+                    feedbackKey: 'cases.case3.feedback',
+                    feedback: '交付周期：10天 | 客户反馈：复古风格很受我们客户欢迎，已经返单了'
+                },
+                {
+                    id: 4,
+                    image: 'images/case-malaysia.webp',
+                    titleKey: 'cases.case4.title',
+                    title: '马来西亚穆斯林服装定制',
+                    descKey: 'cases.case4.desc',
+                    desc: '280件穆斯林服装定制，细节处理到位，符合当地需求',
+                    feedbackKey: 'cases.case4.feedback',
+                    feedback: '交付周期：15天 | 客户反馈：细节处理很到位，符合我们的宗教要求'
+                },
+                {
+                    id: 5,
+                    image: 'images/case-singapore.webp',
+                    titleKey: 'cases.case5.title',
+                    title: '新加坡商务装定制',
+                    descKey: 'cases.case5.desc',
+                    desc: '420件质感商务装定制，版型精准，适合商务场合，交期准时',
+                    feedbackKey: 'cases.case5.feedback',
+                    feedback: '交付周期：11天 | 客户反馈：商务版型很专业，符合我们的商务需求'
+                },
+                {
+                    id: 6,
+                    image: 'images/case-vietnam.webp',
+                    titleKey: 'cases.case6.title',
+                    title: '越南传统奥黛定制',
+                    descKey: 'cases.case6.desc',
+                    desc: '380件传统奥黛定制，还原传统风格，细节处理到位，符合当地文化',
+                    feedbackKey: 'cases.case6.feedback',
+                    feedback: '交付周期：12天 | 客户反馈：传统风格还原度很高，很受当地客户欢迎'
+                }
+            ];
+
+            /**
+             * DOM元素引用
+             * @type {Object}
+             */
+            let elements = {};
+
+            /**
+             * 模块状态
+             * @type {Object}
+             */
+            let state = {
+                isHovering: false,           // 是否悬停中
+                isAutoScrolling: false,      // 是否自动滚动中
+                animationFrameId: null,      // 动画帧ID
+                leaveTimeoutId: null,        // 离开延迟定时器ID
+                currentIndex: 0,             // 当前数据索引（向右加载用）
+                prevIndex: 0,                // 上一个数据索引（向左加载用）
+                loadedCount: 0,              // 已加载计数
+                isDragging: false            // 是否正在拖动
+            };
+
+            /**
+             * 创建案例卡片DOM元素
+             * @param {Object} caseData - 案例数据
+             * @param {number} index - 索引值
+             * @returns {HTMLElement} 案例卡片元素
+             */
+            function createCaseCard(caseData, index) {
+                const card = document.createElement('div');
+                card.className = 'case-card w-[320px] md:w-[350px] lg:w-[400px] flex-shrink-0 bg-neutral rounded-xl shadow-md overflow-hidden card-hover';
+                card.dataset.index = index;
+                card.dataset.caseId = caseData.id;
+                
+                // 使用I18n.t()获取翻译后的文本，如果翻译不存在则使用默认值
+                const translatedTitle = window.I18n ? window.I18n.t(caseData.titleKey) : caseData.title;
+                const translatedDesc = window.I18n ? window.I18n.t(caseData.descKey) : caseData.desc;
+                const translatedFeedback = window.I18n ? window.I18n.t(caseData.feedbackKey) : caseData.feedback;
+                
+                card.innerHTML = `
+                    <img src="${caseData.image}" alt="${translatedTitle}" class="w-full h-48 object-cover" loading="lazy">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary" data-i18n="${caseData.titleKey}">${translatedTitle}</h3>
+                        <p class="text-gray-700 mb-2" data-i18n="${caseData.descKey}">${translatedDesc}</p>
+                        <p class="text-gray-500 text-sm" data-i18n="${caseData.feedbackKey}">${translatedFeedback}</p>
+                    </div>
+                `;
+                
+                return card;
+            }
+
+            /**
+             * 获取下一个案例数据（向右加载用）
+             * @returns {Object} 案例数据和索引
+             */
+            function getNextCase() {
+                const poolSize = CASES_POOL.length;
+                const caseData = CASES_POOL[state.currentIndex];
+                const index = state.currentIndex;
+                
+                state.currentIndex = (state.currentIndex + 1) % poolSize;
+                state.loadedCount++;
+                
+                return { caseData, index };
+            }
+
+            /**
+             * 获取上一个案例数据（向左加载用）
+             * @returns {Object} 案例数据和索引
+             */
+            function getPrevCase() {
+                const poolSize = CASES_POOL.length;
+                state.prevIndex = (state.prevIndex - 1 + poolSize) % poolSize;
+                const caseData = CASES_POOL[state.prevIndex];
+                
+                return { caseData, index: state.prevIndex };
+            }
+
+            /**
+             * 追加新案例到容器右侧
+             */
+            function appendCase() {
+                if (!elements.content) return;
+                
+                const { caseData, index } = getNextCase();
+                const card = createCaseCard(caseData, state.loadedCount);
+                elements.content.appendChild(card);
+            }
+
+            /**
+             * 在容器左侧插入案例
+             */
+            function prependCase() {
+                if (!elements.content) return;
+                
+                const { caseData, index } = getPrevCase();
+                const card = createCaseCard(caseData, state.loadedCount);
+                
+                // 记录插入前的宽度
+                const oldScrollWidth = elements.viewport.scrollWidth;
+                
+                // 插入到左侧
+                elements.content.insertBefore(card, elements.content.firstChild);
+                
+                // 调整滚动位置，保持视觉位置不变
+                const newScrollWidth = elements.viewport.scrollWidth;
+                const widthDiff = newScrollWidth - oldScrollWidth;
+                elements.viewport.scrollLeft += widthDiff;
+            }
+
+            /**
+             * 检查并加载更多内容（双向）
+             * @param {boolean} isAuto - 是否为自动滚动调用
+             */
+            function checkAndLoadMore(isAuto) {
+                if (!elements.viewport || !elements.content) return;
+                
+                const { scrollLeft, scrollWidth, clientWidth } = elements.viewport;
+                const scrollRight = scrollLeft + clientWidth;
+                
+                // 检测是否接近右侧，向右加载更多
+                if (scrollWidth - scrollRight < CONFIG.LOAD_THRESHOLD) {
+                    appendCase();
+                }
+                
+                // 只在用户手动滚动时向左加载（自动滚动不需要）
+                if (!isAuto && scrollLeft < CONFIG.LOAD_THRESHOLD) {
+                    prependCase();
+                }
+            }
+
+            /**
+             * 回收远离视口的DOM节点（双向）
+             */
+            function recycleOffscreenNodes() {
+                if (!elements.viewport || !elements.content) return;
+                
+                const { scrollLeft, clientWidth } = elements.viewport;
+                const visibleLeft = scrollLeft - CONFIG.RECYCLE_THRESHOLD;
+                const visibleRight = scrollLeft + clientWidth + CONFIG.RECYCLE_THRESHOLD;
+                
+                const nodes = elements.content.querySelectorAll('.case-card');
+                let totalRemoved = 0;
+                let totalWidthRemoved = 0;
+                
+                // 从左侧回收远离视口的节点
+                for (let i = 0; i < nodes.length && totalRemoved < 3; i++) {
+                    const node = nodes[i];
+                    if (nodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
+                    
+                    const nodeRight = node.offsetLeft + node.offsetWidth;
+                    if (nodeRight < visibleLeft) {
+                        totalWidthRemoved += node.offsetWidth;
+                        node.remove();
+                        totalRemoved++;
+                    } else {
+                        break;
+                    }
+                }
+                
+                // 从右侧回收远离视口的节点
+                const remainingNodes = elements.content.querySelectorAll('.case-card');
+                for (let i = remainingNodes.length - 1; i >= 0 && totalRemoved < 3; i--) {
+                    if (remainingNodes.length - totalRemoved <= CONFIG.MAX_NODES) break;
+                    
+                    const node = remainingNodes[i];
+                    const nodeLeft = node.offsetLeft;
+                    if (nodeLeft > visibleRight) {
+                        node.remove();
+                        totalRemoved++;
+                    } else {
+                        break;
+                    }
+                }
+                
+                // 调整滚动位置（同步执行，避免闪动）
+                if (totalWidthRemoved > 0) {
+                    elements.viewport.scrollLeft = Math.max(0, scrollLeft - totalWidthRemoved);
+                }
+            }
+
+            /**
+             * 初始化内容
+             * @param {number} count - 初始加载数量
+             */
+            function initContent(count) {
+                if (!elements.content) return;
+                
+                elements.content.innerHTML = '';
+                state.currentIndex = 0;
+                state.prevIndex = 0;
+                state.loadedCount = 0;
+                
+                for (let i = 0; i < count; i++) {
+                    appendCase();
+                }
+                
+                // 设置prevIndex为当前index，这样向左滚动时从当前最后一条的前一条开始
+                state.prevIndex = state.currentIndex;
+            }
+
+            /**
+             * 启动自动滚动
+             */
+            function startAutoScroll() {
+                console.log('[案例展示] startAutoScroll called, isDragging:', state.isDragging, 'isAutoScrolling:', state.isAutoScrolling);
+                // 只检查isDragging和isAutoScrolling，不检查isHovering
+                if (state.isDragging || state.isAutoScrolling) {
+                    console.log('[案例展示] startAutoScroll blocked');
+                    return;
+                }
+                
+                state.isAutoScrolling = true;
+                console.log('[案例展示] Auto scroll started');
+                
+                /**
+                 * 自动滚动动画帧
+                 */
+                let frameCount = 0;
+                function animate() {
+                    frameCount++;
+                    if (frameCount <= 5 || frameCount % 60 === 0) {
+                        console.log('[案例展示] animate frame:', frameCount, 'isDragging:', state.isDragging);
+                    }
+                    
+                    // 只检查isDragging
+                    if (state.isDragging) {
+                        state.isAutoScrolling = false;
+                        console.log('[案例展示] Animation stopped - isDragging');
+                        return;
+                    }
+                    
+                    if (!elements.viewport) {
+                        state.isAutoScrolling = false;
+                        console.log('[案例展示] Animation stopped - no viewport');
+                        return;
+                    }
+                    
+                    // 滚动
+                    elements.viewport.scrollLeft += CONFIG.AUTO_SCROLL_SPEED;
+                    console.log('[案例展示] Scrolling to:', elements.viewport.scrollLeft);
+                    
+                    // 检查是否需要加载更多（自动滚动只向右加载）
+                    checkAndLoadMore(true);
+                    
+                    state.animationFrameId = requestAnimationFrame(animate);
+                }
+                
+                state.animationFrameId = requestAnimationFrame(animate);
+            }
+
+            /**
+             * 停止自动滚动
+             */
+            function stopAutoScroll() {
+                state.isAutoScrolling = false;
+                if (state.animationFrameId) {
+                    cancelAnimationFrame(state.animationFrameId);
+                    state.animationFrameId = null;
+                }
+            }
+
+            /**
+             * 处理用户离开后的行为
+             */
+            function handleUserLeave() {
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                }
+                
+                state.leaveTimeoutId = setTimeout(() => {
+                    startAutoScroll();
+                }, CONFIG.LEAVE_DELAY);
+            }
+
+            /**
+             * 处理滚动事件（用户手动滚动）
+             */
+            function handleScroll() {
+                // 自动滚动时不执行任何操作
+                if (state.isAutoScrolling) return;
+                
+                // 拖动时只加载内容，不回收节点，避免闪动
+                if (state.isDragging) {
+                    checkAndLoadMore(false);
+                    return;
+                }
+                
+                // 非拖动时正常执行加载和回收
+                checkAndLoadMore(false);
+                recycleOffscreenNodes();
+            }
+
+            /**
+             * 绑定事件监听器
+             */
+            function bindEvents() {
+                console.log('[评价] bindEvents called');
+                if (!elements.carousel || !elements.viewport) {
+                    console.error('[评价] bindEvents: missing elements');
+                    return;
+                }
+
+                const isMobile = isTouchDevice();
+                console.log('[评价] isMobile:', isMobile, 'ontouchstart:', 'ontouchstart' in window, 'maxTouchPoints:', navigator.maxTouchPoints);
+                console.log('[案例展示] bindEvents - isTouchDevice:', isMobile);
+
+                // 只在PC端绑定鼠标事件
+                if (!isMobile) {
+                    console.log('[案例展示] Binding PC mouse events');
+                    // PC端：鼠标进入事件
+                    elements.carousel.addEventListener('mouseenter', () => {
+                        console.log('[案例展示] mouseenter triggered');
+                        state.isHovering = true;
+                        elements.carousel.classList.add('is-hovering');
+                        stopAutoScroll();
+                        
+                        if (state.leaveTimeoutId) {
+                            clearTimeout(state.leaveTimeoutId);
+                            state.leaveTimeoutId = null;
+                        }
+                    });
+
+                    // PC端：鼠标离开事件
+                    elements.carousel.addEventListener('mouseleave', () => {
+                        console.log('[案例展示] mouseleave triggered');
+                        state.isHovering = false;
+                        elements.carousel.classList.remove('is-hovering');
+                        handleUserLeave();
+                    });
+
+                    // PC端：滚轮事件（水平滚动）
+                    elements.viewport.addEventListener('wheel', (e) => {
+                        if (state.isHovering) {
+                            e.preventDefault();
+                            elements.viewport.scrollLeft += e.deltaY;
+                        }
+                    }, { passive: false });
+                }
+
+                // 滚动事件（所有设备）
+                elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
+
+                // 只在移动端绑定触摸事件
+                if (isMobile) {
+                    console.log('[案例展示] Binding mobile touch events');
+                    // 移动端：触摸开始事件
+                    elements.viewport.addEventListener('touchstart', () => {
+                        console.log('[案例展示] touchstart triggered');
+                        state.isDragging = true;
+                        stopAutoScroll();
+                        
+                        if (state.leaveTimeoutId) {
+                            clearTimeout(state.leaveTimeoutId);
+                            state.leaveTimeoutId = null;
+                        }
+                    }, { passive: true });
+
+                    // 移动端：触摸结束事件
+                    elements.viewport.addEventListener('touchend', () => {
+                        console.log('[案例展示] touchend triggered');
+                        state.isDragging = false;
+                        handleUserLeave();
+                    }, { passive: true });
+
+                    // 移动端：触摸取消事件
+                    elements.viewport.addEventListener('touchcancel', () => {
+                        console.log('[案例展示] touchcancel triggered');
+                        state.isDragging = false;
+                        handleUserLeave();
+                    }, { passive: true });
+                }
+            }
+
+            /**
+             * 重置所有状态，确保自动轮播能正常启动
+             */
+            function resetAllStates() {
+                console.log('[评价] resetAllStates called, before: isDragging=', state.isDragging, 'isAutoScrolling=', state.isAutoScrolling);
+                state.isHovering = false;
+                state.isDragging = false;
+                
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                    state.leaveTimeoutId = null;
+                }
+                
+                if (state.rafId) {
+                    cancelAnimationFrame(state.rafId);
+                    state.rafId = null;
+                }
+                console.log('[评价] resetAllStates done, after: isDragging=', state.isDragging, 'isAutoScrolling=', state.isAutoScrolling);
+            }
+
+            /**
+             * 初始化模块
+             * @param {Object} domElements - DOM元素映射
+             */
+            function init(domElements) {
+                elements = domElements;
+                
+                // 初始化内容（加载足够多的案例卡片）
+                initContent(8);
+                
+                bindEvents();
+                
+                // 添加页面可见性监听
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') {
+                        resetAllStates();
+                        startAutoScroll();
+                    } else {
+                        stopAutoScroll();
+                        resetAllStates();
+                    }
+                });
+                
+                // 延迟启动自动滚动，确保DOM完全加载
+                setTimeout(() => {
+                    resetAllStates();
+                    startAutoScroll();
+                }, 1000);
+            }
+
+            /**
+             * 公共API
+             */
+            return {
+                init: init,
+                startAutoScroll: startAutoScroll,
+                stopAutoScroll: stopAutoScroll
+            };
+        })();
+
+        // 初始化案例无限滚动模块
+        CasesInfiniteScrollModule.init({
+            carousel: document.getElementById('casesCarousel'),
+            viewport: document.getElementById('casesViewport'),
+            content: document.getElementById('casesContent')
+        });
+
+        /**
+         * 客户评价无限滚动模块
+         * 
+         * 功能特性：
+         * - 无限循环滚动：动态加载内容，无跳跃感
+         * - 自动滚动：默认自动向下滚动
+         * - 用户交互：悬停/触摸时暂停自动滚动
+         * - 性能优化：DOM节点回收机制
+         * 
+         * @module ReviewsInfiniteScrollModule
+         */
+        const ReviewsInfiniteScrollModule = (function() {
+            'use strict';
+
+            /**
+             * 检测是否为触摸设备（移动端）
+             * @returns {boolean} 是否为触摸设备
+             */
+            function isTouchDevice() {
+                return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            }
+
+            /**
+             * 配置参数
+             * @constant {Object}
+             */
+            const CONFIG = {
+                AUTO_SCROLL_SPEED: 0.7,       // 固定速度0.7像素/帧
+                LEAVE_DELAY: 2000             // 用户离开后延迟启动自动滚动（毫秒）
+            };
+
+            /**
+             * 评价数据池
+             * @constant {Array}
+             */
+            const REVIEWS_POOL = [
+                {
+                    id: 1,
+                    initial: 'A',
+                    nameKey: 'reviews.review1.name',
+                    name: 'Ahmad - 印尼客户',
+                    textKey: 'reviews.review1.text',
+                    text: '休闲装的定制很符合我们的需求，面料舒适，版型好看，客户都很喜欢，已经返单了。',
+                    rating: 5
+                },
+                {
+                    id: 2,
+                    initial: '陈',
+                    nameKey: 'reviews.review2.name',
+                    name: '陈先生 - 台湾客户',
+                    textKey: 'reviews.review2.text',
+                    text: '480件职业装的打板很精准，交期准时，版型很符合我们的需求，后续会继续合作。',
+                    rating: 5
+                },
+                {
+                    id: 3,
+                    initial: 'S',
+                    nameKey: 'reviews.review3.name',
+                    name: 'Sara - 泰国客户',
+                    textKey: 'reviews.review3.text',
+                    text: '复古服装的打板效果超出预期，色彩还原度很高，很适合我们的市场，已经返单了。',
+                    rating: 4.5
+                },
+                {
+                    id: 4,
+                    initial: 'M',
+                    nameKey: 'reviews.review4.name',
+                    name: 'Mohamed - 马来西亚客户',
+                    textKey: 'reviews.review4.text',
+                    text: '穆斯林服装的设计很符合我们的要求，细节处理很到位，合作很顺畅，交付也很准时。',
+                    rating: 5
+                },
+                {
+                    id: 5,
+                    initial: '李',
+                    nameKey: 'reviews.review5.name',
+                    name: '李先生 - 香港客户',
+                    textKey: 'reviews.review5.text',
+                    text: '我们定制的420件商务装版型很合身，员工都很满意，交期也很准时，合作很愉快。',
+                    rating: 5
+                },
+                {
+                    id: 6,
+                    initial: 'N',
+                    nameKey: 'reviews.review6.name',
+                    name: 'Nguyen - 越南客户',
+                    textKey: 'reviews.review6.text',
+                    text: '定制的传统服装很符合我们的文化需求，细节处理很到位，质量也很好，下次还会合作。',
+                    rating: 4.5
+                },
+                {
+                    id: 7,
+                    initial: 'W',
+                    nameKey: 'reviews.review7.name',
+                    name: 'William - 新加坡客户',
+                    textKey: 'reviews.review7.text',
+                    text: '制服定制质量非常好，面料透气舒适，员工反馈都很满意，已经推荐给合作伙伴。',
+                    rating: 5
+                },
+                {
+                    id: 8,
+                    initial: 'M',
+                    nameKey: 'reviews.review8.name',
+                    name: 'Maria - 菲律宾客户',
+                    textKey: 'reviews.review8.text',
+                    text: '夏季连衣裙的打板效果很棒，版型时尚，面料轻盈，非常适合热带气候。',
+                    rating: 4.5
+                },
+                {
+                    id: 9,
+                    initial: 'K',
+                    nameKey: 'reviews.review9.name',
+                    name: 'Kim - 韩国客户',
+                    textKey: 'reviews.review9.text',
+                    text: '韩版休闲装的版型设计很时尚，面料质感好，细节处理到位，非常符合我们的市场需求。',
+                    rating: 5
+                },
+                {
+                    id: 10,
+                    initial: 'T',
+                    nameKey: 'reviews.review10.name',
+                    name: 'Tanaka - 日本客户',
+                    textKey: 'reviews.review10.text',
+                    text: '商务正装的打板非常精准，剪裁合身，面料垂坠感好，完全符合我们的品质要求。',
+                    rating: 5
+                },
+                {
+                    id: 11,
+                    initial: 'R',
+                    nameKey: 'reviews.review11.name',
+                    name: 'Raj - 印度客户',
+                    textKey: 'reviews.review11.text',
+                    text: '传统服饰的定制非常专业，色彩鲜艳，面料舒适，细节工艺精湛，很受我们客户欢迎。',
+                    rating: 4.5
+                },
+                {
+                    id: 12,
+                    initial: 'C',
+                    nameKey: 'reviews.review12.name',
+                    name: 'Carlos - 巴西客户',
+                    textKey: 'reviews.review12.text',
+                    text: '运动休闲装的设计很时尚，面料透气排汗，穿着舒适，我们的消费者反馈非常好。',
+                    rating: 5
+                },
+                {
+                    id: 13,
+                    initial: 'L',
+                    nameKey: 'reviews.review13.name',
+                    name: 'Liu - 澳门客户',
+                    textKey: 'reviews.review13.text',
+                    text: '高端女装的定制质量上乘，版型优雅，面料质感好，做工精细，是我们理想的合作伙伴。',
+                    rating: 5
+                }
+            ];
+
+            /**
+             * DOM元素引用
+             * @type {Object}
+             */
+            let elements = {};
+
+            /**
+             * 模块状态
+             * @type {Object}
+             */
+            let state = {
+                isHovering: false,           // 是否悬停中
+                isAutoScrolling: false,      // 是否自动滚动中
+                animationFrameId: null,      // 动画帧ID
+                leaveTimeoutId: null,        // 离开延迟定时器ID
+                currentIndex: 0,             // 当前数据索引（向下加载用）
+                prevIndex: 0,                // 上一个数据索引（向上加载用）
+                loadedCount: 0,              // 已加载计数
+                totalHeight: 0,              // 内容总高度（用于向上插入时调整滚动位置）
+                isDragging: false,           // 是否正在拖动
+                translateY: 0                // CSS transform Y偏移量（用于移动端滚动）
+            };
+
+            /**
+             * 生成星星评分HTML
+             * @param {number} rating - 评分值
+             * @returns {string} 星星HTML字符串
+             */
+            function generateStarsHTML(rating) {
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 !== 0;
+                let html = '';
+                
+                for (let i = 0; i < fullStars; i++) {
+                    html += '<i class="fas fa-star"></i>';
+                }
+                if (hasHalfStar) {
+                    html += '<i class="fas fa-star-half-alt"></i>';
+                }
+                
+                return html;
+            }
+
+            /**
+             * 创建评价卡片DOM元素
+             * @param {Object} review - 评价数据
+             * @param {number} index - 索引值
+             * @returns {HTMLElement} 评价卡片元素
+             */
+            function createReviewCard(review, index) {
+                const card = document.createElement('div');
+                card.className = 'review-card py-4 px-2';
+                card.dataset.index = index;
+                card.dataset.reviewId = review.id;
+                
+                // 使用I18n.t()获取翻译后的文本，如果翻译不存在则使用默认值
+                const translatedName = window.I18n ? window.I18n.t(review.nameKey) : review.name;
+                const translatedText = window.I18n ? window.I18n.t(review.textKey) : review.text;
+                
+                card.innerHTML = `
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                            <span class="text-primary font-bold text-lg">${review.initial}</span>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between mb-2">
+                                <h4 class="font-bold text-base text-dark" data-i18n="${review.nameKey}">${translatedName}</h4>
+                                <div class="flex text-yellow-400 text-sm">
+                                    ${generateStarsHTML(review.rating)}
+                                </div>
+                            </div>
+                            <p class="text-gray-600 text-sm line-clamp-3 italic" data-i18n="${review.textKey}">${translatedText}</p>
+                        </div>
+                    </div>
+                `;
+                
+                return card;
+            }
+
+            /**
+             * 获取下一个评价数据（向下加载用）
+             * @returns {Object} 评价数据和索引
+             */
+            function getNextReview() {
+                const poolSize = REVIEWS_POOL.length;
+                const review = REVIEWS_POOL[state.currentIndex];
+                const index = state.currentIndex;
+                
+                state.currentIndex = (state.currentIndex + 1) % poolSize;
+                state.loadedCount++;
+                
+                return { review, index };
+            }
+
+            /**
+             * 获取上一个评价数据（向上加载用）
+             * @returns {Object} 评价数据和索引
+             */
+            function getPrevReview() {
+                const poolSize = REVIEWS_POOL.length;
+                state.prevIndex = (state.prevIndex - 1 + poolSize) % poolSize;
+                const review = REVIEWS_POOL[state.prevIndex];
+                
+                return { review, index: state.prevIndex };
+            }
+
+            /**
+             * 追加新评价到容器底部
+             */
+            function appendReview() {
+                if (!elements.content) return;
+                
+                const { review, index } = getNextReview();
+                const card = createReviewCard(review, state.loadedCount);
+                elements.content.appendChild(card);
+            }
+
+            /**
+             * 在容器顶部插入评价
+             */
+            function prependReview() {
+                if (!elements.content) return;
+                
+                const { review, index } = getPrevReview();
+                const card = createReviewCard(review, state.loadedCount);
+                
+                // 记录插入前的高度
+                const oldScrollHeight = elements.viewport.scrollHeight;
+                
+                // 插入到顶部
+                elements.content.insertBefore(card, elements.content.firstChild);
+                
+                // 调整滚动位置，保持视觉位置不变
+                const newScrollHeight = elements.viewport.scrollHeight;
+                const heightDiff = newScrollHeight - oldScrollHeight;
+                elements.viewport.scrollTop += heightDiff;
+            }
+
+            /**
+             * 初始化内容
+             * @param {number} count - 初始加载数量
+             */
+            function initContent(count) {
+                if (!elements.content) return;
+                
+                elements.content.innerHTML = '';
+                elements.content.style.transform = 'translateY(0)';
+                state.currentIndex = 0;
+                state.prevIndex = 0;
+                state.loadedCount = 0;
+                state.translateY = 0;
+                
+                for (let i = 0; i < count; i++) {
+                    appendReview();
+                }
+                
+                // 设置prevIndex为当前index，这样向上滚动时从当前最后一条的前一条开始
+                state.prevIndex = state.currentIndex;
+                
+                // 初始化后重置滚动位置
+                if (elements.viewport) {
+                    elements.viewport.scrollTop = 0;
+                }
+            }
+
+            /**
+             * 获取内容总高度
+             * @returns {number} 内容总高度
+             */
+            function getContentHeight() {
+                if (!elements.content) return 0;
+                const cards = elements.content.querySelectorAll('.review-card');
+                if (cards.length === 0) return 0;
+                const lastCard = cards[cards.length - 1];
+                return lastCard.offsetTop + lastCard.offsetHeight;
+            }
+
+            /**
+             * 检查并循环内容 - 新方案：循环复用卡片
+             */
+            function checkAndLoopContent() {
+                if (!elements.content || !elements.viewport) return;
+                
+                const viewportHeight = elements.viewport.clientHeight;
+                const cards = elements.content.querySelectorAll('.review-card');
+                
+                // 检查第一个卡片是否已经滚出视口
+                if (cards.length > 0) {
+                    const firstCard = cards[0];
+                    const firstCardBottom = firstCard.offsetTop + firstCard.offsetHeight + state.translateY;
+                    
+                    // 如果第一个卡片完全滚出视口上方
+                    if (firstCardBottom < 0) {
+                        // 将第一个卡片移动到末尾
+                        const cardHeight = firstCard.offsetHeight;
+                        firstCard.remove();
+                        
+                        // 更新 translateY，补偿移除的卡片高度
+                        state.translateY += cardHeight;
+                        
+                        // 在末尾添加新卡片
+                        appendReview();
+                        
+                        // 重新应用 transform
+                        elements.content.style.transform = `translateY(${state.translateY}px)`;
+                    }
+                }
+                
+                // 确保有足够的卡片
+                const totalHeight = getContentHeight();
+                if (totalHeight + state.translateY < viewportHeight * 2) {
+                    appendReview();
+                }
+            }
+
+            /**
+             * 启动自动滚动
+             */
+            function startAutoScroll() {
+                // 只检查isDragging和isAutoScrolling
+                if (state.isDragging || state.isAutoScrolling) {
+                    return;
+                }
+                
+                state.isAutoScrolling = true;
+                
+                /**
+                 * 自动滚动动画帧
+                 */
+                function animate() {
+                    // 只检查isDragging
+                    if (state.isDragging) {
+                        state.isAutoScrolling = false;
+                        return;
+                    }
+                    
+                    if (!elements.viewport || !elements.content) {
+                        state.isAutoScrolling = false;
+                        return;
+                    }
+                    
+                    // 使用 CSS transform 移动内容（移动端更可靠）
+                    state.translateY -= CONFIG.AUTO_SCROLL_SPEED;
+                    elements.content.style.transform = `translateY(${state.translateY}px)`;
+                    
+                    // 检查并循环内容
+                    checkAndLoopContent();
+                    
+                    state.animationFrameId = requestAnimationFrame(animate);
+                }
+                
+                state.animationFrameId = requestAnimationFrame(animate);
+            }
+
+            /**
+             * 停止自动滚动
+             */
+            function stopAutoScroll() {
+                state.isAutoScrolling = false;
+                if (state.animationFrameId) {
+                    cancelAnimationFrame(state.animationFrameId);
+                    state.animationFrameId = null;
+                }
+            }
+
+            /**
+             * 处理用户离开后的行为
+             */
+            function handleUserLeave() {
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                }
+                
+                state.leaveTimeoutId = setTimeout(() => {
+                    startAutoScroll();
+                }, CONFIG.LEAVE_DELAY);
+            }
+
+            /**
+             * 处理滚动事件（用户手动滚动）
+             * 注意：使用 transform 方案时，scroll 事件不会触发
+             * 此函数保留用于兼容性，但不再执行任何操作
+             */
+            function handleScroll() {
+                // 使用 transform 方案时，scroll 事件不会触发
+                // 此函数保留用于兼容性
+            }
+
+            /**
+             * 绑定事件监听器
+             */
+            function bindEvents() {
+                if (!elements.carousel || !elements.viewport) return;
+
+                const isMobile = isTouchDevice();
+
+                // 只在PC端绑定鼠标事件
+                if (!isMobile) {
+                    // PC端：鼠标进入事件
+                    elements.carousel.addEventListener('mouseenter', () => {
+                        state.isHovering = true;
+                        elements.carousel.classList.add('is-hovering');
+                        stopAutoScroll();
+                        
+                        if (state.leaveTimeoutId) {
+                            clearTimeout(state.leaveTimeoutId);
+                            state.leaveTimeoutId = null;
+                        }
+                    });
+
+                    // PC端：鼠标离开事件
+                    elements.carousel.addEventListener('mouseleave', () => {
+                        state.isHovering = false;
+                        elements.carousel.classList.remove('is-hovering');
+                        handleUserLeave();
+                    });
+
+                    // PC端：滚轮事件
+                    elements.viewport.addEventListener('wheel', (e) => {
+                        if (state.isHovering) {
+                            e.stopPropagation();
+                        }
+                    }, { passive: false });
+                }
+
+                // 滚动事件（所有设备）
+                elements.viewport.addEventListener('scroll', handleScroll, { passive: true });
+
+                // 只在移动端绑定触摸事件
+                if (isMobile) {
+                    // 移动端：触摸开始事件
+                    elements.viewport.addEventListener('touchstart', () => {
+                        state.isDragging = true;
+                        stopAutoScroll();
+                        
+                        if (state.leaveTimeoutId) {
+                            clearTimeout(state.leaveTimeoutId);
+                            state.leaveTimeoutId = null;
+                        }
+                    }, { passive: true });
+
+                    // 移动端：触摸结束事件
+                    elements.viewport.addEventListener('touchend', () => {
+                        state.isDragging = false;
+                        handleUserLeave();
+                    }, { passive: true });
+
+                    // 移动端：触摸取消事件
+                    elements.viewport.addEventListener('touchcancel', () => {
+                        state.isDragging = false;
+                        handleUserLeave();
+                    }, { passive: true });
+                }
+            }
+
+            /**
+             * 重置所有状态，确保自动轮播能正常启动
+             */
+            function resetAllStates() {
+                state.isHovering = false;
+                state.isDragging = false;
+                
+                if (state.leaveTimeoutId) {
+                    clearTimeout(state.leaveTimeoutId);
+                    state.leaveTimeoutId = null;
+                }
+                
+                if (state.animationFrameId) {
+                    cancelAnimationFrame(state.animationFrameId);
+                    state.animationFrameId = null;
+                }
+            }
+
+            /**
+             * 初始化模块
+             * @param {Object} domElements - DOM元素集合
+             */
+            function init(domElements) {
+                elements = domElements;
+                
+                // 检查DOM元素是否存在
+                if (!elements.carousel || !elements.viewport || !elements.content) return;
+                
+                // 初始化内容（加载初始评价）
+                initContent(10);
+                
+                // 绑定事件
+                bindEvents();
+                
+                // 添加页面可见性监听
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') {
+                        resetAllStates();
+                        startAutoScroll();
+                    } else {
+                        stopAutoScroll();
+                        resetAllStates();
+                    }
+                });
+                
+                // 延迟启动自动滚动，确保DOM完全加载
+                setTimeout(() => {
+                    resetAllStates();
+                    startAutoScroll();
+                }, 1500);
+            }
+
+            return {
+                init: init
+            };
+        })();
+
+        // 初始化客户评价无限滚动模块 - 确保DOM加载完成后执行
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                ReviewsInfiniteScrollModule.init({
+                    carousel: document.getElementById('reviewsCarousel'),
+                    viewport: document.getElementById('reviewsViewport'),
+                    content: document.getElementById('reviewsContent')
+                });
+            });
+        } else {
+            // DOM已经加载完成
+            console.log('[评价] DOM already loaded - initializing module immediately');
+            ReviewsInfiniteScrollModule.init({
+                carousel: document.getElementById('reviewsCarousel'),
+                viewport: document.getElementById('reviewsViewport'),
+                content: document.getElementById('reviewsContent')
+            });
+        }
+
+        // 初始化地图
+        // ========== 地图模块 ==========
+        let mapInstance = null;
+        let factoryMarkerInstance = null;
+
+        /**
+         * 获取地图标签的翻译文本
+         * @returns {Object} 包含工厂名称和地址的对象
+         */
+        function getMapTranslations() {
+            const factoryName = window.I18n ? window.I18n.t('map.factoryName') : 'NOVA 服装代工厂';
+            const factoryAddress = window.I18n ? window.I18n.t('map.factoryAddress') : '地址：广州市番禺区';
+            return { factoryName, factoryAddress };
+        }
+
+        /**
+         * 更新地图标签内容
+         */
+        function updateMapPopup() {
+            if (!factoryMarkerInstance) return;
+            
+            const { factoryName, factoryAddress } = getMapTranslations();
+            const popupContent = `<div style="background: rgba(255, 255, 255, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #121212; min-width: 180px; text-align: center;"><b>${factoryName}</b><br>${factoryAddress}</div>`;
+            
+            factoryMarkerInstance.setPopupContent(popupContent);
+        }
+
+        function initMap() {
+            // 工厂坐标：广州番禺区 23.0338, 113.3910
+            const factoryCoords = [23.0338, 113.3910];
+            mapInstance = L.map('factoryMap').setView(factoryCoords, 4);
+
+            // 添加OpenStreetMap图层
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(mapInstance);
+
+            // 创建红色双同心圆标记
+            const redCircleIcon = L.divIcon({
+                className: 'custom-div-icon',
+                html: '<div style="position: relative; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;"><div style="position: absolute; width: 24px; height: 24px; border: 3px solid #165DFF; border-radius: 50%; background: rgba(22, 93, 255, 0.2);"></div><div style="position: absolute; width: 12px; height: 12px; border: 2px solid #165DFF; border-radius: 50%; background: rgba(22, 93, 255, 0.4);"></div></div>',
+                iconSize: [24, 24],
+                iconAnchor: [12, 12]
+            });
+
+            // 获取翻译文本
+            const { factoryName, factoryAddress } = getMapTranslations();
+            const popupContent = `<div style="background: rgba(255, 255, 255, 0.5); padding: 8px 12px; border-radius: 8px; font-size: 13px; color: #121212; min-width: 180px; text-align: center;"><b>${factoryName}</b><br>${factoryAddress}</div>`;
+
+            // 添加工厂标记
+            factoryMarkerInstance = L.marker(factoryCoords, { icon: redCircleIcon }).addTo(mapInstance)
+                .bindPopup(popupContent, {
+                    className: 'custom-popup',
+                    closeButton: false,
+                    autoClose: false,
+                    closeOnClick: false,
+                    autoPan: false
+                }).openPopup();
+
+            // 允许用户移动地图和缩放
+            mapInstance.dragging.enable();
+            mapInstance.scrollWheelZoom.enable();
+        }
+
+        // 页面加载完成后初始化地图
+        window.addEventListener('load', initMap);
+
+        // ========== 微信二维码弹窗控制 ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            const wechatPopupModal = document.getElementById('wechatPopupModal');
+            const closeWechatModal = document.getElementById('closeWechatModal');
+            const wechatBtn = document.getElementById('wechatBtn');
+            const wechatContactBtn = document.getElementById('wechatContactBtn');
+            
+            // 打开弹窗函数
+            function openWechatModal() {
+                if (wechatPopupModal) {
+                    wechatPopupModal.classList.remove('hidden');
+                    wechatPopupModal.classList.add('flex');
+                }
+            }
+            
+            // 关闭弹窗函数
+            function closeWechatModalFn() {
+                if (wechatPopupModal) {
+                    wechatPopupModal.classList.add('hidden');
+                    wechatPopupModal.classList.remove('flex');
+                }
+            }
+            
+            // 顶部导航栏微信按钮
+            if (wechatBtn) {
+                wechatBtn.addEventListener('click', openWechatModal);
+            }
+            
+            // 联系我们板块微信按钮
+            if (wechatContactBtn) {
+                wechatContactBtn.addEventListener('click', openWechatModal);
+            }
+            
+            // 关闭按钮
+            if (closeWechatModal) {
+                closeWechatModal.addEventListener('click', closeWechatModalFn);
+            }
+            
+            // 点击背景关闭弹窗
+            if (wechatPopupModal) {
+                wechatPopupModal.addEventListener('click', function(e) {
+                    if (e.target === wechatPopupModal) {
+                        closeWechatModalFn();
+                    }
+                });
+            }
+        });
+
+    </script>
+
+    <!-- 微信二维码弹窗 - 放在body末尾确保最顶层 -->
+    <div id="wechatPopupModal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-[9999]">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 relative shadow-2xl">
+            <button id="closeWechatModal" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <div class="text-center">
+                <p class="text-xl font-bold text-gray-800 mb-6" data-i18n="aria.scanWechat">扫码添加WeChat</p>
+                <div class="bg-gray-50 p-4 rounded-lg inline-block">
+                    <img id="wechatQRCode" src="images/weixin_qrcode.webp" alt="微信二维码" class="w-72 h-72 object-contain">
+                </div>
+                <p class="text-base text-gray-600 mt-6 font-medium">WeChat ID: L19571788150</p>
+                <p class="text-sm text-gray-400 mt-2" data-i18n="aria.scanQR">扫描二维码添加好友</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

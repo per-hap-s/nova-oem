@@ -64,6 +64,100 @@
 
 /* ========== 移动端触摸体验优化样式 ========== */
 
+/* ========== 客户评价滚动交互优化 ========== */
+
+/* PC端：悬停时显示可滚动提示 */
+#reviewsCarousel {
+    cursor: default;
+}
+
+#reviewsCarousel.is-hovering {
+    cursor: ns-resize;
+}
+
+/* 滚动容器样式 - 隐藏滚动条 */
+.reviews-scroll-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+}
+
+.reviews-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 案例展示水平滚动容器样式 */
+.cases-scroll-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: hidden !important;
+    overflow-x: auto !important;
+    overscroll-behavior: contain;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    margin: 0;
+}
+
+.cases-scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 案例卡片样式 */
+.case-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 移动端触摸优化 */
+@media (max-width: 768px) {
+    .reviews-scroll-container,
+    .cases-scroll-container {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        touch-action: auto;
+    }
+    
+    .case-card {
+        width: 280px !important;
+        min-width: 280px !important;
+        max-width: 280px !important;
+        flex-shrink: 0 !important;
+    }
+    
+    .review-card {
+        touch-action: auto;
+    }
+    
+    /* 案例展示容器优化 */
+    #casesCarousel {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+    }
+    
+    /* 确保案例内容容器正确计算宽度 */
+    #casesContent {
+        box-sizing: border-box !important;
+        padding-right: 1rem !important;
+        width: max-content !important;
+        display: flex !important;
+        gap: 1.5rem !important;
+    }
+}
+
 /* 轮播触摸反馈 */
 .carousel-touching {
     cursor: grabbing !important;
@@ -110,11 +204,28 @@
     /* 移动端案例卡片间距优化 */
     #casesCarousel {
         gap: 0.75rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
     
     /* 移动端案例卡片宽度优化 */
-    #casesCarousel > div {
+    .case-card {
         width: 280px !important;
+        min-width: 280px !important;
+        max-width: 280px !important;
+    }
+    
+    /* 确保滚动容器有正确的padding */
+    .cases-scroll-container {
+        padding: 0 1rem !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+    }
+    
+    /* 确保内容容器有足够的右边距，最后一个卡片完整显示 */
+    #casesContent {
+        padding-right: 1rem !important;
+        box-sizing: border-box !important;
     }
     
     /* 移动端标题文字大小优化 */
