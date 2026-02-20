@@ -1481,9 +1481,11 @@
                 if (!elements.content) return;
                 
                 elements.content.innerHTML = '';
+                elements.content.style.transform = 'translateY(0)';
                 state.currentIndex = 0;
                 state.prevIndex = 0;
                 state.loadedCount = 0;
+                state.translateY = 0;
                 
                 for (let i = 0; i < count; i++) {
                     appendReview();
@@ -1496,6 +1498,62 @@
                 if (elements.viewport) {
                     elements.viewport.scrollTop = 0;
                     console.log('[评价] initContent: scrollTop reset to 0');
+                }
+            }
+
+            /**
+             * 获取内容总高度
+             * @returns {number} 内容总高度
+             */
+            function getContentHeight() {
+                if (!elements.content) return 0;
+                const cards = elements.content.querySelectorAll('.review-card');
+                if (cards.length === 0) return 0;
+                const lastCard = cards[cards.length - 1];
+                return lastCard.offsetTop + lastCard.offsetHeight;
+            }
+
+            /**
+             * 检查并循环内容
+             */
+            function checkAndLoopContent() {
+                if (!elements.content || !elements.viewport) return;
+                
+                const contentHeight = getContentHeight();
+                const viewportHeight = elements.viewport.clientHeight;
+                const absTranslateY = Math.abs(state.translateY);
+                
+                // 当滚动超过内容高度的一半时，重置位置并添加新内容
+                if (absTranslateY > contentHeight / 2) {
+                    // 移除已经滚过的一半内容
+                    const cards = elements.content.querySelectorAll('.review-card');
+                    let removedHeight = 0;
+                    const cardsToRemove = [];
+                    
+                    for (let i = 0; i < cards.length; i++) {
+                        const card = cards[i];
+                        const cardBottom = card.offsetTop + card.offsetHeight;
+                        if (cardBottom < absTranslateY) {
+                            cardsToRemove.push(card);
+                            removedHeight += card.offsetHeight;
+                        } else {
+                            break;
+                        }
+                    }
+                    
+                    // 移除旧卡片
+                    cardsToRemove.forEach(card => card.remove());
+                    
+                    // 调整 translateY
+                    state.translateY += removedHeight;
+                    elements.content.style.transform = `translateY(${state.translateY}px)`;
+                    
+                    // 添加新卡片
+                    for (let i = 0; i < cardsToRemove.length; i++) {
+                        appendReview();
+                    }
+                    
+                    console.log('[评价] Loop: removed', cardsToRemove.length, 'cards, added new ones, adjusted translateY by', removedHeight);
                 }
             }
 
@@ -1547,11 +1605,8 @@
                         console.log('[评价] transform applied:', state.translateY);
                     }
                     
-                    // 检查是否需要加载更多（自动滚动只向下加载）
-                    checkAndLoadMore(true);
-                    
-                    // 注意：自动滚动时不回收节点，避免闪动
-                    // 节点回收只在用户手动滚动时触发
+                    // 检查并循环内容
+                    checkAndLoopContent();
                     
                     state.animationFrameId = requestAnimationFrame(animate);
                 }
